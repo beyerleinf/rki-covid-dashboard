@@ -1,0 +1,77 @@
+<div class="dashboard">
+  <div class="dashboard-row">
+    <mat-card class="dashboard-item">
+      <mat-card-header>
+        <div class="mat-card-avatar" mat-card-avatar>
+          <mat-icon>masks</mat-icon>
+        </div>
+        <mat-card-title>Cases</mat-card-title>
+        <mat-card-subtitle>Total</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-spinner *ngIf="loading"></mat-spinner>
+        <ng-container *ngIf="!loading && generalData">
+          <h1 class="dashboard-item-data">
+            <span>{{ generalData!.cases | number }}</span>
+
+            <span [ngClass]="{ critical: generalData!.difference.cases > 0 }">
+              <span *ngIf="generalData!.difference.cases >= 0">+</span>
+              <span>{{ generalData!.difference.cases | number }}</span>
+            </span>
+          </h1>
+          <span></span>
+        </ng-container>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-item">
+      <mat-card-header>
+        <div class="mat-card-avatar" mat-card-avatar>
+          <mat-icon>healing</mat-icon>
+        </div>
+        <mat-card-title>Recovered</mat-card-title>
+        <mat-card-subtitle>Total</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-spinner *ngIf="loading"></mat-spinner>
+        <ng-container *ngIf="!loading && generalData">
+          <h1 class="dashboard-item-data">
+            <span>{{ generalData!.recovered | number }}</span>
+
+            <span [ngClass]="{ good: generalData!.difference.recovered > 0 }">
+              <span *ngIf="generalData!.difference.recovered >= 0">+</span>
+              <span>{{ generalData!.difference.recovered | number }}</span>
+            </span>
+          </h1>
+        </ng-container>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-item">
+      <mat-card-header>
+        <div class="mat-card-avatar" mat-card-avatar>
+          <mat-icon svgIcon="coffin"></mat-icon>
+        </div>
+        <mat-card-title>Deaths</mat-card-title>
+        <mat-card-subtitle>Total</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-spinner *ngIf="loading"></mat-spinner>
+        <ng-container *ngIf="!loading && generalData">
+          <h1 class="dashboard-item-data">
+            <span>{{ generalData!.deaths | number }}</span>
+
+            <span [ngClass]="{ critical: generalData!.difference.deaths > 0 }">
+              <span *ngIf="generalData!.difference.deaths >= 0">+</span>
+              <span>{{ generalData!.difference.deaths | number }}</span>
+            </span>
+          </h1>
+        </ng-container>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="dashboard-row">
+    <mat-card class="dashboard-item">
+      <app-state-detail></app-state-detail>
+    </mat-card>
+  </div>
+</div>

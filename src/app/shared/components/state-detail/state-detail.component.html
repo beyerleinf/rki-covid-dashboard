@@ -1,0 +1,6 @@
+<mat-form-field>
+  <mat-label>Bundesland</mat-label>
+  <mat-select (selectionChange)="onStateChange($event)">
+    <mat-option *ngFor="let state of states" [value]="state.value">{{ state.name }}</mat-option>
+  </mat-select>
+</mat-form-field>
