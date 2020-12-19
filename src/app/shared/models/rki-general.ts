@@ -3,6 +3,7 @@ export interface RKIGeneral {
   recovered: number;
   cases: number;
   deaths: number;
+  weekIncidence: number;
   difference: Difference;
 }
 

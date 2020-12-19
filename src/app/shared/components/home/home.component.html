@@ -1,5 +1,5 @@
 <div class="dashboard">
-  <div class="dashboard-row">
+  <div class="dashboard-row" *ngIf="rkiGeneralData$ | async as generalData">
     <mat-card class="dashboard-item">
       <mat-card-header>
         <div class="mat-card-avatar" mat-card-avatar>
@@ -9,8 +9,7 @@
         <mat-card-subtitle>Total</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <mat-spinner *ngIf="loading"></mat-spinner>
-        <ng-container *ngIf="!loading && generalData">
+        <ng-container *ngIf="generalData">
           <h1 class="dashboard-item-data">
             <span>{{ generalData!.cases | number }}</span>
 
@@ -32,8 +31,7 @@
         <mat-card-subtitle>Total</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <mat-spinner *ngIf="loading"></mat-spinner>
-        <ng-container *ngIf="!loading && generalData">
+        <ng-container *ngIf="generalData">
           <h1 class="dashboard-item-data">
             <span>{{ generalData!.recovered | number }}</span>
 
@@ -54,8 +52,7 @@
         <mat-card-subtitle>Total</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <mat-spinner *ngIf="loading"></mat-spinner>
-        <ng-container *ngIf="!loading && generalData">
+        <ng-container *ngIf="generalData">
           <h1 class="dashboard-item-data">
             <span>{{ generalData!.deaths | number }}</span>
 

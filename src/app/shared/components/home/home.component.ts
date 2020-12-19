@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from 'src/app/state/app.state';
 import { RKIGeneral } from '../../models';
-import { CovidGaeService, RkiService } from '../../services';
 
 @Component({
   selector: 'app-home',
@@ -8,24 +10,9 @@ import { CovidGaeService, RkiService } from '../../services';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  loading = false;
+  rkiGeneralData$: Observable<RKIGeneral> = this.store.select(state => state.rkiGeneralData);
 
-  generalData: RKIGeneral | null;
+  constructor(private store: Store<AppState>) {}
 
-  constructor(private rki: RkiService, private gae: CovidGaeService) {
-    this.generalData = null;
-  }
-
-  ngOnInit(): void {
-    this.load();
-  }
-
-  load() {
-    this.loading = true;
-
-    this.rki.getGeneral().subscribe(general => {
-      this.generalData = general;
-      this.loading = false;
-    });
-  }
+  ngOnInit(): void {}
 }
