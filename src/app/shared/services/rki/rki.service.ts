@@ -14,8 +14,6 @@ export class RkiService {
   getGeneral(): Observable<RKIGeneral> {
     return this.http.get<RKIGeneral & { lastUpdate: string }>('https://rki.marlon-lueckert.de/api/general').pipe(
       map(response => {
-        console.log(response.lastUpdate, dayjs(response.lastUpdate.slice(0, -4), 'DD.MM.YYYY HH:mm').toDate());
-
         return {
           ...response,
           lastUpdate: dayjs(response.lastUpdate.slice(0, -4), 'DD.MM.YYYY HH:mm').toDate(),

@@ -1,12 +1,14 @@
 import { createReducer, on } from '@ngrx/store';
 import { RKIGeneral } from '../shared/models';
-import { getRkiGeneralData, rkiGeneralDataLoaded } from './rki.actions';
+import { rkiGeneralDataLoaded } from './rki.actions';
 
 export const initialState: RKIGeneral = {
   cases: 0,
   deaths: 0,
   recovered: 0,
   weekIncidence: 0,
+  casesPer100k: 0,
+  casesPerWeek: 0,
   difference: {
     cases: 0,
     deaths: 0,
@@ -17,14 +19,7 @@ export const initialState: RKIGeneral = {
 
 export const rkiGeneralDataReducer = createReducer(
   initialState,
-  on(getRkiGeneralData, (state, { rkiGeneralData }) => {
-    console.log('get', state, rkiGeneralData);
-
-    return rkiGeneralData;
-  }),
   on(rkiGeneralDataLoaded, (state, { rkiGeneralData }) => {
-    console.log('loaded', state, rkiGeneralData);
-
     return rkiGeneralData;
   })
 );

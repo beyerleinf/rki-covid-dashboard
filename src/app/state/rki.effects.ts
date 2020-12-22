@@ -11,8 +11,6 @@ export class RkiEffects {
     this.actions$.pipe(
       ofType(RKI_LOAD_GENERAL_DATA),
       mergeMap(() => {
-        console.log('effect');
-
         return this.rki.getGeneral().pipe(
           map(general => ({ type: RKI_LOAD_GENERAL_DATA_SUCCESS, rkiGeneralData: general })),
           catchError(() => of({ type: RKI_LOAD_GENERAL_DATA_ERROR }))
@@ -21,5 +19,5 @@ export class RkiEffects {
     )
   );
 
-  constructor(private rki: RkiService, private actions$: Actions) {}
+  constructor(private actions$: Actions, private rki: RkiService) {}
 }

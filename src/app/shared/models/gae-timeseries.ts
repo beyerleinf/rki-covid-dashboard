@@ -1,6 +1,6 @@
 export interface GAETimeseries {
   data: { [key: string]: number }[];
-  meta: Meta;
+  meta?: Meta;
 }
 
 export interface Meta {

@@ -1,8 +1,10 @@
 export interface RKIGeneral {
+  cases: number;
+  casesPer100k: number;
+  casesPerWeek: number;
+  deaths: number;
   lastUpdate: Date;
   recovered: number;
-  cases: number;
-  deaths: number;
   weekIncidence: number;
   difference: Difference;
 }
