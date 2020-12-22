@@ -4,10 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build": "npm run build:base",
+    "build:base": "ng build",
+    "build:prod": "npm run build:base -- --configuration=production"
   },
   "private": true,
   "dependencies": {
@@ -48,6 +50,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "karma-spec-reporter": "0.0.32",
     "protractor": "~7.0.0",
     "resize-observer-polyfill": "^1.5.1",
     "ts-node": "~8.3.0",

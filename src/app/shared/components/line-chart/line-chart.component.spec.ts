@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import * as echarts from 'echarts';
+import { NgxEchartsModule } from 'ngx-echarts';
 import { LineChartComponent } from './line-chart.component';
 
 describe('LineChartComponent', () => {
@@ -8,18 +9,22 @@ describe('LineChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LineChartComponent ]
-    })
-    .compileComponents();
-  });
+      declarations: [LineChartComponent],
+      imports: [
+        NgxEchartsModule.forRoot({
+          echarts,
+        }),
+      ],
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(LineChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('general', () => {
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
   });
 });

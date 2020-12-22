@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { Library, TranslateObjectLoader } from 'translate-object-loader';
 import { AppRoutingModule } from './app-routing.module';
@@ -36,7 +35,7 @@ Library.add();
       },
     }),
     NgxEchartsModule.forRoot({
-      echarts,
+      echarts: () => import('echarts'),
     }),
   ],
   providers: [],
