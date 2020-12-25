@@ -1,8 +1,8 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <div class="brand">COVID-19 Dashboard</div>
-    <div class="last-update" *ngIf="rkiGeneral$ | async as generalData">
-      {{ generalData.lastUpdate | date: 'medium' }}
+    <div class="last-update mat-subheading-2" *ngIf="rkiGeneral$ | async as generalData">
+      <!-- {{ 'common.dataFrom' | translate }} {{ generalData.lastUpdate | date: 'medium':undefined }} -->
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

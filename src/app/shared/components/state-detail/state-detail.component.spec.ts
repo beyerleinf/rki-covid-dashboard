@@ -5,6 +5,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { SharedMaterialModule } from 'src/app/shared-material.module';
 import { StateDetailComponent } from './state-detail.component';
+import * as echarts from 'echarts';
 
 describe('StateDetailComponent', () => {
   let component: StateDetailComponent;
@@ -20,7 +21,7 @@ describe('StateDetailComponent', () => {
         SharedMaterialModule,
         NoopAnimationsModule,
         NgxEchartsModule.forRoot({
-          echarts: () => import('echarts'),
+          echarts,
         }),
       ],
       providers: [provideMockStore()],

@@ -1,11 +1,49 @@
-<div class="dashboard">
-  <div class="dashboard-row" *ngIf="rkiGeneralData$ | async as generalData">
-    <mat-card class="dashboard-item">
+<div class="dashboard" *ngIf="rkiGeneralData$ | async as generalData">
+  <div class="dashboard-row">
+    <div class="dashboard-item">
+      <!-- <mat-card> -->
+      <div class="data-from mat-elevation-z2">
+        {{ 'common.dataFrom' | translate }} {{ generalData.lastUpdate | date: 'medium':undefined }}
+      </div>
+      <!-- </mat-card> -->
+    </div>
+  </div>
+  <div class="dashboard-row">
+    <app-dashboard-item
+      class="dashboard-item"
+      title="common.cases"
+      caption="common.total"
+      [value]="generalData.cases"
+      [difference]="generalData.difference.cases"
+    ></app-dashboard-item>
+
+    <app-dashboard-item
+      class="dashboard-item"
+      title="common.weekIncidence"
+      caption="common.total"
+      [value]="generalData.weekIncidence"
+    ></app-dashboard-item>
+
+    <app-dashboard-item
+      class="dashboard-item"
+      title="common.recovered"
+      caption="common.total"
+      [value]="generalData.recovered"
+    ></app-dashboard-item>
+
+    <app-dashboard-item
+      class="dashboard-item"
+      title="common.deaths"
+      caption="common.total"
+      [value]="generalData.deaths"
+    ></app-dashboard-item>
+    <!-- <app-dashboard-item class="dashboard-item" title="common.deaths" caption="common.total"></app-dashboard-item> -->
+    <!-- <mat-card class="dashboard-item">
       <mat-card-header>
         <div class="mat-card-avatar" mat-card-avatar>
           <mat-icon>masks</mat-icon>
         </div>
-        <mat-card-title>Cases</mat-card-title>
+        <mat-card-title translate="common.cases"></mat-card-title>
         <mat-card-subtitle>Total</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
@@ -27,7 +65,7 @@
         <div class="mat-card-avatar" mat-card-avatar>
           <mat-icon>healing</mat-icon>
         </div>
-        <mat-card-title>Recovered</mat-card-title>
+        <mat-card-title translate="common.recovered"></mat-card-title>
         <mat-card-subtitle>Total</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
@@ -48,7 +86,7 @@
         <div class="mat-card-avatar" mat-card-avatar>
           <mat-icon svgIcon="coffin"></mat-icon>
         </div>
-        <mat-card-title>Deaths</mat-card-title>
+        <mat-card-title translate="common.deaths"></mat-card-title>
         <mat-card-subtitle>Total</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
@@ -63,12 +101,12 @@
           </h1>
         </ng-container>
       </mat-card-content>
-    </mat-card>
+    </mat-card> -->
   </div>
 
   <div class="dashboard-row">
-    <mat-card class="dashboard-item">
+    <div class="dashboard-item">
       <app-state-detail></app-state-detail>
-    </mat-card>
+    </div>
   </div>
 </div>

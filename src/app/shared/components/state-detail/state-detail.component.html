@@ -1,13 +1,15 @@
-<mat-form-field>
-  <mat-label>Bundesland</mat-label>
-  <mat-select (selectionChange)="onStateChange($event)">
-    <mat-option *ngFor="let state of states" [value]="state.value">{{ state.name }}</mat-option>
-  </mat-select>
-</mat-form-field>
+<mat-card>
+  <mat-form-field>
+    <mat-label>Bundesland</mat-label>
+    <mat-select (selectionChange)="onStateChange($event)">
+      <mat-option *ngFor="let state of states" [value]="state.value">{{ state.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<app-line-chart
-  *ngIf="timeseries$ | async as timeseries"
-  [dataset]="timeseries"
-  [series]="chartSeries"
-  [yAxisConfig]="yAxisConfig"
-></app-line-chart>
+  <app-line-chart
+    *ngIf="timeseries$ | async as timeseries"
+    [dataset]="timeseries"
+    [series]="chartSeries"
+    [yAxisConfig]="yAxisConfig"
+  ></app-line-chart>
+</mat-card>
