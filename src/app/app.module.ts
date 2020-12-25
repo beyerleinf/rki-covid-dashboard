@@ -6,20 +6,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { Library, TranslateObjectLoader } from 'translate-object-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedMaterialModule } from './shared-material.module';
-import { AppComponent, HomeComponent, LineChartComponent, StateDetailComponent } from './shared/components';
+import {
+  AppComponent,
+  DashboardItemComponent,
+  HomeComponent,
+  LineChartComponent,
+  StateDetailComponent,
+} from './shared/components';
+import { sharedTranslations } from './shared/shared.translations';
 import { GaeEffects } from './state/gae.effects';
 import { timeseriesReducer } from './state/gae.reducer';
 import { RkiEffects } from './state/rki.effects';
 import { rkiGeneralDataReducer } from './state/rki.reducer';
 
-Library.add();
+Library.add(sharedTranslations);
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, StateDetailComponent, LineChartComponent],
+  declarations: [AppComponent, HomeComponent, StateDetailComponent, LineChartComponent, DashboardItemComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,9 +41,10 @@ Library.add();
         provide: TranslateLoader,
         useClass: TranslateObjectLoader,
       },
+      defaultLanguage: 'de',
     }),
     NgxEchartsModule.forRoot({
-      echarts: () => import('echarts'),
+      echarts,
     }),
   ],
   providers: [],
