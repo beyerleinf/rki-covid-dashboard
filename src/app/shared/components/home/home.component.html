@@ -11,7 +11,7 @@
   <div class="dashboard-row">
     <app-dashboard-item
       class="dashboard-item"
-      title="common.cases"
+      cardTitle="common.cases"
       caption="common.total"
       [value]="generalData.cases"
       [difference]="generalData.difference.cases"
@@ -19,92 +19,36 @@
 
     <app-dashboard-item
       class="dashboard-item"
-      title="common.weekIncidence"
+      cardTitle="common.weekIncidence"
       caption="common.total"
       [value]="generalData.weekIncidence"
     ></app-dashboard-item>
 
     <app-dashboard-item
       class="dashboard-item"
-      title="common.recovered"
+      cardTitle="common.casesPer100k"
       caption="common.total"
-      [value]="generalData.recovered"
+      [value]="generalData.casesPer100k"
     ></app-dashboard-item>
 
     <app-dashboard-item
       class="dashboard-item"
-      title="common.deaths"
+      cardTitle="common.recovered"
+      caption="common.total"
+      [value]="generalData.recovered"
+      [difference]="generalData.difference.recovered"
+    ></app-dashboard-item>
+
+    <app-dashboard-item
+      class="dashboard-item"
+      cardTitle="common.deaths"
       caption="common.total"
       [value]="generalData.deaths"
+      [difference]="generalData.difference.deaths"
     ></app-dashboard-item>
-    <!-- <app-dashboard-item class="dashboard-item" title="common.deaths" caption="common.total"></app-dashboard-item> -->
-    <!-- <mat-card class="dashboard-item">
-      <mat-card-header>
-        <div class="mat-card-avatar" mat-card-avatar>
-          <mat-icon>masks</mat-icon>
-        </div>
-        <mat-card-title translate="common.cases"></mat-card-title>
-        <mat-card-subtitle>Total</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <ng-container *ngIf="generalData">
-          <h1 class="dashboard-item-data">
-            <span>{{ generalData!.cases | number }}</span>
-
-            <span [ngClass]="{ critical: generalData!.difference.cases > 0 }">
-              <span *ngIf="generalData!.difference.cases >= 0">+</span>
-              <span>{{ generalData!.difference.cases | number }}</span>
-            </span>
-          </h1>
-          <span></span>
-        </ng-container>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="dashboard-item">
-      <mat-card-header>
-        <div class="mat-card-avatar" mat-card-avatar>
-          <mat-icon>healing</mat-icon>
-        </div>
-        <mat-card-title translate="common.recovered"></mat-card-title>
-        <mat-card-subtitle>Total</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <ng-container *ngIf="generalData">
-          <h1 class="dashboard-item-data">
-            <span>{{ generalData!.recovered | number }}</span>
-
-            <span [ngClass]="{ good: generalData!.difference.recovered > 0 }">
-              <span *ngIf="generalData!.difference.recovered >= 0">+</span>
-              <span>{{ generalData!.difference.recovered | number }}</span>
-            </span>
-          </h1>
-        </ng-container>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="dashboard-item">
-      <mat-card-header>
-        <div class="mat-card-avatar" mat-card-avatar>
-          <mat-icon svgIcon="coffin"></mat-icon>
-        </div>
-        <mat-card-title translate="common.deaths"></mat-card-title>
-        <mat-card-subtitle>Total</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <ng-container *ngIf="generalData">
-          <h1 class="dashboard-item-data">
-            <span>{{ generalData!.deaths | number }}</span>
-
-            <span [ngClass]="{ critical: generalData!.difference.deaths > 0 }">
-              <span *ngIf="generalData!.difference.deaths >= 0">+</span>
-              <span>{{ generalData!.difference.deaths | number }}</span>
-            </span>
-          </h1>
-        </ng-container>
-      </mat-card-content>
-    </mat-card> -->
   </div>
 
-  <div class="dashboard-row">
+  <div class="dashboard-row state-detail">
     <div class="dashboard-item">
       <app-state-detail></app-state-detail>
     </div>

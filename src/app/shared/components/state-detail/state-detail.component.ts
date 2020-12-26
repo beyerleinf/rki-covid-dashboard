@@ -5,9 +5,9 @@ import { EChartOption } from 'echarts';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/state/app.state';
 import { selectTimeseries } from 'src/app/state/gae.selector';
-import { GAE_LOAD_TIMESERIES_FOR_STATE } from 'src/app/state/ngrx-constants';
-import { GAETimeseries, State, States } from '../../models';
-import { CovidGaeService, RkiService } from '../../services';
+import { GAE_LOAD_TIMESERIES_FOR_STATE, RKI_LOAD_STATE_DATA } from 'src/app/state/ngrx-constants';
+import { selectRkiStateData } from 'src/app/state/rki.selectors';
+import { State, States } from '../../models';
 
 @Component({
   selector: 'app-state-detail',
@@ -42,55 +42,37 @@ export class StateDetailComponent implements OnInit {
       type: 'line',
       encode: { x: 'timestamp', y: 'value' },
       animationDelay: (idx: number) => idx * 10,
-      // markLine: {
-      //   data: [
-      //     {
-      //       name: 'Max',
-      //       yAxis: 800,
-      //       label: {
-      //         formatter: '{b}',
-      //         position: 'insideEndTop',
-      //       },
-      //       lineStyle: {
-      //         color: '#666',
-      //       },
-      //     },
-
-      //     {
-      //       name: 'Min',
-      //       yAxis: 200,
-      //       label: {
-      //         formatter: '{b}',
-      //         position: 'insideEndTop',
-      //       },
-      //       lineStyle: {
-      //         color: '#666',
-      //       },
-      //     },
-      //   ],
-      // },
+      markArea: {
+        data: [
+          [
+            {
+              name: 'Lockdown 1',
+              xAxis: new Date(2020, 2, 15).getTime(),
+              itemStyle: { opacity: 0.25 },
+            },
+            { xAxis: new Date(2020, 5, 15).getTime() },
+          ] as any,
+          [
+            { name: 'Lockdown 2', xAxis: new Date(2020, 11, 16).getTime(), itemStyle: { opacity: 0.25 } },
+            { xAxis: Date.now() },
+          ] as any,
+        ],
+      },
     },
   ];
 
-  yAxisConfig: EChartOption.YAxis = {
-    name: 'Cases',
-    nameLocation: 'center',
-    nameGap: 45,
-    nameTextStyle: {
-      fontWeight: 'bold',
-    },
-  };
-
-  // allSensorData: Array<{ source: Array<Array<Date | number>>; dimensions: string[] }>;
+  yAxisConfig: EChartOption.YAxis = {};
 
   timeseries$: Observable<{ source: Array<Array<Date | number>>; dimensions: string[] }> = this.store.select(
     selectTimeseries
   );
 
+  stateData$: Observable<State> = this.store.select(selectRkiStateData);
+
   loading = false;
   currentStateData: (State & { lastUpdate: Date }) | null;
 
-  constructor(private rki: RkiService, private gae: CovidGaeService, private store: Store<AppState>) {
+  constructor(private store: Store<AppState>) {
     this.currentStateData = null;
   }
 
@@ -102,13 +84,6 @@ export class StateDetailComponent implements OnInit {
 
   onStateChange(change: MatSelectChange) {
     this.store.dispatch({ type: GAE_LOAD_TIMESERIES_FOR_STATE, state: change.value });
-    this.loading = true;
-    this.rki.getStateData(change.value).subscribe(stateData => {
-      if (stateData) {
-        this.currentStateData = stateData;
-      }
-
-      this.loading = false;
-    });
+    this.store.dispatch({ type: RKI_LOAD_STATE_DATA, state: change.value });
   }
 }

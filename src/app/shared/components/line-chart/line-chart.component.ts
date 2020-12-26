@@ -30,20 +30,8 @@ export class LineChartComponent implements OnInit, OnChanges {
       },
       dataset: this.dataset || {},
       series: this.series || [],
-      color: [
-        '#0785d6',
-        '#f9836f',
-        '#074763',
-        '#0794a6',
-        '#ffe451',
-        '#46e0cd',
-        '#a93d32',
-        '#29d7ff',
-        '#b2a036',
-        '#7acf82',
-        '#dce0e6',
-      ],
-      animationDuration: 1000,
+      color: ['#c2185b'],
+      animation: true,
       tooltip: {
         trigger: 'axis',
         formatter: params => {
@@ -54,6 +42,11 @@ export class LineChartComponent implements OnInit, OnChanges {
           }
         },
       },
+      dataZoom: [
+        {
+          type: 'inside',
+        },
+      ],
     };
   }
 

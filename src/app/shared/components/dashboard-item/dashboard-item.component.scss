@@ -6,4 +6,10 @@
   .mat-subheading-2 {
     color: #eeeeee;
   }
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

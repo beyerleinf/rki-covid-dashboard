@@ -1,15 +1,10 @@
-<!-- <mat-card> -->
 <mat-card>
-  <mat-card-subtitle [translate]="title"></mat-card-subtitle>
-  <mat-chip-list>
-    <mat-chip>abc</mat-chip>
-  </mat-chip-list>
+  <div class="header">
+    <mat-card-subtitle [translate]="cardTitle" [translateParams]="titleParams"></mat-card-subtitle>
+    <mat-chip-list *ngIf="difference > 0">
+      <mat-chip color="primary" selected> +{{ difference | number }} </mat-chip>
+    </mat-chip-list>
+  </div>
 
-  <p class="mat-display-1">{{ value | number }}</p>
+  <p class="mat-display-1">{{ value | number: '1.0-0' }}</p>
 </mat-card>
-<!-- <p class="mat-subheading-2" [translate]="title"></p> -->
-
-<!-- <br />
-<br /> -->
-<!-- <span class="mat-subheading-1" *ngIf="difference > 0"> +{{ difference | number }} </span> -->
-<!-- </mat-card> -->
