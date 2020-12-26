@@ -22,7 +22,7 @@ import { sharedTranslations } from './shared/shared.translations';
 import { GaeEffects } from './state/gae.effects';
 import { timeseriesReducer } from './state/gae.reducer';
 import { RkiEffects } from './state/rki.effects';
-import { rkiGeneralDataReducer } from './state/rki.reducer';
+import { rkiGeneralDataReducer, rkiStateDataReducer } from './state/rki.reducer';
 
 Library.add(sharedTranslations);
 
@@ -34,7 +34,11 @@ Library.add(sharedTranslations);
     BrowserAnimationsModule,
     HttpClientModule,
     SharedMaterialModule,
-    StoreModule.forRoot({ rkiGeneralData: rkiGeneralDataReducer, timeseries: timeseriesReducer }),
+    StoreModule.forRoot({
+      rkiGeneralData: rkiGeneralDataReducer,
+      timeseries: timeseriesReducer,
+      rkiStateData: rkiStateDataReducer,
+    }),
     EffectsModule.forRoot([RkiEffects, GaeEffects]),
     TranslateModule.forRoot({
       loader: {
