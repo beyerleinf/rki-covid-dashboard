@@ -2,9 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/state/app.state';
-import { RKI_LOAD_GENERAL_DATA } from 'src/app/state/ngrx-constants';
+import {
+  GAE_LOAD_TIMESERIES_FOR_STATE,
+  RKI_LOAD_GENERAL_DATA,
+  RKI_LOAD_STATE_DATA,
+} from 'src/app/state/ngrx-constants';
 import { selectRkiGeneralData } from 'src/app/state/rki.selectors';
-import { RKIGeneral } from '../../models';
+import { RKIGeneral, States } from '../../models';
 
 @Component({
   selector: 'app-root',
@@ -18,5 +22,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch({ type: RKI_LOAD_GENERAL_DATA });
+    this.store.dispatch({ type: GAE_LOAD_TIMESERIES_FOR_STATE, state: States.BW });
+    this.store.dispatch({ type: RKI_LOAD_STATE_DATA, state: States.BW });
   }
 }

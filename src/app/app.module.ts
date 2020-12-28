@@ -11,13 +11,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { Library, TranslateObjectLoader } from 'translate-object-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedMaterialModule } from './shared-material.module';
-import {
-  AppComponent,
-  DashboardItemComponent,
-  HomeComponent,
-  LineChartComponent,
-  StateDetailComponent,
-} from './shared/components';
+import { AppComponent, DashboardItemComponent, HomeComponent, LineChartComponent } from './shared/components';
 import { sharedTranslations } from './shared/shared.translations';
 import { GaeEffects } from './state/gae.effects';
 import { timeseriesReducer } from './state/gae.reducer';
@@ -27,7 +21,7 @@ import { rkiGeneralDataReducer, rkiStateDataReducer } from './state/rki.reducer'
 Library.add(sharedTranslations);
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, StateDetailComponent, LineChartComponent, DashboardItemComponent],
+  declarations: [AppComponent, HomeComponent, LineChartComponent, DashboardItemComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
