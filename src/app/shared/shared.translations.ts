@@ -27,6 +27,10 @@ export const sharedTranslations: TranslationDefinition = {
       weekIncidence: '7 day incidence',
       casesPerWeek: 'Cases per week',
       casesPer100k: 'Cases / 100,000 residents',
+      casesState: 'Cases for {{state}}',
+      deathsState: 'Deaths for {{state}}',
+      weekIncidenceState: '7 day incidence for {{state}}',
+      casesPer100kState: 'Cases / 100,000 residents for {{state}}',
     },
   },
 };
