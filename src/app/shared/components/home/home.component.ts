@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   states = [
     { name: 'Baden-Württemberg', value: States.BW },
     { name: 'Bayern', value: States.BY },
-    { name: 'Brandeburg', value: States.BB },
+    { name: 'Brandenburg', value: States.BB },
     { name: 'Berlin', value: States.BE },
     { name: 'Bremen', value: States.HB },
     { name: 'Hamburg', value: States.HH },
