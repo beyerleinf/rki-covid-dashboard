@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit {
   generalDashboardItems = [
     { title: 'common.cases', valueKey: 'cases' },
     { title: 'common.weekIncidence', valueKey: 'weekIncidence' },
+    { title: 'common.casesPerWeek', valueKey: 'casesPerWeek' },
     { title: 'common.casesPer100k', valueKey: 'casesPer100k' },
     { title: 'common.recovered', valueKey: 'recovered' },
     { title: 'common.deaths', valueKey: 'deaths' },
