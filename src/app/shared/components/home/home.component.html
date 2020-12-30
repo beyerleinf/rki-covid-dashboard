@@ -1,56 +1,52 @@
 <div class="dashboard" *ngIf="rkiGeneralData$ | async as generalData">
   <div class="dashboard-row">
     <div class="dashboard-item">
-      <!-- <mat-card> -->
       <div class="data-from mat-elevation-z2">
         {{ 'common.dataFrom' | translate }} {{ generalData.lastUpdate | date: 'medium':undefined }}
       </div>
-      <!-- </mat-card> -->
     </div>
   </div>
   <div class="dashboard-row">
     <app-dashboard-item
+      *ngFor="let item of generalDashboardItems"
       class="dashboard-item"
-      cardTitle="common.cases"
-      caption="common.total"
-      [value]="generalData.cases"
-      [difference]="generalData.difference.cases"
-    ></app-dashboard-item>
-
-    <app-dashboard-item
-      class="dashboard-item"
-      cardTitle="common.weekIncidence"
-      caption="common.total"
-      [value]="generalData.weekIncidence"
-    ></app-dashboard-item>
-
-    <app-dashboard-item
-      class="dashboard-item"
-      cardTitle="common.casesPer100k"
-      caption="common.total"
-      [value]="generalData.casesPer100k"
-    ></app-dashboard-item>
-
-    <app-dashboard-item
-      class="dashboard-item"
-      cardTitle="common.recovered"
-      caption="common.total"
-      [value]="generalData.recovered"
-      [difference]="generalData.difference.recovered"
-    ></app-dashboard-item>
-
-    <app-dashboard-item
-      class="dashboard-item"
-      cardTitle="common.deaths"
-      caption="common.total"
-      [value]="generalData.deaths"
-      [difference]="generalData.difference.deaths"
+      [cardTitle]="item.title"
+      [value]="getProperty(generalData, item.valueKey)"
+      [difference]="getProperty(generalData.difference, item.valueKey)"
     ></app-dashboard-item>
   </div>
 
-  <div class="dashboard-row state-detail">
-    <div class="dashboard-item">
-      <app-state-detail></app-state-detail>
-    </div>
+  <div class="dashboard-row state-data">
+    <mat-card class="dashboard-item">
+      <mat-form-field>
+        <mat-label translate="common.state"></mat-label>
+        <mat-select (selectionChange)="onStateChange($event)">
+          <mat-option *ngFor="let state of states" [value]="state.value">{{ state.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card>
   </div>
+
+  <ng-container *ngIf="stateData$ | async as stateData">
+    <ng-container *ngIf="timeseries$ | async as timeseries">
+      <div class="dashboard-row">
+        <app-dashboard-item
+          *ngFor="let item of stateDashboardItems"
+          class="dashboard-item"
+          [cardTitle]="item.title"
+          [titleParams]="{ state: stateData.name }"
+          [value]="getProperty(stateData, item.valueKey)"
+        ></app-dashboard-item>
+      </div>
+
+      <div class="dashboard-row">
+        <div class="dashboard-item">
+          <mat-card>
+            <h1 class="mat-display-1" translate="common.casesState" [translateParams]="{ state: stateData.name }"></h1>
+            <app-line-chart [dataset]="timeseries" [series]="chartSeries"></app-line-chart>
+          </mat-card>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
 </div>

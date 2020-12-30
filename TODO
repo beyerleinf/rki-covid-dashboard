@@ -1,7 +1,9 @@
 ✔ Translations @done(20-12-26 01:34)
-☐ Loading indicators
-☐ Better icons
-☐ Graph animations
-☐ Mobile
-☐ Publish from GitHub actions
+✔ Mobile @started(20-12-28 14:58) @done(20-12-28 16:28) @lasted(1h30m9s)
+☐ Language Switcher
+✔ Loading indicators @started(20-12-28 21:41) @done(20-12-28 21:41) @lasted(8s)
+✘ Better icons @cancelled(20-12-28 14:56)
+✔ Graph animations @started(20-12-28 16:33) @done(20-12-28 16:33) @lasted(26s)
+☐ Publish from GitHub actions @started(20-12-28 14:57)
 ☐ Upgrade to ECharts 5
+☐ README

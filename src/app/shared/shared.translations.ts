@@ -4,9 +4,10 @@ export const sharedTranslations: TranslationDefinition = {
   de: {
     common: {
       dataFrom: 'Daten von:',
-      cases: 'Fälle Insgesamt',
-      recovered: 'Genesene Insgesamt',
-      deaths: 'Todesfälle Insgesamt',
+      state: 'Bundesland',
+      cases: 'Fälle insgesamt',
+      recovered: 'Genesene insgesamt',
+      deaths: 'Todesfälle insgesamt',
       weekIncidence: '7-Tage-Inzidenz',
       casesPerWeek: '7-Tage-Fallzahl',
       casesPer100k: 'Fälle / 100.000 Einwohner',
@@ -19,6 +20,7 @@ export const sharedTranslations: TranslationDefinition = {
   en: {
     common: {
       dataFrom: 'Data from: ',
+      state: 'State',
       cases: 'Total Cases',
       recovered: 'Total Recovered',
       deaths: 'Total Deaths',

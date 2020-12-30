@@ -7,7 +7,6 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DashboardItemComponent implements OnInit {
   @Input() cardTitle = '';
-  @Input() caption = '';
   @Input() value = 0;
   @Input() difference = 0;
   @Input() titleParams: any = {};

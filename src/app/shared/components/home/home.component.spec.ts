@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { SharedMaterialModule } from 'src/app/shared-material.module';
-import { StateDetailComponent } from '../state-detail/state-detail.component';
 import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
@@ -14,7 +13,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomeComponent, StateDetailComponent],
+      declarations: [HomeComponent],
       imports: [SharedMaterialModule, HttpClientTestingModule, NoopAnimationsModule],
       providers: [provideMockStore()],
     }).compileComponents();
