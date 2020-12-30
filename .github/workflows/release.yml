@@ -33,6 +33,7 @@ jobs:
           server: beyerleinf.de
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/rki-covid-dashboard
       # - name: Package Release
       #   run: ./pack.sh
       # - name: Get the version
