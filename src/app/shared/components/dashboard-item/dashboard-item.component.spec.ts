@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { SharedMaterialModule } from 'src/app/shared-material.module';
 import { DashboardItemComponent } from './dashboard-item.component';
 
 describe('DashboardItemComponent', () => {
@@ -8,18 +8,18 @@ describe('DashboardItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardItemComponent ]
-    })
-    .compileComponents();
-  });
+      declarations: [DashboardItemComponent],
+      imports: [SharedMaterialModule],
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(DashboardItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('general', () => {
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
   });
 });
