@@ -1,81 +1,118 @@
-export enum States {
-  /**
-   * Baden-Württemberg
-   */
-  BW = 'BW',
+// export enum States {
+//   /**
+//    * Baden-Württemberg
+//    */
+//   BW = 'BW',
 
-  /**
-   * Bayern
-   */
-  BY = 'BY',
+//   /**
+//    * Bayern
+//    */
+//   BY = 'BY',
 
-  /**
-   * Brandenburg
-   */
-  BB = 'BB',
+//   /**
+//    * Brandenburg
+//    */
+//   BB = 'BB',
 
-  /**
-   * Berlin
-   */
-  BE = 'BE',
+//   /**
+//    * Berlin
+//    */
+//   BE = 'BE',
 
-  /**
-   * Bremen
-   */
-  HB = 'HB',
+//   /**
+//    * Bremen
+//    */
+//   HB = 'HB',
 
-  /**
-   * Hamburg
-   */
-  HH = 'HH',
+//   /**
+//    * Hamburg
+//    */
+//   HH = 'HH',
 
-  /**
-   * Hessen
-   */
-  HE = 'HE',
+//   /**
+//    * Hessen
+//    */
+//   HE = 'HE',
 
-  /**
-   * Mecklenburg-Vorpommern
-   */
-  MV = 'MV',
+//   /**
+//    * Mecklenburg-Vorpommern
+//    */
+//   MV = 'MV',
 
-  /**
-   * Niedersachsen
-   */
-  NI = 'NI',
+//   /**
+//    * Niedersachsen
+//    */
+//   NI = 'NI',
 
-  /**
-   * Nordrhein-Westfalen
-   */
-  NW = 'NW',
+//   /**
+//    * Nordrhein-Westfalen
+//    */
+//   NW = 'NW',
 
-  /**
-   * Rheinland-Pfalz
-   */
-  RP = 'RP',
+//   /**
+//    * Rheinland-Pfalz
+//    */
+//   RP = 'RP',
 
-  /**
-   * Saarland
-   */
-  SL = 'SL',
+//   /**
+//    * Saarland
+//    */
+//   SL = 'SL',
 
-  /**
-   * Sachsen-Anhalt
-   */
-  ST = 'ST',
+//   /**
+//    * Sachsen-Anhalt
+//    */
+//   ST = 'ST',
 
-  /**
-   * Sachsen
-   */
-  SN = 'SN',
+//   /**
+//    * Sachsen
+//    */
+//   SN = 'SN',
 
-  /**
-   * Schleswig-Holstein
-   */
-  SH = 'SH',
+//   /**
+//    * Schleswig-Holstein
+//    */
+//   SH = 'SH',
 
-  /**
-   * Thüringen
-   */
-  TH = 'TH',
+//   /**
+//    * Thüringen
+//    */
+//   TH = 'TH',
+// }
+
+export type StateType =
+  | 'BW'
+  | 'BY'
+  | 'BB'
+  | 'BE'
+  | 'HB'
+  | 'HH'
+  | 'HE'
+  | 'MV'
+  | 'NI'
+  | 'NW'
+  | 'RP'
+  | 'SL'
+  | 'ST'
+  | 'SN'
+  | 'SH'
+  | 'TH';
+
+export interface States<T> {
+  BW: T;
+  BY: T;
+  BB: T;
+  BE: T;
+  HB: T;
+  HH: T;
+  HE: T;
+  MV: T;
+  NI: T;
+  NW: T;
+  RP: T;
+  SL: T;
+  ST: T;
+  SN: T;
+  SH: T;
+  TH: T;
 }
