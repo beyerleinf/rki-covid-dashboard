@@ -3,10 +3,10 @@ import { MatSelectChange } from '@angular/material/select';
 import { Store } from '@ngrx/store';
 import { EChartOption } from 'echarts';
 import { Observable } from 'rxjs';
-import { AppState } from 'src/app/state/app.state';
-import { selectTimeseries } from 'src/app/state/gae.selector';
-import { GAE_LOAD_TIMESERIES_FOR_STATE, RKI_LOAD_STATE_DATA } from 'src/app/state/ngrx-constants';
-import { selectRkiGeneralData, selectRkiStateData } from 'src/app/state/rki.selectors';
+import { AppState } from '../../../state/app.state';
+import { selectTimeseries } from '../../../state/gae.selector';
+import { GAE_LOAD_TIMESERIES_FOR_STATE, RKI_LOAD_STATE_DATA } from '../../../state/ngrx-constants';
+import { selectRkiGeneralData, selectRkiStateData } from '../../../state/rki.selectors';
 import { RKIGeneral, State, States } from '../../models';
 
 @Component({
