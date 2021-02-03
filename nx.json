@@ -1,0 +1,25 @@
+{
+  "npmScope": "rki-covid-dashboard",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tslint.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*",
+    "tsconfig.base.json": "*"
+  },
+  "projects": {
+    "rki-covid-dashboard": {
+      "tags": []
+    },
+    "rki-covid-dashboard-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "rki-covid-dashboard"
+      ]
+    }
+  }
+}

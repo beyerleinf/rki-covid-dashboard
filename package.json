@@ -2,14 +2,32 @@
   "name": "rki-covid-dashboard",
   "version": "1.0.2",
   "scripts": {
-    "ng": "ng",
+    "ng": "nx",
     "start": "ng serve",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
     "build": "npm run build:base",
     "build:base": "ng build",
-    "build:prod": "npm run build:base -- --configuration=production"
+    "build:prod": "npm run build:base -- --configuration=production",
+    "nx": "nx",
+    "affected:apps": "nx affected:apps",
+    "affected:libs": "nx affected:libs",
+    "affected:build": "nx affected:build",
+    "affected:e2e": "nx affected:e2e",
+    "affected:test": "nx affected:test",
+    "affected:lint": "nx affected:lint",
+    "affected:dep-graph": "nx affected:dep-graph",
+    "affected": "nx affected",
+    "format": "nx format:write",
+    "format:write": "nx format:write",
+    "format:check": "nx format:check",
+    "update": "ng update @nrwl/workspace",
+    "update:check": "ng update",
+    "dep-graph": "nx dep-graph",
+    "workspace-schematic": "nx workspace-schematic",
+    "help": "nx help",
+    "postinstall": "node ./decorate-angular-cli.js"
   },
   "private": true,
   "dependencies": {
@@ -27,13 +45,15 @@
     "@ngrx/effects": "^10.1.0",
     "@ngrx/store": "^10.1.0",
     "@ngx-translate/core": "^13.0.0",
+    "@nrwl/workspace": "^11.2.9",
     "dayjs": "^1.9.7",
     "echarts": "^4.9.0",
     "ngx-echarts": "^5.0.0",
     "rxjs": "~6.6.0",
     "translate-object-loader": "^2.0.3",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "@nrwl/angular": "11.2.9"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1100.4",
@@ -55,6 +75,8 @@
     "resize-observer-polyfill": "^1.5.1",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "^4.0.5"
+    "typescript": "^4.0.5",
+    "@nrwl/workspace": "11.2.9",
+    "prettier": "2.2.1"
   }
 }
