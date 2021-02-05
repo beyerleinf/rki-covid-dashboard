@@ -51,7 +51,7 @@
               "apps/rki-covid-dashboard/src/favicon.ico",
               "apps/rki-covid-dashboard/src/assets"
             ],
-            "styles": ["apps/rki-covid-dashboard/src/styles.scss"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css", "apps/rki-covid-dashboard/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -142,6 +142,52 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/rki-covid-dashboard-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "rki-models": {
+      "root": "libs/rki-models",
+      "sourceRoot": "libs/rki-models/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/rki-models/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/rki-models"],
+          "options": {
+            "jestConfig": "libs/rki-models/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "rki-api": {
+      "projectType": "library",
+      "root": "libs/rki-api",
+      "sourceRoot": "libs/rki-api/src",
+      "prefix": "rkicovid",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/rki-api/src/**/*.ts",
+              "libs/rki-api/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/rki-api"],
+          "options": {
+            "jestConfig": "libs/rki-api/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

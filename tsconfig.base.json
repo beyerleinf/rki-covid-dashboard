@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@rkicovid/rki-models": ["libs/rki-models/src/index.ts"],
+      "@rkicovid/rki-api": ["libs/rki-api/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

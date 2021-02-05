@@ -1,6 +1,6 @@
 {
   "npmScope": "rkicovid",
-  "affected": { "defaultBase": "master" },
+  "affected": { "defaultBase": "main" },
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": { "dependencies": "*", "devDependencies": "*" },
@@ -20,6 +20,8 @@
     "rki-covid-dashboard-e2e": {
       "tags": [],
       "implicitDependencies": ["rki-covid-dashboard"]
-    }
+    },
+    "rki-models": { "tags": [] },
+    "rki-api": { "tags": [] }
   }
 }

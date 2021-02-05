@@ -1,0 +1,39 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>COVID-19 Dashboard</span>
+  <span class="spacer"></span>
+  <!-- <button mat-icon-button [matMenuTriggerFor]="languageMenu">
+    <mat-icon>language</mat-icon>
+  </button> -->
+  <rkicovid-language-switcher></rkicovid-language-switcher>
+  <button mat-icon-button>
+    <mat-icon>info</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" [opened]="true">
+    <mat-nav-list>
+      <ng-container *ngFor="let page of pages">
+        <a mat-list-item [routerLink]="page.route" routerLinkActive="active">{{ page.name | translate }}</a>
+      </ng-container>
+      <!-- <a mat-list-item routerLink="/germany" routerLinkActive="active">Germany</a>
+      <a mat-list-item routerLink="/states" routerLinkActive="active">States</a>
+      <a mat-list-item routerLink="/districts" routerLinkActive="active">Districts</a>
+      <a mat-list-item routerLink="/vaccinations" routerLinkActive="active">Vaccinations</a> -->
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="sidenav-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-menu #languageMenu="matMenu">
+  <button mat-menu-item>German</button>
+  <button mat-menu-item>English</button>
+</mat-menu>
