@@ -1,0 +1,23 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .dashboard-item {
+    // border: 1px solid red;
+    flex-basis: 23%;
+    height: 100px;
+    margin-bottom: 16px;
+    flex-grow: 1;
+    padding: 0 8px;
+
+    &:first-of-type {
+      padding-left: 0;
+    }
+
+    &:last-of-type {
+      padding-right: 0;
+    }
+  }
+}

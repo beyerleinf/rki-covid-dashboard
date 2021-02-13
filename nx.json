@@ -17,11 +17,9 @@
   },
   "projects": {
     "rki-covid-dashboard": { "tags": [] },
-    "rki-covid-dashboard-e2e": {
-      "tags": [],
-      "implicitDependencies": ["rki-covid-dashboard"]
-    },
+    "rki-covid-dashboard-e2e": { "tags": [], "implicitDependencies": ["rki-covid-dashboard"] },
     "rki-models": { "tags": [] },
-    "rki-api": { "tags": [] }
+    "rki-api": { "tags": [] },
+    "rki-ui": { "tags": [] }
   }
 }
