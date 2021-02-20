@@ -11,7 +11,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="side" [opened]="sidenavOpen">
+  <mat-sidenav #sidenav [mode]="onMobile ? 'over' : 'side'" [opened]="!onMobile">
     <mat-nav-list>
       <ng-container *ngFor="let page of pages">
         <a mat-list-item [routerLink]="page.route" routerLinkActive="active">{{ page.name | translate }}</a>

@@ -9,7 +9,7 @@ import { Breakpoints } from '@angular/cdk/layout';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  sidenavOpen = true;
+  onMobile = true;
   pages = [
     { name: 'common.pages.germany', route: '/germany' },
     // { name: 'common.pages.states', route: '/states' },
@@ -21,9 +21,7 @@ export class AppComponent {
     translate.use(translate.getBrowserLang());
 
     this.breakpoints.observe([Breakpoints.Tablet, Breakpoints.Handset]).subscribe(({ matches }) => {
-      if (matches) {
-        this.sidenavOpen = false;
-      }
+      this.onMobile = matches;
     });
   }
 }
