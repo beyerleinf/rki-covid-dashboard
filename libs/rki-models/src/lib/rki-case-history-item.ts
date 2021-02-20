@@ -1,4 +1,4 @@
 export interface RkiCaseHistoryItem {
   cases: number;
-  date: string;
+  date: Date;
 }

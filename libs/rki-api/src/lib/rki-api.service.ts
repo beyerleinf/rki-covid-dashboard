@@ -1,6 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { RkiGermany, RkiGermanyRaw } from '@rkicovid/rki-models';
+import {
+  RkiGermany,
+  RkiGermanyCaseHistory,
+  RkiGermanyCaseHistoryRaw,
+  RkiGermanyDeathHistory,
+  RkiGermanyDeathHistoryRaw,
+  RkiGermanyRaw,
+  RkiGermanyRecoveredHistory,
+  RkiGermanyRecoveredHistoryRaw,
+  RkiMeta,
+  RkiMetaRaw,
+} from '@rkicovid/rki-models';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { RKI_API_URL } from './rki-api-url.token';
@@ -13,18 +24,49 @@ export class RkiApiService {
 
   germany(): Observable<RkiGermany> {
     return this.http.get<RkiGermanyRaw>(`${this.apiUrl}/germany`).pipe(
-      map(data => ({
-        ...data,
-        meta: {
-          ...data.meta,
-          lastUpdate: new Date(data.meta.lastUpdate),
-          lastCheckedForUpdate: new Date(data.meta.lastCheckedForUpdate),
-        },
+      map(response => ({
+        ...response,
+        meta: this.parseMeta(response.meta),
         r: {
-          ...data.r,
-          date: new Date(data.r.date),
+          ...response.r,
+          date: new Date(response.r.date),
         },
       }))
     );
+  }
+
+  germanyCaseHistory(): Observable<RkiGermanyCaseHistory> {
+    return this.http.get<RkiGermanyCaseHistoryRaw>(`${this.apiUrl}/germany/history/cases`).pipe(
+      map(response => ({
+        data: response.data.map(e => ({ cases: e.cases, date: new Date(e.date) })),
+        meta: this.parseMeta(response.meta),
+      }))
+    );
+  }
+
+  germanyDeathHistory(): Observable<RkiGermanyDeathHistory> {
+    return this.http.get<RkiGermanyDeathHistoryRaw>(`${this.apiUrl}/germany/history/deaths`).pipe(
+      map(response => ({
+        data: response.data.map(e => ({ deaths: e.deaths, date: new Date(e.date) })),
+        meta: this.parseMeta(response.meta),
+      }))
+    );
+  }
+
+  germanyRecoveredHistory(): Observable<RkiGermanyRecoveredHistory> {
+    return this.http.get<RkiGermanyRecoveredHistoryRaw>(`${this.apiUrl}/germany/history/recovered`).pipe(
+      map(response => ({
+        data: response.data.map(e => ({ recovered: e.recovered, date: new Date(e.date) })),
+        meta: this.parseMeta(response.meta),
+      }))
+    );
+  }
+
+  private parseMeta(meta: RkiMetaRaw): RkiMeta {
+    return {
+      ...meta,
+      lastUpdate: new Date(meta.lastUpdate),
+      lastCheckedForUpdate: new Date(meta.lastCheckedForUpdate),
+    };
   }
 }

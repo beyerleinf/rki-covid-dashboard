@@ -1,4 +1,4 @@
 export interface RkiRecoveredHistoryItem {
   recovered: number;
-  date: string;
+  date: Date;
 }

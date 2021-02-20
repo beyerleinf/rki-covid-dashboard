@@ -2,7 +2,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from '@angular/core/testing';
 import { RKI_API_URL } from './rki-api-url.token';
 import { RkiApiService } from './rki-api.service';
-import { RkiGermany } from '@rkicovid/rki-models';
+import { RkiGermany, RkiGermanyRaw, RkiMeta, RkiMetaRaw } from '@rkicovid/rki-models';
 import { getPlatform } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -11,6 +11,22 @@ describe('RkiApiService', () => {
   let http: HttpTestingController;
 
   const baseUrl = 'https://some.server';
+
+  const metaRaw: RkiMetaRaw = {
+    contact: 'a',
+    info: 'b',
+    lastCheckedForUpdate: new Date(0).toISOString(),
+    lastUpdate: new Date(1).toISOString(),
+    source: 'e',
+  };
+
+  const metaParsed: RkiMeta = {
+    contact: 'a',
+    info: 'b',
+    lastCheckedForUpdate: new Date(0),
+    lastUpdate: new Date(1),
+    source: 'e',
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -34,7 +50,7 @@ describe('RkiApiService', () => {
 
   describe('germany', () => {
     const url = `${baseUrl}/germany`;
-    const respose: RkiGermany = {
+    const respose: RkiGermanyRaw = {
       cases: 1,
       casesPer100k: 2,
       casesPerWeek: 3,
@@ -47,16 +63,10 @@ describe('RkiApiService', () => {
       recovered: 5,
       weekIncidence: 6,
       r: {
-        date: 'someDate',
+        date: new Date(2).toISOString(),
         value: 1,
       },
-      meta: {
-        contact: 'a',
-        info: 'b',
-        lastCheckedForUpdate: 'c',
-        lastUpdate: 'd',
-        source: 'e',
-      },
+      meta: metaRaw,
     };
 
     it('should call correct api endpoint', done => {
@@ -82,7 +92,24 @@ describe('RkiApiService', () => {
 
     it('should return correct respose', done => {
       service.germany().subscribe(res => {
-        expect(res).toEqual(respose);
+        expect(res).toEqual({
+          cases: 1,
+          casesPer100k: 2,
+          casesPerWeek: 3,
+          deaths: 4,
+          delta: {
+            cases: 1,
+            deaths: 2,
+            recovered: 3,
+          },
+          recovered: 5,
+          weekIncidence: 6,
+          r: {
+            date: new Date(2),
+            value: 1,
+          },
+          meta: metaParsed,
+        });
         done();
       });
 

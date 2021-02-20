@@ -1,6 +1,9 @@
-export { RkiGermanyRaw } from './rki-germany-raw';
 export { RkiGermany } from './rki-germany';
 export { RkiGermanyCaseHistory } from './rki-germany-case-history';
+export { RkiGermanyCaseHistoryRaw } from './rki-germany-case-history-raw';
 export { RkiGermanyDeathHistory } from './rki-germany-death-history';
+export { RkiGermanyDeathHistoryRaw } from './rki-germany-death-history-raw';
 export { RkiGermanyIncidenceHistory } from './rki-germany-incidence-history';
+export { RkiGermanyRaw } from './rki-germany-raw';
 export { RkiGermanyRecoveredHistory } from './rki-germany-recovered-history';
+export { RkiGermanyRecoveredHistoryRaw } from './rki-germany-recovered-history-raw';

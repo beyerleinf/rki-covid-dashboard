@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'rkicovid-dashboard-item',
@@ -6,7 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-item.component.scss'],
 })
 export class DashboardItemComponent implements OnInit {
-  constructor() {}
+  @Input() cardTitle = '';
+  @Input() value = 0;
+  @Input() difference = 0;
+  @Input() titleParams: any = {};
+  @Input() isLoading = false;
 
-  ngOnInit(): void {}
+  currentLang = '';
+
+  constructor(private translate: TranslateService) {
+    this.currentLang = this.translate.currentLang;
+  }
+
+  ngOnInit(): void {
+    this.translate.onLangChange.subscribe(() => (this.currentLang = this.translate.currentLang));
+  }
 }
