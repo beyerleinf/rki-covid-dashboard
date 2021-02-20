@@ -52,7 +52,7 @@ export class GermanyComponent implements OnInit {
     tooltip: {
       trigger: 'axis',
     },
-    color: ['#c2185b'],
+    color: ['#c2185b', '#c218b1', '#18c27e'],
     series: [
       {
         name: this.translate.instant('common.cases'),
@@ -99,6 +99,7 @@ export class GermanyComponent implements OnInit {
         dataZoom: {
           yAxisIndex: 'none',
         },
+        restore: {},
       },
     },
     legend: {},
