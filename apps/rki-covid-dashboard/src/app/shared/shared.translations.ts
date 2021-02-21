@@ -15,7 +15,7 @@ export const sharedTranslations: TranslationDefinition = {
       },
       cases: 'Fälle',
       casesMean: 'Fälle (Durchschnitt)',
-      deaths: 'Todesfälles',
+      deaths: 'Todesfälle',
       recovered: 'Genesen',
       weekIncidence: '7-Tage-Inzidenz',
       casesPerWeek: '7-Tage-Fallzahl',
