@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/beyerleinf/rki-covid-dashboard/compare/v1.0.2...v2.0.0) (2021-02-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* Redesign app and implement germany page
+
+### Features
+
+* Add mean cases value to chart ([f8a21e4](https://github.com/beyerleinf/rki-covid-dashboard/commit/f8a21e4d24156763a2431a09667e823b977c828e))
+* Redesign app and implement germany page ([77a00cc](https://github.com/beyerleinf/rki-covid-dashboard/commit/77a00cc90b03b297bed669a88980a5eb19818ee6))
+
+
+### Bug Fixes
+
+* Fix menu mobile behaviour ([5c2c593](https://github.com/beyerleinf/rki-covid-dashboard/commit/5c2c59358f6939d771b04a2c7b7c6e4793c36766))
+* Fix page title ([e6f6d3a](https://github.com/beyerleinf/rki-covid-dashboard/commit/e6f6d3a9f05d0a1f7ea2d409ec405cb3ded68306))
+* fix typo ([832db41](https://github.com/beyerleinf/rki-covid-dashboard/commit/832db413316853cd983686600e8cf65af0be32e6))
+* Fix typos ([38faebd](https://github.com/beyerleinf/rki-covid-dashboard/commit/38faebd6ecc764d6fb6f952f13a85f4cf332eef1))
+* Update chart colors ([3bf636e](https://github.com/beyerleinf/rki-covid-dashboard/commit/3bf636e1f9a4be9fae86d797ff7e7c6c9b4eaa7e))
+
 ### [1.0.2](https://github.com/beyerleinf/rki-covid-dashboard/compare/v1.0.1...v1.0.2) (2020-12-30)
 
 ### [1.0.1](https://github.com/beyerleinf/rki-covid-dashboard/compare/v1.0.0...v1.0.1) (2020-12-30)
