@@ -52,7 +52,7 @@ export class GermanyComponent implements OnInit {
     tooltip: {
       trigger: 'axis',
     },
-    color: ['#c2185b', '#c218b1', '#18c27e'],
+    color: ['#c2185b', '#18c27e', '#c218b1'],
     series: [
       {
         name: this.translate.instant('common.cases'),
@@ -82,15 +82,16 @@ export class GermanyComponent implements OnInit {
         smooth: true,
       },
       {
+        name: this.translate.instant('common.casesMean'),
+        type: 'line',
+        encode: { x: 'timestmp', y: 'casesMean' },
+        smooth: true,
+        connectNulls: true,
+      },
+      {
         name: this.translate.instant('common.deaths'),
         type: 'line',
         encode: { x: 'timestmp', y: 'deaths' },
-        smooth: true,
-      },
-      {
-        name: this.translate.instant('common.recovered'),
-        type: 'line',
-        encode: { x: 'timestmp', y: 'recovered' },
         smooth: true,
       },
     ],
@@ -175,40 +176,46 @@ export class GermanyComponent implements OnInit {
               ],
             },
           },
-          { ...this.chartOptions.series[1], name: this.translate.instant('common.deaths') },
-          { ...this.chartOptions.series[2], name: this.translate.instant('common.recovered') },
+          { ...this.chartOptions.series[1], name: this.translate.instant('common.casesMean') },
+          { ...this.chartOptions.series[2], name: this.translate.instant('common.deaths') },
         ],
       };
     });
 
     this.store
       .select(state => state)
-      .subscribe(state => {
-        const source = [];
+      .subscribe(
+        ({
+          germanyCaseHistory: { germanyCaseHistory },
+          germanyCaseHistoryMean: { germanyCaseHistoryMean },
+          germanyDeathHistory: { germanyDeathHistory },
+        }) => {
+          const source = [];
 
-        if (
-          state.germanyCaseHistory.germanyCaseHistory.data.length > 0 &&
-          state.germanyDeathHistory.germanyDeathHistory.data.length > 0 &&
-          state.germanyRecoveredHistory.germanyRecoveredHistory.data.length > 0
-        ) {
-          for (let i = 0; i < state.germanyCaseHistory.germanyCaseHistory.data.length; i++) {
-            const caseHistoryItem = state.germanyCaseHistory.germanyCaseHistory.data[i];
-            const deathHistoryItem = state.germanyDeathHistory.germanyDeathHistory.data[i];
-            const recoveredHistoryItem = state.germanyRecoveredHistory.germanyRecoveredHistory.data[i];
+          if (
+            germanyCaseHistory.data.length > 0 &&
+            germanyCaseHistoryMean.length > 0 &&
+            germanyDeathHistory.data.length > 0
+          ) {
+            for (let i = 0; i < germanyCaseHistory.data.length; i++) {
+              const caseHistoryItem = germanyCaseHistory.data[i];
+              const caseHistoryMeanItem = germanyCaseHistoryMean[i];
+              const deathHistoryItem = germanyDeathHistory.data[i];
 
-            source.push([
-              caseHistoryItem.date,
-              caseHistoryItem.cases,
-              deathHistoryItem.deaths,
-              recoveredHistoryItem.recovered,
-            ]);
+              source.push([
+                caseHistoryItem.date,
+                caseHistoryItem.cases,
+                deathHistoryItem.deaths,
+                caseHistoryMeanItem.last ? caseHistoryMeanItem.cases : null,
+              ]);
+            }
+
+            this.chartOptions = {
+              ...this.chartOptions,
+              dataset: [{ source, dimensions: ['timestamp', 'cases', 'deaths', 'casesMean'] }],
+            };
           }
-
-          this.chartOptions = {
-            ...this.chartOptions,
-            dataset: [{ source, dimensions: ['timestamp', 'cases', 'deaths', 'recovered'] }],
-          };
         }
-      });
+      );
   }
 }

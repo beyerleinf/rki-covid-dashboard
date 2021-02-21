@@ -6,5 +6,8 @@
 ✔ Graph animations @started(20-12-28 16:33) @done(20-12-28 16:33) @lasted(26s)
 ☐ Publish from GitHub actions @started(20-12-28 14:57)
 ✔ Upgrade to ECharts @done(21-02-20 23:36)
-☐ Optimize ECharts bunlde
+☐ Optimize ECharts bundle
+☐ States Page
+☐ Districts Page
+☐ Vaccinations Page
 ☐ README

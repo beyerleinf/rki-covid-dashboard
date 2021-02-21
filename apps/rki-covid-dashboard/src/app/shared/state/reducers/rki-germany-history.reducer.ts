@@ -1,7 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
 import { RkiGermanyCaseHistory, RkiGermanyDeathHistory, RkiGermanyRecoveredHistory } from '@rkicovid/rki-models';
 import { rkiGermanyCaseHistoryLoaded, rkiGermanyDeathHistoryLoaded } from '../actions';
-import { rkiGermanyRecoveredHistoryLoaded } from '../actions/rki-germany-history.actions';
+import {
+  rkiGermanyCaseHistoryMeanLoaded,
+  rkiGermanyRecoveredHistoryLoaded,
+} from '../actions/rki-germany-history.actions';
 
 const initial: RkiGermanyCaseHistory | RkiGermanyDeathHistory | RkiGermanyRecoveredHistory = {
   data: [],
@@ -17,6 +20,14 @@ const initial: RkiGermanyCaseHistory | RkiGermanyDeathHistory | RkiGermanyRecove
 export const rkiGermanyCaseHistoryReducer = createReducer(
   { germanyCaseHistory: initial, isLoading: true },
   on(rkiGermanyCaseHistoryLoaded, (state, { germanyCaseHistory }) => ({ germanyCaseHistory, isLoading: false }))
+);
+
+export const rkiGermanyCaseHistoryMeanReducer = createReducer(
+  { germanyCaseHistoryMean: [], isLoading: true },
+  on(rkiGermanyCaseHistoryMeanLoaded, (state, { germanyCaseHistoryMean }) => ({
+    germanyCaseHistoryMean,
+    isLoading: false,
+  }))
 );
 
 export const rkiGermanyDeathHistoryReducer = createReducer(

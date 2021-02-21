@@ -8,10 +8,6 @@
     justify-content: space-between;
     flex-wrap: wrap;
 
-    // &:not(:last-of-type) {
-    //   padding: 0 0 8px 0;
-    // }
-
     @media screen and (min-width: 768px) {
       flex-direction: row;
     }
@@ -23,18 +19,6 @@
       flex-shrink: 0;
       padding: 0 8px;
       max-width: 100%;
-
-      // @media screen and (min-width: 768px) {
-      //   &:not(:last-of-type) {
-      //     padding-right: 8px;
-      //   }
-      // }
-
-      // @media screen and (max-width: 768px) {
-      //   &:not(:last-of-type) {
-      //     padding: 0 0 8px 0;
-      //   }
-      // }
     }
   }
 }

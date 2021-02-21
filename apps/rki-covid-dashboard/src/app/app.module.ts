@@ -20,6 +20,7 @@ import { sharedTranslations } from './shared/shared.translations';
 import { RkiGermanyEffect, RkiGermanyHistoryEffect } from './shared/state/effects';
 import { rkiGermanyCaseHistoryReducer, rkiGermanyReducer } from './shared/state/reducers';
 import {
+  rkiGermanyCaseHistoryMeanReducer,
   rkiGermanyDeathHistoryReducer,
   rkiGermanyRecoveredHistoryReducer,
 } from './shared/state/reducers/rki-germany-history.reducer';
@@ -47,6 +48,7 @@ Library.add(sharedTranslations);
       {
         germany: rkiGermanyReducer,
         germanyCaseHistory: rkiGermanyCaseHistoryReducer,
+        germanyCaseHistoryMean: rkiGermanyCaseHistoryMeanReducer,
         germanyDeathHistory: rkiGermanyDeathHistoryReducer,
         germanyRecoveredHistory: rkiGermanyRecoveredHistoryReducer,
       },

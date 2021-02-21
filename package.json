@@ -44,6 +44,7 @@
     "@ngrx/store": "^11.0.0",
     "@ngx-translate/core": "^13.0.0",
     "@nrwl/angular": "11.2.9",
+    "dayjs": "^1.10.4",
     "echarts": "^5.0.2",
     "ngx-echarts": "^6.0.0",
     "rxjs": "~6.6.3",
