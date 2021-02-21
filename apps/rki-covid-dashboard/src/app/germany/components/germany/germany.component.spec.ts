@@ -54,6 +54,10 @@ describe('GermanyComponent', () => {
       },
       isLoading: false,
     },
+    germanyCaseHistoryMean: {
+      germanyCaseHistoryMean: [],
+      isLoading: false,
+    },
     germanyDeathHistory: {
       germanyDeathHistory: {
         data: [],
