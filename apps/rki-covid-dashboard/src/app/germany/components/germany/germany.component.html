@@ -1,0 +1,27 @@
+<!-- <h1 class="mat-display-2" translate="common.pages.germany"></h1> -->
+
+<div class="dashboard">
+  <div class="dashboard-row" *ngIf="germany$ | async as germany">
+    <div *ngFor="let item of dashboardItems" class="dashboard-item">
+      <rkicovid-dashboard-item
+        [cardTitle]="item.title"
+        [value]="germany[item.valueKey]"
+        [difference]="germany.delta[item.valueKey]"
+        [isLoading]="isLoading$ | async"
+      ></rkicovid-dashboard-item>
+    </div>
+  </div>
+
+  <div class="dashboard-row">
+    <div class="dashboard-item">
+      <mat-card>
+        <ng-container *ngIf="!(isHistoryLoading$ | async); else loading">
+          <rkicovid-line-chart [chartOptions]="chartOptions"></rkicovid-line-chart>
+        </ng-container>
+      </mat-card>
+      <ng-template #loading>
+        <mat-spinner [diameter]="64"></mat-spinner>
+      </ng-template>
+    </div>
+  </div>
+</div>

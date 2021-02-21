@@ -1,0 +1,38 @@
+// :host {
+//   display: block;
+//   height: 100%;
+
+//   mat-card {
+//     height: 100%;
+//     box-sizing: border-box;
+//   }
+// }
+
+:host {
+  display: block;
+  //   height: 100%;
+  // border: 1px solid red;
+  // color: white;
+  // padding: 8px;
+
+  // .mat-subheading-2 {
+  //   color: #eeeeee;
+  // }
+
+  mat-card-subtitle {
+    padding-right: 16px;
+    white-space: nowrap;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    mat-chip {
+      & > mat-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+}

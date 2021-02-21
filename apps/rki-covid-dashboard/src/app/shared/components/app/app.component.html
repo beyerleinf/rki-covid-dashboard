@@ -1,0 +1,27 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>COVID-19 Dashboard</span>
+  <span class="spacer"></span>
+  <rkicovid-language-switcher></rkicovid-language-switcher>
+  <button mat-icon-button>
+    <mat-icon>info</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav [mode]="onMobile ? 'over' : 'side'" [opened]="!onMobile">
+    <mat-nav-list>
+      <ng-container *ngFor="let page of pages">
+        <a mat-list-item [routerLink]="page.route" routerLinkActive="active">{{ page.name | translate }}</a>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="sidenav-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
