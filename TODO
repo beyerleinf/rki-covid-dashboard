@@ -4,7 +4,7 @@
 ✔ Loading indicators @started(20-12-28 21:41) @done(20-12-28 21:41) @lasted(8s)
 ✘ Better icons @cancelled(20-12-28 14:56)
 ✔ Graph animations @started(20-12-28 16:33) @done(20-12-28 16:33) @lasted(26s)
-☐ Publish from GitHub actions @started(20-12-28 14:57)
+✔ Publish from GitHub actions @started(20-12-28 14:57) @done(21-02-21 22:18) @lasted(7w6d7h21m36s)
 ✔ Upgrade to ECharts @done(21-02-20 23:36)
 ☐ Optimize ECharts bundle
 ☐ States Page
