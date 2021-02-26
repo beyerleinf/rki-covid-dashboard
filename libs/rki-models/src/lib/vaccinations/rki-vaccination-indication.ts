@@ -1,7 +1,5 @@
-export interface RkiVaccinationIndication {
-  age: number;
-  job: number;
-  medical: number;
-  nursingHome: number;
-  secondVaccination?: RkiVaccinationIndication;
+import { RkiVaccinationIndicationData } from './rki-vaccination-indication-data';
+
+export interface RkiVaccinationIndication extends RkiVaccinationIndicationData {
+  secondVaccination: RkiVaccinationIndicationData;
 }

@@ -1,13 +1,9 @@
-import { RkiSecondVaccination } from './rki-second-vaccination';
 import { RkiVaccinationIndication } from './rki-vaccination-indication';
-import { RkiVaccinationManufacturers } from './rki-vacination-manufacturers';
+import { RkiVaccinationInfo } from './rki-vaccination-info';
+import { RkiVaccinationManufacturers } from './rki-vaccination-manufacturers';
 
-export interface RkiVaccinationDataBase {
+export interface RkiVaccinationDataBase extends RkiVaccinationInfo<RkiVaccinationManufacturers> {
   administeredVaccinations: number;
-  vaccinated: number;
-  vaccination: RkiVaccinationManufacturers;
-  delta: number;
-  quote: number;
-  secondVaccination: RkiSecondVaccination;
+  secondVaccination: RkiVaccinationInfo<Pick<RkiVaccinationManufacturers, 'biontech' | 'moderna'>>;
   indication: RkiVaccinationIndication;
 }
