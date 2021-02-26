@@ -1,12 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { DashboardItemComponent } from './dashboard-item/dashboard-item.component';
+import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 
 @NgModule({
@@ -16,10 +19,12 @@ import { LineChartComponent } from './line-chart/line-chart.component';
     MatChipsModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatMenuModule,
+    MatButtonModule,
     TranslateModule.forChild(),
     NgxEchartsModule.forChild(),
   ],
-  declarations: [DashboardItemComponent, LineChartComponent],
-  exports: [DashboardItemComponent, LineChartComponent],
+  declarations: [DashboardItemComponent, LineChartComponent, LanguageSwitcherComponent],
+  exports: [DashboardItemComponent, LineChartComponent, LanguageSwitcherComponent],
 })
 export class RkiUiModule {}
