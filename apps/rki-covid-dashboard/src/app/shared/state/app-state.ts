@@ -3,6 +3,7 @@ import {
   RkiGermanyCaseHistory,
   RkiGermanyDeathHistory,
   RkiGermanyRecoveredHistory,
+  RkiVaccinations,
 } from '@rkicovid/rki-models';
 
 export interface AppState {
@@ -14,4 +15,5 @@ export interface AppState {
   };
   germanyDeathHistory: { germanyDeathHistory: RkiGermanyDeathHistory; isLoading: boolean };
   germanyRecoveredHistory: { germanyRecoveredHistory: RkiGermanyRecoveredHistory; isLoading: boolean };
+  vaccinations: { vaccinations: RkiVaccinations; isLoading: boolean };
 }

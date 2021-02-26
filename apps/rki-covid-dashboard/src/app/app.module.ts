@@ -15,15 +15,17 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { Library, TranslateObjectLoader } from 'translate-object-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedMaterialModule } from './shared-material.module';
-import { AppComponent, LanguageSwitcherComponent } from './shared/components';
+import { AppComponent } from './shared/components';
 import { sharedTranslations } from './shared/shared.translations';
-import { RkiGermanyEffect, RkiGermanyHistoryEffect } from './shared/state/effects';
-import { rkiGermanyCaseHistoryReducer, rkiGermanyReducer } from './shared/state/reducers';
+import { RkiGermanyEffects, RkiGermanyHistoryEffects, RkiVaccinationsEffects } from './shared/state/effects';
 import {
   rkiGermanyCaseHistoryMeanReducer,
+  rkiGermanyCaseHistoryReducer,
   rkiGermanyDeathHistoryReducer,
   rkiGermanyRecoveredHistoryReducer,
-} from './shared/state/reducers/rki-germany-history.reducer';
+  rkiGermanyReducer,
+  rkiVaccinationsReducer,
+} from './shared/state/reducers';
 
 registerLocaleData(localeDe);
 registerLocaleData(localeEn);
@@ -31,7 +33,7 @@ registerLocaleData(localeEn);
 Library.add(sharedTranslations);
 
 @NgModule({
-  declarations: [AppComponent, LanguageSwitcherComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,10 +53,11 @@ Library.add(sharedTranslations);
         germanyCaseHistoryMean: rkiGermanyCaseHistoryMeanReducer,
         germanyDeathHistory: rkiGermanyDeathHistoryReducer,
         germanyRecoveredHistory: rkiGermanyRecoveredHistoryReducer,
+        vaccinations: rkiVaccinationsReducer,
       },
       {}
     ),
-    EffectsModule.forRoot([RkiGermanyEffect, RkiGermanyHistoryEffect]),
+    EffectsModule.forRoot([RkiGermanyEffects, RkiGermanyHistoryEffects, RkiVaccinationsEffects]),
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),

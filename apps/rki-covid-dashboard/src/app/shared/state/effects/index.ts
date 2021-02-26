@@ -1,2 +1,3 @@
-export { RkiGermanyHistoryEffect } from './rki-germany-history.effects';
-export { RkiGermanyEffect } from './rki-germany.effect';
+export { RkiGermanyHistoryEffects } from './rki-germany-history.effects';
+export { RkiGermanyEffects } from './rki-germany.effect';
+export { RkiVaccinationsEffects } from './rki-vaccinations.effects';

@@ -16,3 +16,7 @@ export const RKI_GERMANY_DEATH_HISTORY_LOADED = '[RKI] Germany Death History Loa
 export const RKI_GERMANY_RECOVERED_HISTORY = '[RKI] Germany Recovered History';
 export const RKI_GERMANY_RECOVERED_HISTORY_ERROR = '[RKI] Germany Recovered History Error';
 export const RKI_GERMANY_RECOVERED_HISTORY_LOADED = '[RKI] Germany Recovered History Loaded';
+
+export const RKI_VACCINATIONS = '[RKI] Vaccinations';
+export const RKI_VACCINATIONS_ERROR = '[RKI] Vaccinations Error';
+export const RKI_VACCINATIONS_LOADED = '[RKI] Vaccinations Loaded';

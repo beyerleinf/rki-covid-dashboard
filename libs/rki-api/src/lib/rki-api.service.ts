@@ -11,6 +11,8 @@ import {
   RkiGermanyRecoveredHistoryRaw,
   RkiMeta,
   RkiMetaRaw,
+  RkiVaccinations,
+  RkiVaccinationsRaw,
 } from '@rkicovid/rki-models';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -57,6 +59,15 @@ export class RkiApiService {
     return this.http.get<RkiGermanyRecoveredHistoryRaw>(`${this.apiUrl}/germany/history/recovered`).pipe(
       map(response => ({
         data: response.data.map(e => ({ recovered: e.recovered, date: new Date(e.date) })),
+        meta: this.parseMeta(response.meta),
+      }))
+    );
+  }
+
+  vaccinations(): Observable<RkiVaccinations> {
+    return this.http.get<RkiVaccinationsRaw>(`${this.apiUrl}/vaccinations`).pipe(
+      map(response => ({
+        data: response.data,
         meta: this.parseMeta(response.meta),
       }))
     );

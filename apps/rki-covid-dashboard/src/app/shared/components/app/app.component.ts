@@ -14,7 +14,7 @@ export class AppComponent {
     { name: 'common.pages.germany', route: '/germany' },
     // { name: 'common.pages.states', route: '/states' },
     // { name: 'common.pages.districts', route: '/districts' },
-    // { name: 'common.pages.vaccinations', route: '/vaccinations' },
+    { name: 'common.pages.vaccinations', route: '/vaccinations' },
   ];
 
   constructor(translate: TranslateService, private breakpoints: BreakpointObserver) {

@@ -6,7 +6,7 @@ import { catchError, map, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable()
-export class RkiGermanyEffect {
+export class RkiGermanyEffects {
   loadGermany$ = createEffect(() =>
     this.actions$.pipe(
       ofType(RKI_GERMANY),

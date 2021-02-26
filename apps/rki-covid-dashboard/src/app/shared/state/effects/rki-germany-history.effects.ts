@@ -17,7 +17,7 @@ import {
 import * as dayjs from 'dayjs';
 import { RkiCaseHistoryItem } from '@rkicovid/rki-models';
 @Injectable()
-export class RkiGermanyHistoryEffect {
+export class RkiGermanyHistoryEffects {
   loadGermanyCaseHistory$ = createEffect(() =>
     this.actions$.pipe(
       ofType(RKI_GERMANY_CASE_HISTORY),
