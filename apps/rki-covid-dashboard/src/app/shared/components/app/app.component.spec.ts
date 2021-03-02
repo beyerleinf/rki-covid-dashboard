@@ -2,8 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { LanguageSwitcherComponent } from 'libs/rki-ui/src/lib/language-switcher/language-switcher.component';
 import { SharedMaterialModule } from '../../../shared-material.module';
-import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {

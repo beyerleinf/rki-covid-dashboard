@@ -6,8 +6,6 @@ import localeEn from '@angular/common/locales/en';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { RkiUiModule } from '@rkicovid/rki-ui';
 import { RKI_API_URL } from 'libs/rki-api/src/lib/rki-api-url.token';
@@ -17,20 +15,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedMaterialModule } from './shared-material.module';
 import { AppComponent } from './shared/components';
 import { sharedTranslations } from './shared/shared.translations';
-import { RkiGermanyEffects, RkiGermanyHistoryEffects, RkiVaccinationsEffects } from './shared/state/effects';
-import {
-  rkiGermanyCaseHistoryMeanReducer,
-  rkiGermanyCaseHistoryReducer,
-  rkiGermanyDeathHistoryReducer,
-  rkiGermanyRecoveredHistoryReducer,
-  rkiGermanyReducer,
-  rkiVaccinationsReducer,
-} from './shared/state/reducers';
+import { vaccinationsTranslations } from './vaccinations/vaccinations.translations';
 
 registerLocaleData(localeDe);
 registerLocaleData(localeEn);
 
 Library.add(sharedTranslations);
+Library.add(vaccinationsTranslations);
 
 @NgModule({
   declarations: [AppComponent],
@@ -46,18 +37,6 @@ Library.add(sharedTranslations);
       useDefaultLang: true,
     }),
     RkiUiModule,
-    StoreModule.forRoot(
-      {
-        germany: rkiGermanyReducer,
-        germanyCaseHistory: rkiGermanyCaseHistoryReducer,
-        germanyCaseHistoryMean: rkiGermanyCaseHistoryMeanReducer,
-        germanyDeathHistory: rkiGermanyDeathHistoryReducer,
-        germanyRecoveredHistory: rkiGermanyRecoveredHistoryReducer,
-        vaccinations: rkiVaccinationsReducer,
-      },
-      {}
-    ),
-    EffectsModule.forRoot([RkiGermanyEffects, RkiGermanyHistoryEffects, RkiVaccinationsEffects]),
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),

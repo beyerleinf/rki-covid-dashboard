@@ -1,15 +1,10 @@
-import { Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
+import { RkiApiService } from '@rkicovid/rki-api';
+import { RkiCaseHistoryItem, RkiGermany, RkiGermanyCaseHistory, RkiGermanyDeathHistory } from '@rkicovid/rki-models';
+import * as dayjs from 'dayjs';
 import { EChartsOption } from 'echarts';
-import { AppState } from '../../../shared/state/app-state';
-import {
-  RKI_GERMANY,
-  RKI_GERMANY_CASE_HISTORY,
-  RKI_GERMANY_DEATH_HISTORY,
-  RKI_GERMANY_RECOVERED_HISTORY,
-} from '../../../shared/state/ngrx-constants';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'rkicovid-germany',
@@ -17,14 +12,8 @@ import {
   styleUrls: ['./germany.component.scss'],
 })
 export class GermanyComponent implements OnInit {
-  germany$ = this.store.select(state => state.germany.germany);
-  isLoading$ = this.store.select(state => state.germany.isLoading);
-  isHistoryLoading$ = this.store.select(
-    state =>
-      state.germanyCaseHistory.isLoading &&
-      state.germanyDeathHistory.isLoading &&
-      state.germanyRecoveredHistory.isLoading
-  );
+  germany: RkiGermany;
+  loading = false;
 
   currentLang = '';
 
@@ -137,13 +126,32 @@ export class GermanyComponent implements OnInit {
     ],
   };
 
-  constructor(private store: Store<AppState>, private translate: TranslateService) {
-    this.store.dispatch({ type: RKI_GERMANY });
-    this.store.dispatch({ type: RKI_GERMANY_CASE_HISTORY });
-    this.store.dispatch({ type: RKI_GERMANY_DEATH_HISTORY });
-    this.store.dispatch({ type: RKI_GERMANY_RECOVERED_HISTORY });
-
+  constructor(private translate: TranslateService, private rki: RkiApiService) {
     this.currentLang = this.translate.currentLang;
+    this.germany = {
+      cases: 0,
+      deaths: 0,
+      casesPer100k: 0,
+      casesPerWeek: 0,
+      recovered: 0,
+      weekIncidence: 0,
+      r: {
+        date: new Date(0),
+        value: 0,
+      },
+      delta: {
+        cases: 0,
+        deaths: 0,
+        recovered: 0,
+      },
+      meta: {
+        contact: '',
+        info: '',
+        lastCheckedForUpdate: new Date(0),
+        lastUpdate: new Date(0),
+        source: '',
+      },
+    };
   }
 
   ngOnInit(): void {
@@ -182,40 +190,81 @@ export class GermanyComponent implements OnInit {
       };
     });
 
-    this.store
-      .select(state => state)
-      .subscribe(
-        ({
-          germanyCaseHistory: { germanyCaseHistory },
-          germanyCaseHistoryMean: { germanyCaseHistoryMean },
-          germanyDeathHistory: { germanyDeathHistory },
-        }) => {
-          const source = [];
+    this.loading = true;
+    forkJoin([this.rki.germany(), this.rki.germanyCaseHistory(), this.rki.germanyDeathHistory()]).subscribe(
+      response => {
+        this.germany = response[0];
+        this.buildHistoryChart(response[1], response[2], this.generateCaseHistoryMean(response[1]));
+        this.loading = false;
+      }
+    );
+  }
 
-          if (
-            germanyCaseHistory.data.length > 0 &&
-            germanyCaseHistoryMean.length > 0 &&
-            germanyDeathHistory.data.length > 0
-          ) {
-            for (let i = 0; i < germanyCaseHistory.data.length; i++) {
-              const caseHistoryItem = germanyCaseHistory.data[i];
-              const caseHistoryMeanItem = germanyCaseHistoryMean[i];
-              const deathHistoryItem = germanyDeathHistory.data[i];
+  private buildHistoryChart(
+    caseHistory: RkiGermanyCaseHistory,
+    deathHistory: RkiGermanyDeathHistory,
+    caseHistoryMean: Array<{
+      date: Date;
+      cases: number;
+      last: boolean;
+    }>
+  ) {
+    const source = [];
 
-              source.push([
-                caseHistoryItem.date,
-                caseHistoryItem.cases,
-                deathHistoryItem.deaths,
-                caseHistoryMeanItem.last ? caseHistoryMeanItem.cases : null,
-              ]);
-            }
+    if (
+      caseHistory.data.length > 0 &&
+      caseHistoryMean.length > 0 &&
+      deathHistory.data.length > 0 &&
+      caseHistory.data.length === caseHistoryMean.length &&
+      caseHistory.data.length === deathHistory.data.length
+    ) {
+      for (let i = 0; i < caseHistory.data.length; i++) {
+        const caseHistoryItem = caseHistory.data[i];
+        const caseHistoryMeanItem = caseHistoryMean[i];
+        const deathHistoryItem = deathHistory.data[i];
 
-            this.chartOptions = {
-              ...this.chartOptions,
-              dataset: [{ source, dimensions: ['timestamp', 'cases', 'deaths', 'casesMean'] }],
-            };
-          }
-        }
+        source.push([
+          caseHistoryItem.date,
+          caseHistoryItem.cases,
+          deathHistoryItem.deaths,
+          caseHistoryMeanItem.last ? caseHistoryMeanItem.cases : null,
+        ]);
+      }
+
+      this.chartOptions = {
+        ...this.chartOptions,
+        dataset: [{ source, dimensions: ['timestamp', 'cases', 'deaths', 'casesMean'] }],
+      };
+    }
+  }
+
+  private generateCaseHistoryMean(caseHistory: RkiGermanyCaseHistory) {
+    const caseHistoryMean: Array<RkiCaseHistoryItem & { last: boolean }> = [];
+    const groupedCaseHistory = this.groupData(caseHistory.data);
+
+    for (const key of Object.keys(groupedCaseHistory)) {
+      const group = groupedCaseHistory[key];
+      const mean = Math.round(group.reduce((acc, value) => (acc += value.cases), 9) / group.length);
+      caseHistoryMean.push(
+        ...group.map((item, idx) => ({ date: item.date, cases: mean, last: idx === group.length - 1 }))
       );
+    }
+
+    return caseHistoryMean;
+  }
+
+  private groupData<T extends { date: Date }>(data: T[]): { [key: string]: Array<T> } {
+    return data.reduce((acc, item) => {
+      const parsedDate = dayjs(item.date);
+      const key = `${parsedDate.isoWeekYear()}-${parsedDate.isoWeek()}`;
+
+      if (!acc[key]) {
+        acc[key] = [];
+      }
+
+      acc[key].push(item);
+
+      return acc;
+    }, {});
   }
 }
