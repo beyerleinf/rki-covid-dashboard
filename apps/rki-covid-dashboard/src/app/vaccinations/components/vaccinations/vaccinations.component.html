@@ -1,1 +1,61 @@
-<p>vaccinations works!</p>
+<div class="dashboard">
+  <div class="dashboard-row">
+    <div class="dashboard-item">
+      <rkicovid-dashboard-item
+        cardTitle="vaccinations.administeredVaccinations"
+        [value]="vaccinations.administeredVaccinations"
+        [isLoading]="loading"
+      ></rkicovid-dashboard-item>
+    </div>
+  </div>
+
+  <h2 translate="vaccinations.firstVaccination"></h2>
+
+  <div class="dashboard-row">
+    <div *ngFor="let item of dashboardItems" class="dashboard-item">
+      <rkicovid-dashboard-item
+        [cardTitle]="item.title"
+        [value]="vaccinations[item.valueKey]"
+        [isLoading]="loading"
+        [difference]="vaccinations[item.difference]"
+        [format]="item.format"
+        [unit]="item.unit"
+      ></rkicovid-dashboard-item>
+    </div>
+  </div>
+
+  <div class="dashboard-row">
+    <div *ngFor="let item of firstVaccinationItems" class="dashboard-item">
+      <rkicovid-dashboard-item
+        [cardTitle]="item.title"
+        [value]="vaccinations.vaccination[item.valueKey]"
+        [isLoading]="loading"
+      ></rkicovid-dashboard-item>
+    </div>
+  </div>
+
+  <h2 translate="vaccinations.secondVaccination"></h2>
+
+  <div class="dashboard-row">
+    <div *ngFor="let item of dashboardItems" class="dashboard-item">
+      <rkicovid-dashboard-item
+        [cardTitle]="item.title"
+        [value]="vaccinations.secondVaccination[item.valueKey]"
+        [isLoading]="loading"
+        [difference]="vaccinations.secondVaccination[item.difference]"
+        [format]="item.format"
+        [unit]="item.unit"
+      ></rkicovid-dashboard-item>
+    </div>
+  </div>
+
+  <div class="dashboard-row">
+    <div *ngFor="let item of secondVaccinationItems" class="dashboard-item">
+      <rkicovid-dashboard-item
+        [cardTitle]="item.title"
+        [value]="vaccinations.secondVaccination.vaccination[item.valueKey]"
+        [isLoading]="loading"
+      ></rkicovid-dashboard-item>
+    </div>
+  </div>
+</div>

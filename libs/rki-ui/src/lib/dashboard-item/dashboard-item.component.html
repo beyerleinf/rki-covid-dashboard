@@ -12,12 +12,12 @@
           <mat-icon *ngIf="difference < 0">trending_down</mat-icon>
 
           <span *ngIf="difference > 0">+</span>
-          <span>{{ difference | number: '1.0-0':currentLang }}</span>
+          <span>{{ difference | number: format:currentLang }}{{ unit }}</span>
         </mat-chip>
       </mat-chip-list>
     </div>
 
-    <p class="mat-display-1">{{ value | number: '1.0-0':currentLang }}</p>
+    <p class="mat-display-1">{{ value | number: format:currentLang }}{{ unit }}</p>
   </ng-container>
 </mat-card>
 
