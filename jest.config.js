@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/libs/rki-models',
     '<rootDir>/libs/rki-api',
     '<rootDir>/libs/rki-ui',
+    '<rootDir>/libs/rki-echarts',
   ],
 };

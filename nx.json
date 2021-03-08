@@ -20,6 +20,7 @@
     "rki-covid-dashboard-e2e": { "tags": [], "implicitDependencies": ["rki-covid-dashboard"] },
     "rki-models": { "tags": [] },
     "rki-api": { "tags": [] },
-    "rki-ui": { "tags": [] }
+    "rki-ui": { "tags": [] },
+    "rki-echarts": { "tags": [] }
   }
 }

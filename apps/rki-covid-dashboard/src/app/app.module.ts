@@ -7,9 +7,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { RKI_API_URL } from '@rkicovid/rki-api';
 import { RkiUiModule } from '@rkicovid/rki-ui';
-import { RKI_API_URL } from 'libs/rki-api/src/lib/rki-api-url.token';
-import { NgxEchartsModule } from 'ngx-echarts';
 import { Library, TranslateObjectLoader } from 'translate-object-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedMaterialModule } from './shared-material.module';
@@ -37,9 +36,6 @@ Library.add(vaccinationsTranslations);
       useDefaultLang: true,
     }),
     RkiUiModule,
-    NgxEchartsModule.forRoot({
-      echarts: () => import('echarts'),
-    }),
     LayoutModule,
   ],
   providers: [{ provide: RKI_API_URL, useValue: 'https://api.corona-zahlen.org' }],

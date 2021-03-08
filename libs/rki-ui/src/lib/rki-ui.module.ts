@@ -10,7 +10,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { DashboardItemComponent } from './dashboard-item/dashboard-item.component';
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
-import { LineChartComponent } from './line-chart/line-chart.component';
 
 @NgModule({
   imports: [
@@ -24,7 +23,7 @@ import { LineChartComponent } from './line-chart/line-chart.component';
     TranslateModule.forChild(),
     NgxEchartsModule.forChild(),
   ],
-  declarations: [DashboardItemComponent, LineChartComponent, LanguageSwitcherComponent],
-  exports: [DashboardItemComponent, LineChartComponent, LanguageSwitcherComponent],
+  declarations: [DashboardItemComponent, LanguageSwitcherComponent],
+  exports: [DashboardItemComponent, LanguageSwitcherComponent],
 })
 export class RkiUiModule {}

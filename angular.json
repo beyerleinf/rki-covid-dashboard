@@ -207,6 +207,28 @@
           }
         }
       }
+    },
+    "rki-echarts": {
+      "projectType": "library",
+      "root": "libs/rki-echarts",
+      "sourceRoot": "libs/rki-echarts/src",
+      "prefix": "rkicovid",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/rki-echarts/src/**/*.ts", "libs/rki-echarts/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/rki-echarts"],
+          "options": {
+            "jestConfig": "libs/rki-echarts/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
