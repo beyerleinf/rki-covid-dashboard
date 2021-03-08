@@ -47,7 +47,6 @@ export class GermanyComponent implements OnInit {
         name: this.translate.instant('common.cases'),
         type: 'line',
         encode: { x: 'timestamp', y: 'cases' },
-        animationDelay: (idx: number) => idx * 10,
         markArea: {
           data: [
             [
@@ -64,7 +63,7 @@ export class GermanyComponent implements OnInit {
                 xAxis: new Date(2020, 11, 16).getTime(),
                 itemStyle: { opacity: 0.25 },
               },
-              { xAxis: new Date(2021, 2, 8).getTime() },
+              { xAxis: new Date(2021, 2, 28).getTime() },
             ] as any,
           ],
         },
@@ -179,7 +178,7 @@ export class GermanyComponent implements OnInit {
                     xAxis: new Date(2020, 11, 16).getTime(),
                     itemStyle: { opacity: 0.25 },
                   },
-                  { xAxis: new Date(2021, 2, 8).getTime() },
+                  { xAxis: new Date(2021, 2, 28).getTime() },
                 ] as any,
               ],
             },
