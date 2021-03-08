@@ -22,6 +22,7 @@ export const sharedTranslations: TranslationDefinition = {
       casesPer100k: 'Fälle / 100.000 Einwohner',
       firstLockdown: 'Erster Lockdown',
       secondLockdown: 'Zweiter Lockdown',
+      history: 'Historie',
     },
   },
   en: {
@@ -45,6 +46,7 @@ export const sharedTranslations: TranslationDefinition = {
       casesPer100k: 'Cases per 100,000 residents',
       firstLockdown: 'First Lockdown',
       secondLockdown: 'Second Lockdown',
+      history: 'History',
     },
   },
 };
