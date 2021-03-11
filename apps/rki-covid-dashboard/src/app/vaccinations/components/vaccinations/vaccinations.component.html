@@ -75,20 +75,18 @@
 
   <div *ngIf="!loading" class="dashboard-row">
     <div class="meta mat-elevation-z1">
-      <span>
+      <div class="meta-item">
         <strong translate="common.source"></strong>:
         <span>{{ vaccinations.meta.source }}</span>
-      </span>
-      <span class="divider">|</span>
-      <span>
+      </div>
+      <div class="meta-item">
         <strong translate="common.lastUpdate"></strong>:
         <span>{{ vaccinations.meta.lastUpdate | date: 'medium':undefined:currentLang }}</span>
-      </span>
-      <span class="divider">|</span>
-      <span>
+      </div>
+      <div class="meta-item">
         <strong translate="common.lastCheckedForUpdates"></strong>:
         <span>{{ vaccinations.meta.lastCheckedForUpdate | date: 'medium':undefined:currentLang }}</span>
-      </span>
+      </div>
     </div>
   </div>
 </div>
