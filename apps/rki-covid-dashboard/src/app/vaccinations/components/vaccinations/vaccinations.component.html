@@ -3,7 +3,7 @@
     <div class="dashboard-item">
       <rkicovid-dashboard-item
         cardTitle="vaccinations.administeredVaccinations"
-        [value]="vaccinations.administeredVaccinations"
+        [value]="vaccinations.data.administeredVaccinations"
         [isLoading]="loading"
       ></rkicovid-dashboard-item>
     </div>
@@ -15,9 +15,9 @@
     <div *ngFor="let item of dashboardItems" class="dashboard-item">
       <rkicovid-dashboard-item
         [cardTitle]="item.title"
-        [value]="vaccinations[item.valueKey]"
+        [value]="vaccinations.data[item.valueKey]"
         [isLoading]="loading"
-        [difference]="vaccinations[item.difference]"
+        [difference]="vaccinations.data[item.difference]"
         [format]="item.format"
         [unit]="item.unit"
       ></rkicovid-dashboard-item>
@@ -28,7 +28,7 @@
     <div *ngFor="let item of firstVaccinationItems" class="dashboard-item">
       <rkicovid-dashboard-item
         [cardTitle]="item.title"
-        [value]="vaccinations.vaccination[item.valueKey]"
+        [value]="vaccinations.data.vaccination[item.valueKey]"
         [isLoading]="loading"
       ></rkicovid-dashboard-item>
     </div>
@@ -40,9 +40,9 @@
     <div *ngFor="let item of dashboardItems" class="dashboard-item">
       <rkicovid-dashboard-item
         [cardTitle]="item.title"
-        [value]="vaccinations.secondVaccination[item.valueKey]"
+        [value]="vaccinations.data.secondVaccination[item.valueKey]"
         [isLoading]="loading"
-        [difference]="vaccinations.secondVaccination[item.difference]"
+        [difference]="vaccinations.data.secondVaccination[item.difference]"
         [format]="item.format"
         [unit]="item.unit"
       ></rkicovid-dashboard-item>
@@ -53,7 +53,7 @@
     <div *ngFor="let item of secondVaccinationItems" class="dashboard-item">
       <rkicovid-dashboard-item
         [cardTitle]="item.title"
-        [value]="vaccinations.secondVaccination.vaccination[item.valueKey]"
+        [value]="vaccinations.data.secondVaccination.vaccination[item.valueKey]"
         [isLoading]="loading"
       ></rkicovid-dashboard-item>
     </div>
@@ -70,6 +70,25 @@
       <ng-template #loadingSpinner>
         <mat-spinner [diameter]="64"></mat-spinner>
       </ng-template>
+    </div>
+  </div>
+
+  <div *ngIf="!loading" class="dashboard-row">
+    <div class="meta mat-elevation-z1">
+      <span>
+        <strong translate="common.source"></strong>:
+        <span>{{ vaccinations.meta.source }}</span>
+      </span>
+      <span class="divider">|</span>
+      <span>
+        <strong translate="common.lastUpdate"></strong>:
+        <span>{{ vaccinations.meta.lastUpdate | date: 'medium':undefined:currentLang }}</span>
+      </span>
+      <span class="divider">|</span>
+      <span>
+        <strong translate="common.lastCheckedForUpdates"></strong>:
+        <span>{{ vaccinations.meta.lastCheckedForUpdate | date: 'medium':undefined:currentLang }}</span>
+      </span>
     </div>
   </div>
 </div>

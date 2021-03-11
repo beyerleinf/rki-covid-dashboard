@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { RkiApiService } from '@rkicovid/rki-api';
-import { RkiGermanyVaccinationData, RkiStateVaccinationData, RkiVaccinationHistory } from '@rkicovid/rki-models';
+import { RkiStateVaccinationData, RkiVaccinationHistory, RkiVaccinations } from '@rkicovid/rki-models';
 import { EChartsOption } from 'echarts';
 import { forkJoin } from 'rxjs';
 
@@ -11,8 +11,9 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./vaccinations.component.scss'],
 })
 export class VaccinationsComponent implements OnInit {
-  vaccinations: RkiGermanyVaccinationData;
+  vaccinations: RkiVaccinations;
   loading = false;
+  currentLang = '';
 
   dashboardItems = [
     { title: 'vaccinations.vaccinated', valueKey: 'vaccinated', difference: 'delta' },
@@ -134,60 +135,84 @@ export class VaccinationsComponent implements OnInit {
     };
 
     this.vaccinations = {
-      administeredVaccinations: 0,
-      delta: 0,
-      indication: {
-        age: 0,
-        job: 0,
-        medical: 0,
-        nursingHome: 0,
-        secondVaccination: {
+      data: {
+        administeredVaccinations: 0,
+        delta: 0,
+        indication: {
           age: 0,
           job: 0,
           medical: 0,
           nursingHome: 0,
+          secondVaccination: {
+            age: 0,
+            job: 0,
+            medical: 0,
+            nursingHome: 0,
+          },
         },
-      },
-      quote: 0,
-      secondVaccination: {
-        delta: 0,
         quote: 0,
+        secondVaccination: {
+          delta: 0,
+          quote: 0,
+          vaccinated: 0,
+          vaccination: {
+            biontech: 0,
+            moderna: 0,
+          },
+        },
+        states: {
+          BB: stateInitial,
+          BE: stateInitial,
+          BW: stateInitial,
+          BY: stateInitial,
+          HB: stateInitial,
+          HE: stateInitial,
+          HH: stateInitial,
+          MV: stateInitial,
+          NI: stateInitial,
+          NW: stateInitial,
+          RP: stateInitial,
+          SL: stateInitial,
+          SN: stateInitial,
+          ST: stateInitial,
+          TH: stateInitial,
+        },
         vaccinated: 0,
         vaccination: {
+          astraZeneca: 0,
           biontech: 0,
           moderna: 0,
         },
       },
-      states: {
-        BB: stateInitial,
-        BE: stateInitial,
-        BW: stateInitial,
-        BY: stateInitial,
-        HB: stateInitial,
-        HE: stateInitial,
-        HH: stateInitial,
-        MV: stateInitial,
-        NI: stateInitial,
-        NW: stateInitial,
-        RP: stateInitial,
-        SL: stateInitial,
-        SN: stateInitial,
-        ST: stateInitial,
-        TH: stateInitial,
-      },
-      vaccinated: 0,
-      vaccination: {
-        astraZeneca: 0,
-        biontech: 0,
-        moderna: 0,
+      meta: {
+        contact: '',
+        info: '',
+        lastCheckedForUpdate: new Date(0),
+        lastUpdate: new Date(0),
+        source: '',
       },
     };
   }
 
   ngOnInit(): void {
+    this.translate.onLangChange.subscribe(() => {
+      this.currentLang = this.translate.currentLang;
+      this.chartOptions = {
+        ...this.chartOptions,
+        series: [
+          { ...this.chartOptions.series[0], name: this.translate.instant('vaccinations.firstVaccination') },
+          {
+            ...this.chartOptions.series[1],
+            name: this.translate.instant('vaccinations.secondVaccination'),
+          },
+        ],
+      };
+    });
+
     this.loading = true;
+
     forkJoin([this.rki.vaccinations(), this.rki.vaccinationHistory()]).subscribe(response => {
-      this.vaccinations = response[0].data;
+      this.vaccinations = response[0];
       this.buildHistoryChart(response[1]);
       this.loading = false;
     });
@@ -205,8 +230,6 @@ export class VaccinationsComponent implements OnInit {
         vaccinationHistoryitem.secondVaccination,
       ]);
     }
-
-    console.log(source);
 
     this.chartOptions = {
       ...this.chartOptions,
