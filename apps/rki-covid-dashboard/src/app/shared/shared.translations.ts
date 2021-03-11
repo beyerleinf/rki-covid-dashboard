@@ -23,6 +23,9 @@ export const sharedTranslations: TranslationDefinition = {
       firstLockdown: 'Erster Lockdown',
       secondLockdown: 'Zweiter Lockdown',
       history: 'Historie',
+      source: 'Quelle',
+      lastUpdate: 'Zuletzt aktualisiert',
+      lastCheckedForUpdates: 'Zuletzt auf Updates überprüft',
     },
   },
   en: {
@@ -47,6 +50,9 @@ export const sharedTranslations: TranslationDefinition = {
       firstLockdown: 'First Lockdown',
       secondLockdown: 'Second Lockdown',
       history: 'History',
+      source: 'Source',
+      lastUpdate: 'Last update',
+      lastCheckedForUpdates: 'Last checked for updates',
     },
   },
 };

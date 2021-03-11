@@ -24,4 +24,23 @@
       </ng-template>
     </div>
   </div>
+
+  <div *ngIf="!loading" class="dashboard-row">
+    <div class="meta mat-elevation-z1">
+      <span>
+        <strong translate="common.source"></strong>:
+        <span>{{ germany.meta.source }}</span>
+      </span>
+      <span class="divider">|</span>
+      <span>
+        <strong translate="common.lastUpdate"></strong>:
+        <span>{{ germany.meta.lastUpdate | date: 'medium':undefined:currentLang }}</span>
+      </span>
+      <span class="divider">|</span>
+      <span>
+        <strong translate="common.lastCheckedForUpdates"></strong>:
+        <span>{{ germany.meta.lastCheckedForUpdate | date: 'medium':undefined:currentLang }}</span>
+      </span>
+    </div>
+  </div>
 </div>

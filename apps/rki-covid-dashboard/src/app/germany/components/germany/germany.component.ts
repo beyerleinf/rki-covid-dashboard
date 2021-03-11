@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { RkiApiService } from '@rkicovid/rki-api';
-import { RkiCaseHistoryItem, RkiGermany, RkiGermanyCaseHistory, RkiGermanyDeathHistory } from '@rkicovid/rki-models';
+import {
+  RkiCaseHistoryItem,
+  RkiGermany,
+  RkiGermanyCaseHistory,
+  RkiGermanyDeathHistory,
+  RkiMeta,
+} from '@rkicovid/rki-models';
 import * as dayjs from 'dayjs';
 import { EChartsOption } from 'echarts';
 import { forkJoin } from 'rxjs';

@@ -16,3 +16,15 @@ body {
 .mat-drawer {
   background-color: #303030;
 }
+
+.meta {
+  width: 100%;
+  padding: 16px;
+  margin: 0 8px;
+  background-color: #424242;
+  border-radius: 4px;
+
+  .divider {
+    margin: 0 8px;
+  }
+}
