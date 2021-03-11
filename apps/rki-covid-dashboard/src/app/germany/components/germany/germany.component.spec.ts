@@ -5,8 +5,8 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { RkiUiModule } from '@rkicovid/rki-ui';
 import * as echarts from 'echarts';
 import { RKI_API_URL } from 'libs/rki-api/src/lib/rki-api-url.token';
+import { LineChartComponent } from 'libs/rki-echarts/src/lib/line-chart/line-chart.component';
 import { DashboardItemComponent } from 'libs/rki-ui/src/lib/dashboard-item/dashboard-item.component';
-import { LineChartComponent } from 'libs/rki-ui/src/lib/line-chart/line-chart.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { SharedMaterialModule } from '../../../shared-material.module';
 import { GermanyComponent } from './germany.component';
