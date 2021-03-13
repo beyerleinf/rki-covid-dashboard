@@ -20,15 +20,10 @@ export class VaccinationsComponent implements OnInit {
     { title: 'vaccinations.quote', valueKey: 'quote', format: '1.1-1', unit: '%' },
   ];
 
-  firstVaccinationItems = [
+  vaccinationItems = [
     { title: 'vaccinations.manufacturers.biontech', valueKey: 'biontech' },
     { title: 'vaccinations.manufacturers.moderna', valueKey: 'moderna' },
     { title: 'vaccinations.manufacturers.astraZeneca', valueKey: 'astraZeneca' },
-  ];
-
-  secondVaccinationItems = [
-    { title: 'vaccinations.manufacturers.biontech', valueKey: 'biontech' },
-    { title: 'vaccinations.manufacturers.moderna', valueKey: 'moderna' },
   ];
 
   chartOptions: EChartsOption = {

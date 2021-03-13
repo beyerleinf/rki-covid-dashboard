@@ -25,7 +25,7 @@
   </div>
 
   <div class="dashboard-row">
-    <div *ngFor="let item of firstVaccinationItems" class="dashboard-item">
+    <div *ngFor="let item of vaccinationItems" class="dashboard-item">
       <rkicovid-dashboard-item
         [cardTitle]="item.title"
         [value]="vaccinations.data.vaccination[item.valueKey]"
@@ -50,7 +50,7 @@
   </div>
 
   <div class="dashboard-row">
-    <div *ngFor="let item of secondVaccinationItems" class="dashboard-item">
+    <div *ngFor="let item of vaccinationItems" class="dashboard-item">
       <rkicovid-dashboard-item
         [cardTitle]="item.title"
         [value]="vaccinations.data.secondVaccination.vaccination[item.valueKey]"
