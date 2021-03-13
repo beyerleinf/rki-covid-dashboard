@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { getMatIconNameNotFoundError } from '@angular/material/icon';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -11,6 +10,7 @@ export class DashboardItemComponent implements OnInit {
   @Input() cardTitle = '';
   @Input() value = 0;
   @Input() difference = 0;
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   @Input() titleParams: any = {};
   @Input() isLoading = false;
   @Input() format = '1.0-0';

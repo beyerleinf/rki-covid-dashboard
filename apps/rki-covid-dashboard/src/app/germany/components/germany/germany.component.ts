@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { RkiApiService } from '@rkicovid/rki-api';
-import {
-  RkiCaseHistoryItem,
-  RkiGermany,
-  RkiGermanyCaseHistory,
-  RkiGermanyDeathHistory,
-  RkiMeta,
-} from '@rkicovid/rki-models';
+import { RkiCaseHistoryItem, RkiGermany, RkiGermanyCaseHistory, RkiGermanyDeathHistory } from '@rkicovid/rki-models';
 import * as dayjs from 'dayjs';
 import { EChartsOption } from 'echarts';
 import { forkJoin } from 'rxjs';
@@ -62,6 +56,7 @@ export class GermanyComponent implements OnInit {
                 itemStyle: { opacity: 0.25 },
               },
               { xAxis: new Date(2020, 5, 15).getTime() },
+              /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
             ] as any,
             [
               {
@@ -70,6 +65,7 @@ export class GermanyComponent implements OnInit {
                 itemStyle: { opacity: 0.25 },
               },
               { xAxis: new Date(2021, 2, 8).getTime() },
+              /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
             ] as any,
           ],
         },
@@ -177,6 +173,7 @@ export class GermanyComponent implements OnInit {
                     itemStyle: { opacity: 0.25 },
                   },
                   { xAxis: new Date(2020, 5, 15).getTime() },
+                  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
                 ] as any,
                 [
                   {
@@ -185,6 +182,7 @@ export class GermanyComponent implements OnInit {
                     itemStyle: { opacity: 0.25 },
                   },
                   { xAxis: new Date(2021, 2, 8).getTime() },
+                  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
                 ] as any,
               ],
             },

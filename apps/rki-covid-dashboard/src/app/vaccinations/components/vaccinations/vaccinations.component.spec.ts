@@ -2,8 +2,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatChipsModule } from '@angular/material/chips';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { RKI_API_URL } from '@rkicovid/rki-api';
 import { RkiUiModule } from '@rkicovid/rki-ui';
-import { RKI_API_URL } from 'libs/rki-api/src/lib/rki-api-url.token';
 import { SharedMaterialModule } from '../../../shared-material.module';
 import { VaccinationsComponent } from './vaccinations.component';
 

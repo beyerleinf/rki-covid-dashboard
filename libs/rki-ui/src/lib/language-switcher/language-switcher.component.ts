@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -6,7 +6,7 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
   templateUrl: './language-switcher.component.html',
   styleUrls: ['./language-switcher.component.scss'],
 })
-export class LanguageSwitcherComponent implements OnInit {
+export class LanguageSwitcherComponent {
   currentLanguage: string;
   languages = [
     { code: 'de', name: 'common.languages.german', icon: 'assets/img/flags/de.png' },
@@ -20,8 +20,6 @@ export class LanguageSwitcherComponent implements OnInit {
       this.currentLanguage = event.lang;
     });
   }
-
-  ngOnInit(): void {}
 
   changeLanguage(languge: string) {
     this.translate.use(languge);

@@ -1,10 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { RkiGermanyRaw, RkiMeta, RkiMetaRaw } from '@rkicovid/rki-models';
 import { RKI_API_URL } from './rki-api-url.token';
 import { RkiApiService } from './rki-api.service';
-import { RkiGermany, RkiGermanyRaw, RkiMeta, RkiMetaRaw } from '@rkicovid/rki-models';
-import { getPlatform } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
 
 describe('RkiApiService', () => {
   let service: RkiApiService;

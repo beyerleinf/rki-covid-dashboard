@@ -1,19 +1,15 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
-import { EChartsOption, ECharts } from 'echarts';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ECharts, EChartsOption } from 'echarts';
 
 @Component({
   selector: 'rkicovid-line-chart',
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.scss'],
 })
-export class LineChartComponent implements OnInit {
+export class LineChartComponent implements OnChanges {
   private echartInstance: ECharts;
 
   @Input() chartOptions: EChartsOption = {};
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.chartOptions && this.echartInstance && changes.chartOptions) {
