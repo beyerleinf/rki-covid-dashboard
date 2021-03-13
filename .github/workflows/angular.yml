@@ -29,6 +29,10 @@ jobs:
       - name: Test
         uses: ianwalter/puppeteer@3.0.0
         with:
-          args: npm run affected:test
+          args: npx nx run-many --target=test --all
+      - name: Lint
+        uses: ianwalter/puppeteer@3.0.0
+        with:
+          args: npx nx run-many --target=lint --all
       - name: Build
         run: npm run build:prod
