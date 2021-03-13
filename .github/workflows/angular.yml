@@ -29,6 +29,6 @@ jobs:
       - name: Test
         uses: ianwalter/puppeteer@3.0.0
         with:
-          args: npm test
+          args: npm run affected:test
       - name: Build
         run: npm run build:prod
