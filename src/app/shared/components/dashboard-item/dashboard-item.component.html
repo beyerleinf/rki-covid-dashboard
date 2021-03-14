@@ -1,0 +1,26 @@
+<mat-card>
+  <ng-container *ngIf="!isLoading; else loading">
+    <div class="header">
+      <mat-card-subtitle
+        [translate]="cardTitle"
+        [translateParams]="titleParams"
+        title="{{ cardTitle | translate: titleParams }}"
+      ></mat-card-subtitle>
+      <mat-chip-list *ngIf="difference && difference !== 0">
+        <mat-chip color="primary" selected>
+          <mat-icon *ngIf="difference > 0">trending_up</mat-icon>
+          <mat-icon *ngIf="difference < 0">trending_down</mat-icon>
+
+          <span *ngIf="difference > 0">+</span>
+          <span>{{ difference | number: format:currentLang }}{{ unit }}</span>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
+    <p class="mat-display-1">{{ value | number: format:currentLang }}{{ unit }}</p>
+  </ng-container>
+</mat-card>
+
+<ng-template #loading>
+  <mat-spinner [diameter]="64"></mat-spinner>
+</ng-template>
