@@ -38,7 +38,7 @@ describe('LanguageSwitcherComponent', () => {
 
   describe('changeLanguage', () => {
     it('should call TranslateService.use with correct parameter', () => {
-      const spy = jest.spyOn(translateService, 'use');
+      const spy = spyOn(translateService, 'use');
 
       component.changeLanguage('de');
 

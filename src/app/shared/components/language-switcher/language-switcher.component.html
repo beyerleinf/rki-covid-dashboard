@@ -5,7 +5,7 @@
     class="language-flag"
     [alt]="getCurrentLanguage().name"
   /> -->
-  {{ getCurrentLanguage().alias }}
+  {{ getCurrentLanguage()?.alias }}
 </button>
 
 <mat-menu #languageMenu="matMenu">

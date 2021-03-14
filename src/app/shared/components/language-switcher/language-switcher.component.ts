@@ -26,7 +26,6 @@ export class LanguageSwitcherComponent {
   }
 
   getCurrentLanguage() {
-    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-    return this.languages.find(language => language.code === this.currentLanguage)!;
+    return this.languages.find(language => language.code === this.currentLanguage);
   }
 }
