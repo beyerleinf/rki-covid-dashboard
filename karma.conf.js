@@ -26,16 +26,30 @@ module.exports = function (config) {
       suppressAll: true, // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/rki-covid-dashboard'),
+      dir: 'coverage',
       subdir: '.',
-      reporters: [{ type: 'html' }, { type: 'text-summary' }],
+      includeAllSources: true,
+      reporters: [{ type: 'cobertura', file: 'cobertura-coverage.xml' }, { type: 'html' }, { type: 'text-summary' }],
+    },
+    specReporter: {
+      suppressErrorSummary: false,
+      suppressFailed: false,
+      suppressPassed: false,
+      suppressSkipped: true,
+      showSpecTiming: true,
     },
     reporters: ['spec', 'kjhtml'],
     port: 9876,
     colors: true,
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_ERROR,
     autoWatch: true,
-    browsers: ['ChromeHeadless'],
+    browsers: ['ChromeNoSandbox'],
+    customLaunchers: {
+      ChromeNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox'],
+      },
+    },
     singleRun: true,
     restartOnFileChange: true,
   });
