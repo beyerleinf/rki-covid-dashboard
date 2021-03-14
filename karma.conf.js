@@ -41,7 +41,7 @@ module.exports = function (config) {
     reporters: ['spec', 'kjhtml'],
     port: 9876,
     colors: true,
-    logLevel: config.LOG_ERROR,
+    logLevel: config.LOG_WARN,
     autoWatch: true,
     browsers: ['ChromeNoSandbox'],
     customLaunchers: {
