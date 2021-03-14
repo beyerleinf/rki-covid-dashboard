@@ -1,65 +1,41 @@
 {
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "cli": {
-    "defaultCollection": "@nrwl/angular"
-  },
-  "schematics": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
-    }
-  },
-  "defaultProject": "rki-covid-dashboard",
+  "newProjectRoot": "projects",
   "projects": {
     "rki-covid-dashboard": {
       "projectType": "application",
-      "root": "apps/rki-covid-dashboard",
-      "sourceRoot": "apps/rki-covid-dashboard/src",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
       "prefix": "rkicovid",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/rki-covid-dashboard",
-            "index": "apps/rki-covid-dashboard/src/index.html",
-            "main": "apps/rki-covid-dashboard/src/main.ts",
-            "polyfills": "apps/rki-covid-dashboard/src/polyfills.ts",
-            "tsConfig": "apps/rki-covid-dashboard/tsconfig.app.json",
+            "outputPath": "dist/rki-covid-dashboard",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/rki-covid-dashboard/src/favicon.ico", "apps/rki-covid-dashboard/src/assets"],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
-              "apps/rki-covid-dashboard/src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css", "src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/rki-covid-dashboard/src/environments/environment.ts",
-                  "with": "apps/rki-covid-dashboard/src/environments/environment.prod.ts"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -69,16 +45,18 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "commonChunk": true,
+              "deleteOutputPath": true,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
               ]
             }
@@ -101,32 +79,29 @@
             "browserTarget": "rki-covid-dashboard:build"
           }
         },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "lintFilePatterns": ["apps/rki-covid-dashboard/src/**/*.ts", "apps/rki-covid-dashboard/src/**/*.html"]
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
+            "scripts": [],
+            "codeCoverage": true
           }
         },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/rki-covid-dashboard"],
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "jestConfig": "apps/rki-covid-dashboard/jest.config.js",
-            "passWithNoTests": true
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
-        }
-      }
-    },
-    "rki-covid-dashboard-e2e": {
-      "root": "apps/rki-covid-dashboard-e2e",
-      "sourceRoot": "apps/rki-covid-dashboard-e2e/src",
-      "projectType": "application",
-      "architect": {
+        },
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "cypressConfig": "apps/rki-covid-dashboard-e2e/cypress.json",
-            "tsConfig": "apps/rki-covid-dashboard-e2e/tsconfig.e2e.json",
+            "protractorConfig": "e2e/protractor.conf.js",
             "devServerTarget": "rki-covid-dashboard:serve"
           },
           "configurations": {
@@ -134,101 +109,9 @@
               "devServerTarget": "rki-covid-dashboard:serve:production"
             }
           }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/rki-covid-dashboard-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
-    "rki-models": {
-      "root": "libs/rki-models",
-      "sourceRoot": "libs/rki-models/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/rki-models/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/rki-models"],
-          "options": {
-            "jestConfig": "libs/rki-models/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "rki-api": {
-      "projectType": "library",
-      "root": "libs/rki-api",
-      "sourceRoot": "libs/rki-api/src",
-      "prefix": "rkicovid",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/rki-api/src/**/*.ts", "libs/rki-api/src/**/*.html"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/rki-api"],
-          "options": {
-            "jestConfig": "libs/rki-api/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "rki-ui": {
-      "projectType": "library",
-      "root": "libs/rki-ui",
-      "sourceRoot": "libs/rki-ui/src",
-      "prefix": "rkicovid",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/rki-ui/src/**/*.ts", "libs/rki-ui/src/**/*.html"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/rki-ui"],
-          "options": {
-            "jestConfig": "libs/rki-ui/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "rki-echarts": {
-      "projectType": "library",
-      "root": "libs/rki-echarts",
-      "sourceRoot": "libs/rki-echarts/src",
-      "prefix": "rkicovid",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/rki-echarts/src/**/*.ts", "libs/rki-echarts/src/**/*.html"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/rki-echarts"],
-          "options": {
-            "jestConfig": "libs/rki-echarts/jest.config.js",
-            "passWithNoTests": true
-          }
         }
       }
     }
-  }
+  },
+  "defaultProject": "rki-covid-dashboard"
 }
