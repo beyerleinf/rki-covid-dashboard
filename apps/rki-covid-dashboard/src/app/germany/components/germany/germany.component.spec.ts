@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatChipsModule } from '@angular/material/chips';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { RKI_API_URL } from '@rkicovid/rki-api';
-import { LineChartComponent, RkiEchartsModule } from '@rkicovid/rki-echarts';
-import { DashboardItemComponent, RkiUiModule } from '@rkicovid/rki-ui';
+import { RkiEchartsModule } from '@rkicovid/rki-echarts';
+import { RkiUiModule } from '@rkicovid/rki-ui';
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { SharedMaterialModule } from '../../../shared-material.module';
@@ -16,7 +16,7 @@ describe('GermanyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GermanyComponent, DashboardItemComponent, LineChartComponent],
+      declarations: [GermanyComponent],
       imports: [
         SharedMaterialModule,
         TranslateModule.forRoot({
