@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatChipsModule } from '@angular/material/chips';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { RKI_API_URL } from '@rkicovid/rki-api';
+import { RkiEchartsModule } from '@rkicovid/rki-echarts';
 import { RkiUiModule } from '@rkicovid/rki-ui';
 import { SharedMaterialModule } from '../../../shared-material.module';
 import { VaccinationsComponent } from './vaccinations.component';
@@ -22,6 +23,7 @@ describe('VaccinationsComponent', () => {
         MatChipsModule,
         HttpClientTestingModule,
         RkiUiModule,
+        RkiEchartsModule,
       ],
       providers: [{ provide: RKI_API_URL, useValue: 'api' }],
     }).compileComponents();

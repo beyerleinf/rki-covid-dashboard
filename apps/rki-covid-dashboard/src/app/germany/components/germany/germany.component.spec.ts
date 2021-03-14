@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatChipsModule } from '@angular/material/chips';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { RKI_API_URL } from '@rkicovid/rki-api';
-import { LineChartComponent } from '@rkicovid/rki-echarts';
+import { LineChartComponent, RkiEchartsModule } from '@rkicovid/rki-echarts';
 import { DashboardItemComponent, RkiUiModule } from '@rkicovid/rki-ui';
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -26,6 +26,7 @@ describe('GermanyComponent', () => {
         NgxEchartsModule.forRoot({ echarts }),
         HttpClientTestingModule,
         RkiUiModule,
+        RkiEchartsModule,
       ],
       providers: [{ provide: RKI_API_URL, useValue: 'api' }],
     }).compileComponents();
