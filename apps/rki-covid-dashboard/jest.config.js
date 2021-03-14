@@ -20,4 +20,8 @@ module.exports = {
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
     'jest-preset-angular/build/HTMLCommentSerializer.js',
   ],
+  transformIgnorePatterns: [
+    // all exceptions must be first line
+    '/node_modules/(?!echarts|zrender)',
+  ],
 };

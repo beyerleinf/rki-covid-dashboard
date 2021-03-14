@@ -19,7 +19,8 @@
       "@rkicovid/rki-api": ["libs/rki-api/src/index.ts"],
       "@rkicovid/rki-ui": ["libs/rki-ui/src/index.ts"],
       "@rkicovid/rki-echarts": ["libs/rki-echarts/src/index.ts"]
-    }
+    },
+    "allowJs": true
   },
   "exclude": ["node_modules", "tmp"],
   "angularCompilerOptions": {
