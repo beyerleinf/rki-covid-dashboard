@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.1](https://github.com/beyerleinf/rki-covid-dashboard/compare/v2.0.1...v0.0.1) (2021-03-14)
+
+
+### Features
+
+* Add AstraZeneca to second vaccination ([06f2bba](https://github.com/beyerleinf/rki-covid-dashboard/commit/06f2bba863686b86bee1e7818ee709bb6e3c921b))
+* Add history chart for vaccinations ([68332a5](https://github.com/beyerleinf/rki-covid-dashboard/commit/68332a5adfbddcc45e29ad17c276c59478366e6a))
+* Add source footer to germany page ([5008aac](https://github.com/beyerleinf/rki-covid-dashboard/commit/5008aac15f3ce34256a9d765d8b6f59e504ba9b4))
+* Add source footer to vaccinations page ([d601772](https://github.com/beyerleinf/rki-covid-dashboard/commit/d601772e9d29429b166f5a7e77c75d6c3ceb4264))
+* Implement vaccinations page ([3b77e3a](https://github.com/beyerleinf/rki-covid-dashboard/commit/3b77e3a433f292f578397ebb84943dcdf49ca22c))
+
+
+### Bug Fixes
+
+* Fix footer for vaccination page ([75c12b0](https://github.com/beyerleinf/rki-covid-dashboard/commit/75c12b0ecbaf070f0ce0e878040fe41cc8b2d483))
+* Update second lockdown end date ([3702e49](https://github.com/beyerleinf/rki-covid-dashboard/commit/3702e49c4fe925b1fb50b80a94d4af9a423e96b8))
+
 ### [2.0.1](https://github.com/beyerleinf/rki-covid-dashboard/compare/v2.0.0...v2.0.1) (2021-02-21)
 
 ## [2.0.0](https://github.com/beyerleinf/rki-covid-dashboard/compare/v1.0.2...v2.0.0) (2021-02-21)
