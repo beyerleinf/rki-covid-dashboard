@@ -1,0 +1,14 @@
+<div class="meta mat-elevation-z1">
+  <div class="meta-item">
+    <strong translate="common.source"></strong>:
+    <span>{{ meta.source }}</span>
+  </div>
+  <div class="meta-item">
+    <strong translate="common.lastUpdate"></strong>:
+    <span>{{ meta.lastUpdate | date: 'medium':undefined:currentLang }}</span>
+  </div>
+  <div class="meta-item">
+    <strong translate="common.lastCheckedForUpdates"></strong>:
+    <span>{{ meta.lastCheckedForUpdate | date: 'medium':undefined:currentLang }}</span>
+  </div>
+</div>

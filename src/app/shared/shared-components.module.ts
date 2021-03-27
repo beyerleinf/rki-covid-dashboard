@@ -1,13 +1,12 @@
-import { NgModule } from '@angular/core';
-import { SharedMaterialModule } from 'src/app/shared-material.module';
-import { DashboardItemComponent } from './components/dashboard-item/dashboard-item.component';
-import { LanguageSwitcherComponent } from './components/language-switcher/language-switcher.component';
-import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { SharedMaterialModule } from 'src/app/shared-material.module';
+import { DashboardItemComponent, FooterComponent, LanguageSwitcherComponent } from './components';
 
 @NgModule({
-  declarations: [DashboardItemComponent, LanguageSwitcherComponent],
+  declarations: [DashboardItemComponent, LanguageSwitcherComponent, FooterComponent],
   imports: [CommonModule, SharedMaterialModule, TranslateModule.forChild()],
-  exports: [DashboardItemComponent, LanguageSwitcherComponent],
+  exports: [DashboardItemComponent, LanguageSwitcherComponent, FooterComponent],
 })
 export class SharedComponentsModule {}

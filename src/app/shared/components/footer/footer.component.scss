@@ -1,0 +1,23 @@
+:host {
+  width: 100%;
+}
+
+.meta {
+  padding: 16px;
+  margin: 0 8px;
+  background-color: #424242;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  flex-grow: 1;
+
+  .meta-item {
+    flex-shrink: 0;
+
+    &:not(:last-of-type) {
+      margin-right: 16px;
+    }
+  }
+}

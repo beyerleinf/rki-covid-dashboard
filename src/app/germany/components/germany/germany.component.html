@@ -24,19 +24,6 @@
   </div>
 
   <div *ngIf="!loading" class="dashboard-row">
-    <div class="meta mat-elevation-z1">
-      <div class="meta-item">
-        <strong translate="common.source"></strong>:
-        <span>{{ germany.meta.source }}</span>
-      </div>
-      <div class="meta-item">
-        <strong translate="common.lastUpdate"></strong>:
-        <span>{{ germany.meta.lastUpdate | date: 'medium':undefined:currentLang }}</span>
-      </div>
-      <div class="meta-item">
-        <strong translate="common.lastCheckedForUpdates"></strong>:
-        <span>{{ germany.meta.lastCheckedForUpdate | date: 'medium':undefined:currentLang }}</span>
-      </div>
-    </div>
+    <rkicovid-footer [meta]="germany.meta"></rkicovid-footer>
   </div>
 </div>
