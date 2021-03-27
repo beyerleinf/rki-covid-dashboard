@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RKI_API_URL } from './rki-api-url.token';
 import { SharedMaterialModule } from './shared-material.module';
 import { AppComponent } from './shared/components';
-import { sharedTranslations } from './shared/components/shared.translations';
+import { sharedTranslations } from './shared/shared.translations';
 import { SharedComponentsModule } from './shared/shared-components.module';
 import { vaccinationsTranslations } from './vaccinations/vaccinations.translations';
 

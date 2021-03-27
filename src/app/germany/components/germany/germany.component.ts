@@ -60,11 +60,20 @@ export class GermanyComponent implements OnInit {
             ] as any,
             [
               {
+                name: this.translate.instant('common.lockdownRelaxations'),
+                xAxis: new Date(2021, 2, 7).getTime(),
+                itemStyle: { opacity: 0.5 },
+              },
+              { xAxis: new Date(2021, 2, 24).getTime() },
+              /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+            ] as any,
+            [
+              {
                 name: this.translate.instant('common.secondLockdown'),
                 xAxis: new Date(2020, 11, 16).getTime(),
                 itemStyle: { opacity: 0.25 },
               },
-              { xAxis: new Date(2021, 2, 8).getTime() },
+              { xAxis: new Date(2021, 3, 19).getTime() },
               /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
             ] as any,
           ],
@@ -177,11 +186,20 @@ export class GermanyComponent implements OnInit {
                 ] as any,
                 [
                   {
+                    name: this.translate.instant('common.lockdownRelaxations'),
+                    xAxis: new Date(2021, 2, 7).getTime(),
+                    itemStyle: { opacity: 0.5 },
+                  },
+                  { xAxis: new Date(2021, 2, 24).getTime() },
+                  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+                ] as any,
+                [
+                  {
                     name: this.translate.instant('common.secondLockdown'),
                     xAxis: new Date(2020, 11, 16).getTime(),
                     itemStyle: { opacity: 0.25 },
                   },
-                  { xAxis: new Date(2021, 2, 8).getTime() },
+                  { xAxis: new Date(2021, 3, 19).getTime() },
                   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
                 ] as any,
               ],
