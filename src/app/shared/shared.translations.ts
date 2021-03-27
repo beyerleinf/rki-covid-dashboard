@@ -26,7 +26,7 @@ export const sharedTranslations: TranslationDefinition = {
       history: 'Historie',
       source: 'Quelle',
       lastUpdate: 'Zuletzt aktualisiert',
-      lastCheckedForUpdates: 'Zuletzt auf Updates überprüft',
+      lastCheckedForUpdates: 'Zuletzt überprüft',
     },
   },
   en: {
@@ -54,7 +54,7 @@ export const sharedTranslations: TranslationDefinition = {
       history: 'History',
       source: 'Source',
       lastUpdate: 'Last update',
-      lastCheckedForUpdates: 'Last checked for updates',
+      lastCheckedForUpdates: 'Last checked',
     },
   },
 };
