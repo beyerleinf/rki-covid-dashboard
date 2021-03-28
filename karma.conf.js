@@ -25,6 +25,9 @@ module.exports = function (config) {
     jasmineHtmlReporter: {
       suppressAll: true, // removes the duplicated traces
     },
+    preprocessors: {
+      'src/**/*.ts': ['coverage'],
+    },
     coverageReporter: {
       dir: 'coverage',
       subdir: '.',
@@ -38,7 +41,7 @@ module.exports = function (config) {
       suppressSkipped: true,
       showSpecTiming: true,
     },
-    reporters: ['spec', 'kjhtml'],
+    reporters: ['spec', 'kjhtml', 'coverage'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_WARN,
