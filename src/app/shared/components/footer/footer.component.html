@@ -11,4 +11,10 @@
     <strong translate="common.lastCheckedForUpdates"></strong>:
     <span>{{ meta.lastCheckedForUpdate | date: 'medium':undefined:currentLang }}</span>
   </div>
+  <div class="meta-item">
+    <strong translate="common.apiSource"></strong>:
+    <span>
+      <a [href]="meta.info" target="_blank">rki-covid-api by Marlon Lückert</a>
+    </span>
+  </div>
 </div>

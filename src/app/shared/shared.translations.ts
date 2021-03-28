@@ -29,6 +29,7 @@ export const sharedTranslations: TranslationDefinition = {
       lastCheckedForUpdates: 'Zuletzt überprüft',
       changeLanguage: 'Website-Sprache ändern',
       viewOnGitHub: 'Auf GitHub ansehen',
+      apiSource: 'API Quelle',
     },
   },
   en: {
@@ -59,6 +60,7 @@ export const sharedTranslations: TranslationDefinition = {
       lastCheckedForUpdates: 'Last checked',
       changeLanguage: 'Change page language',
       viewOnGitHub: 'View on GitHub',
+      apiSource: 'API Source',
     },
   },
 };
