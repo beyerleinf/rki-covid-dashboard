@@ -35,9 +35,7 @@ export class GermanyComponent implements OnInit {
       type: 'time',
       minInterval: 60 * 1000,
     },
-    yAxis: {
-      type: 'value',
-    },
+    yAxis: [{ type: 'value' }, { type: 'value' }],
     tooltip: {
       trigger: 'axis',
     },
@@ -89,9 +87,12 @@ export class GermanyComponent implements OnInit {
       },
       {
         name: this.translate.instant('common.deaths'),
-        type: 'line',
+        type: 'bar',
         encode: { x: 'timestmp', y: 'deaths' },
-        smooth: true,
+        itemStyle: {
+          opacity: 0.5,
+        },
+        yAxisIndex: 1,
       },
     ],
     toolbox: {
