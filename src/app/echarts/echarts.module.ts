@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { LineChart } from 'echarts/charts';
+import { LineChart, BarChart } from 'echarts/charts';
 import {
   DatasetComponent,
   DataZoomComponent,
@@ -27,7 +27,7 @@ const echartsComponents = [
   GridComponent,
 ];
 
-const echartCharts = [LineChart];
+const echartCharts = [LineChart, BarChart];
 
 echarts.use([...echartsComponents, ...echartCharts, CanvasRenderer]);
 

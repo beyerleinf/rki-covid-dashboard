@@ -14,7 +14,7 @@ export class LanguageSwitcherComponent {
   ];
 
   constructor(private translate: TranslateService) {
-    this.currentLanguage = this.translate.defaultLang;
+    this.currentLanguage = this.translate.currentLang;
 
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.currentLanguage = event.lang;
