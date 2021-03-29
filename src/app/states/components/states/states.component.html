@@ -1,0 +1,31 @@
+<div class="dashboard">
+  <div class="dashboard-row">
+    <div class="dashboard-item">
+      <mat-card>
+        <mat-form-field>
+          <mat-label> State </mat-label>
+          <mat-select (valueChange)="onChangeState($event)">
+            <mat-option *ngFor="let state of states" [value]="state.value">{{ state.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card>
+    </div>
+  </div>
+
+  <ng-container *ngIf="selectedState">
+    <div class="dashboard-row">
+      <div *ngFor="let item of dashboardItems" class="dashboard-item">
+        <rkicovid-dashboard-item
+          [cardTitle]="item.title"
+          [value]="$any(currentState)[item.valueKey]"
+          [difference]="$any(currentState.delta)[item.valueKey]"
+          [isLoading]="loading"
+        ></rkicovid-dashboard-item>
+      </div>
+    </div>
+
+    <div *ngIf="!loading && currentMeta" class="dashboard-row">
+      <rkicovid-footer [meta]="currentMeta"></rkicovid-footer>
+    </div>
+  </ng-container>
+</div>

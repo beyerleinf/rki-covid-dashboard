@@ -14,10 +14,13 @@ import {
   RkiGermanyRecoveredHistoryRaw,
   RkiMeta,
   RkiMetaRaw,
+  RkiStateRaw,
+  RkiStatesData,
   RkiVaccinationHistory,
   RkiVaccinationHistoryRaw,
   RkiVaccinations,
   RkiVaccinationsRaw,
+  State,
 } from '../../models';
 
 @Injectable({
@@ -86,6 +89,15 @@ export class RkiApiService {
     return this.http.get<RkiVaccinationHistoryRaw>(`${this.apiUrl}/vaccinations/history`).pipe(
       map(response => ({
         data: { history: response.data.history.map(e => ({ ...e, date: new Date(e.date) })) },
+        meta: this.parseMeta(response.meta),
+      }))
+    );
+  }
+
+  state<T extends keyof RkiStatesData>(state: T) {
+    return this.http.get<RkiStateRaw<typeof state>>(`${this.apiUrl}/states/${state}`).pipe(
+      map(response => ({
+        ...response,
         meta: this.parseMeta(response.meta),
       }))
     );
