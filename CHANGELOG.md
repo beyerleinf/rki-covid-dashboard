@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/beyerleinf/rki-covid-dashboard/compare/v2.1.1...v2.2.0) (2021-03-30)
+
+
+### Features
+
+* Add missing API credit ([47aa045](https://github.com/beyerleinf/rki-covid-dashboard/commit/47aa045855818075b4a409749fd57cfced7d4727))
+* Add tooltips ([dd26703](https://github.com/beyerleinf/rki-covid-dashboard/commit/dd26703b8d382c238e2475cadf55483da76c4358))
+* Update SEO info ([ef47ccc](https://github.com/beyerleinf/rki-covid-dashboard/commit/ef47cccd21ef04b586b108ee2034e8485a1fad38))
+
+
+### Bug Fixes
+
+* Fix how deaths are displayed in chart ([cb4ece4](https://github.com/beyerleinf/rki-covid-dashboard/commit/cb4ece43f1b88e4d5a2b3983f55e6608bde8bbee)), closes [#7](https://github.com/beyerleinf/rki-covid-dashboard/issues/7)
+* Fix language switcher initial language ([7ac01f8](https://github.com/beyerleinf/rki-covid-dashboard/commit/7ac01f8ff21b8dc837fcf3d7efc32526dee06168)), closes [#8](https://github.com/beyerleinf/rki-covid-dashboard/issues/8)
+* Fix link styling in footer ([ca22ca1](https://github.com/beyerleinf/rki-covid-dashboard/commit/ca22ca114d8408b11ad4b33ec738bb70a785519f))
+* Update lockdown dates ([01432c8](https://github.com/beyerleinf/rki-covid-dashboard/commit/01432c8e187c431227a6e996d7727aa9cffc60b8))
+* Update translations ([1af34ad](https://github.com/beyerleinf/rki-covid-dashboard/commit/1af34adac6d4b51018e252646380e03225e2df73))
+
 ### [2.1.1](https://github.com/beyerleinf/rki-covid-dashboard/compare/v2.1.0...v2.1.1) (2021-03-14)
 
 ## [2.1.0](https://github.com/beyerleinf/rki-covid-dashboard/compare/v0.0.1...v2.1.0) (2021-03-14)
