@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.1](https://github.com/beyerleinf/rki-covid-dashboard/compare/v2.2.0...v2.2.1) (2021-04-01)
+
+
+### Bug Fixes
+
+* Update name of AstraZeneca vaccine ([1ee892e](https://github.com/beyerleinf/rki-covid-dashboard/commit/1ee892eacca22e72e6f353d9c0f94a7579b8861d))
+
 ## [2.2.0](https://github.com/beyerleinf/rki-covid-dashboard/compare/v2.1.1...v2.2.0) (2021-03-30)
 
 

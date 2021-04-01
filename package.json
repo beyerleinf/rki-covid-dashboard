@@ -1,6 +1,6 @@
 {
   "name": "rki-covid-dashboard",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "scripts": {
     "postinstall": "ngcc",
     "ng": "ng",
