@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'germany', loadChildren: () => import('./germany/germany.module').then(m => m.GermanyModule) },
   { path: 'vaccinations', loadChildren: () => import('./vaccinations/vaccinations.module').then(m => m.VaccinationsModule) },
   { path: 'states', loadChildren: () => import('./states/states.module').then(m => m.StatesModule) },
+  { path: 'districts', loadChildren: () => import('./districts/districts.module').then(m => m.DistrictsModule) },
   { path: '**', redirectTo: '/germany' },
 ];
 
