@@ -1,4 +1,4 @@
-import { RkiDelta } from './rki-delta';
+import { RkiDelta } from '../rki-delta';
 import { State } from './state';
 
 export interface RkiStateData {

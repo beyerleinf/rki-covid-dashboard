@@ -1,4 +1,4 @@
-import { RkiMeta } from './rki-meta';
+import { RkiMeta } from '../rki-meta';
 import { RkiStateData } from './rki-state-data';
 
 export interface RkiStates {
