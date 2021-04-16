@@ -3,8 +3,8 @@ import { TranslateService } from '@ngx-translate/core';
 import * as dayjs from 'dayjs';
 import { EChartsOption } from 'echarts';
 import { forkJoin } from 'rxjs';
-import { RkiApiService } from 'src/app/shared/services';
 import { RkiCaseHistoryItem, RkiGermany, RkiGermanyCaseHistory, RkiGermanyDeathHistory } from '../../../shared/models';
+import { GermanyService } from '../../services';
 
 @Component({
   selector: 'rkicovid-germany',
@@ -137,7 +137,7 @@ export class GermanyComponent implements OnInit {
     ],
   };
 
-  constructor(private translate: TranslateService, private rkiService: RkiApiService) {
+  constructor(private translate: TranslateService, private germanyService: GermanyService) {
     this.currentLang = this.translate.currentLang;
     this.germany = {
       cases: 0,
@@ -214,9 +214,9 @@ export class GermanyComponent implements OnInit {
 
     this.loading = true;
     forkJoin([
-      this.rkiService.germany(),
-      this.rkiService.germanyCaseHistory(),
-      this.rkiService.germanyDeathHistory(),
+      this.germanyService.get(),
+      this.germanyService.getCaseHistory(),
+      this.germanyService.getDeathHistory(),
     ]).subscribe(response => {
       this.germany = response[0];
       this.buildHistoryChart(response[1], response[2], this.generateCaseHistoryMean(response[1]));

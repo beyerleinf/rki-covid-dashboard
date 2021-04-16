@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { RkiMeta, RkiStateData, State } from 'src/app/shared/models';
-import { RkiApiService } from 'src/app/shared/services';
+import { StatesService } from '../../services';
 
 const LAST_STATE_LOCAL_STORAGE = 'rki-covid.beyerleinf:lastState';
 
@@ -44,7 +44,7 @@ export class StatesComponent implements OnInit {
     { title: 'common.casesPer100k', valueKey: 'casesPer100k' },
   ];
 
-  constructor(private rki: RkiApiService, private translate: TranslateService) {
+  constructor(private statesService: StatesService, private translate: TranslateService) {
     this.currentState = {
       abbreviation: 'BB',
       cases: 0,
@@ -87,7 +87,7 @@ export class StatesComponent implements OnInit {
     localStorage.setItem(LAST_STATE_LOCAL_STORAGE, event);
 
     this.loading = true;
-    this.rki.state(event).subscribe(state => {
+    this.statesService.get(event).subscribe(state => {
       this.currentState = state.data[event];
       this.currentMeta = state.meta;
 

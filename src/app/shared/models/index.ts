@@ -19,3 +19,6 @@ export * from './rki-states-data';
 export * from './rki-states-raw';
 export * from './state';
 export * from './vaccinations';
+export * from './rki-state-case-history-raw';
+export * from './rki-state-case-history';
+export * from './rki-state-history-data';
