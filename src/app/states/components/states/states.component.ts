@@ -3,6 +3,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { RkiMeta, RkiStateData, State } from 'src/app/shared/models';
 import { RkiApiService } from 'src/app/shared/services';
 
+const LAST_STATE_LOCAL_STORAGE = 'rki-covid.beyerleinf:lastState';
+
 @Component({
   selector: 'rkicovid-states',
   templateUrl: './states.component.html',
@@ -74,10 +76,15 @@ export class StatesComponent implements OnInit {
     this.translate.onLangChange.subscribe(() => {
       this.currentLang = this.translate.currentLang;
     });
+
+    if (localStorage.getItem(LAST_STATE_LOCAL_STORAGE)) {
+      this.onChangeState(localStorage.getItem(LAST_STATE_LOCAL_STORAGE) as any);
+    }
   }
 
   onChangeState(event: State) {
     this.selectedState = event;
+    localStorage.setItem(LAST_STATE_LOCAL_STORAGE, event);
 
     this.loading = true;
     this.rki.state(event).subscribe(state => {

@@ -4,7 +4,7 @@
       <mat-card>
         <mat-form-field>
           <mat-label> State </mat-label>
-          <mat-select (valueChange)="onChangeState($event)">
+          <mat-select (valueChange)="onChangeState($event)" [(ngModel)]="selectedState">
             <mat-option *ngFor="let state of states" [value]="state.value">{{ state.name }}</mat-option>
           </mat-select>
         </mat-form-field>
