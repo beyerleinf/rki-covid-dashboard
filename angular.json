@@ -51,7 +51,6 @@
               "buildOptimizer": true,
               "commonChunk": true,
               "deleteOutputPath": true,
-              "extractCss": true,
               "budgets": [
                 {
                   "type": "initial",
