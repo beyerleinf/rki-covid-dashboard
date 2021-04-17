@@ -5,6 +5,8 @@ import { map, startWith, tap } from 'rxjs/operators';
 import { RkiDistrictData, RkiMeta } from 'src/app/shared/models';
 import { DistrictsService } from '../../services';
 
+const LAST_DISTRICT_LOCAL_STORAGE = 'rki-covid.beyerleinf:lastDistrict';
+
 @Component({
   selector: 'rkicovid-districts',
   templateUrl: './districts.component.html',
@@ -60,6 +62,9 @@ export class DistrictsComponent implements OnInit {
         console.log('valid ags', !!this.agsMap.find(e => e.ags === this.agsInput.value));
         if (this.agsMap.find(e => e.ags === this.agsInput.value)) {
           this.loading = true;
+
+          localStorage.setItem(LAST_DISTRICT_LOCAL_STORAGE, this.agsInput.value);
+
           this.districtsService.get(this.agsInput.value).subscribe(district => {
             this.districtData = district.data[this.agsInput.value];
             this.currentMeta = district.meta;
@@ -75,6 +80,10 @@ export class DistrictsComponent implements OnInit {
     this.districtsService.getAgsMap().subscribe(response => {
       this.agsMap = response;
     });
+
+    if (localStorage.getItem(LAST_DISTRICT_LOCAL_STORAGE)) {
+      this.agsInput.setValue(localStorage.getItem(LAST_DISTRICT_LOCAL_STORAGE) as any);
+    }
   }
 
   isValidAgs() {
