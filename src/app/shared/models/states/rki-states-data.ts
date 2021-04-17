@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import { RkiStateData } from './rki-state-data';
 
 export interface RkiStatesData {

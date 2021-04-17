@@ -57,7 +57,7 @@ export class DistrictsComponent implements OnInit {
 
     this.filteredAgsMap = this.agsInput.valueChanges.pipe(
       startWith(''),
-      map(option => (option ? this._filter(option) : this.agsMap.slice())),
+      map(option => (option ? this.filterDistricts(option) : this.agsMap.slice())),
       tap(() => {
         console.log('valid ags', !!this.agsMap.find(e => e.ags === this.agsInput.value));
         if (this.agsMap.find(e => e.ags === this.agsInput.value)) {
@@ -94,7 +94,7 @@ export class DistrictsComponent implements OnInit {
     return this.agsMap.find(e => e.ags === ags)?.county || '';
   }
 
-  private _filter(county: string): Array<{ ags: string; county: string }> {
+  private filterDistricts(county: string): Array<{ ags: string; county: string }> {
     const filterValue = county.toLowerCase();
 
     return this.agsMap.filter(option => option.county.toLowerCase().includes(filterValue));

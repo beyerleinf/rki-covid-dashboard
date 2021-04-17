@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import { RkiMeta } from '../rki-meta';
 import { RkiStateData } from './rki-state-data';
 
