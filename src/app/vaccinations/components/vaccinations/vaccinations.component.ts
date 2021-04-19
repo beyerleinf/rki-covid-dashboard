@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { EChartsOption } from 'echarts';
 import { forkJoin } from 'rxjs';
 import { RkiStateVaccinationData, RkiVaccinationHistory, RkiVaccinations } from 'src/app/shared/models';
-import { RkiApiService } from 'src/app/shared/services';
+import { VaccinationsService } from '../../services';
 
 @Component({
   selector: 'rkicovid-vaccinations',
@@ -94,7 +94,7 @@ export class VaccinationsComponent implements OnInit {
     ],
   };
 
-  constructor(private rkiService: RkiApiService, private translate: TranslateService) {
+  constructor(private vaccinationsService: VaccinationsService, private translate: TranslateService) {
     const stateInitial: RkiStateVaccinationData = {
       administeredVaccinations: 0,
       delta: 0,
@@ -208,7 +208,7 @@ export class VaccinationsComponent implements OnInit {
 
     this.loading = true;
 
-    forkJoin([this.rkiService.vaccinations(), this.rkiService.vaccinationHistory()]).subscribe(response => {
+    forkJoin([this.vaccinationsService.get(), this.vaccinationsService.getHistory()]).subscribe(response => {
       this.vaccinations = response[0];
       this.buildHistoryChart(response[1]);
       this.loading = false;

@@ -41,6 +41,12 @@ module.exports = function (config) {
       suppressSkipped: true,
       showSpecTiming: true,
     },
+    specTimeReporter: {
+      showLongestSpec: true,
+      enableThresholds: true,
+      max: 20,
+      warn: 15,
+    },
     reporters: ['spec', 'kjhtml', 'coverage'],
     port: 9876,
     colors: true,

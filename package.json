@@ -4,7 +4,7 @@
   "scripts": {
     "postinstall": "ngcc",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --configuration=dev",
     "build": "ng build",
     "build:prod": "ng build --configuration=production",
     "test": "ng test",
@@ -45,6 +45,7 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
+    "axios": "^0.21.1",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsdoc": "30.7.6",
