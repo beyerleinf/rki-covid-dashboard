@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/beyerleinf/rki-covid-dashboard/compare/v2.2.1...v2.3.0) (2021-04-19)
+
+
+### Features
+
+* Implement basic states page ([a479cb0](https://github.com/beyerleinf/rki-covid-dashboard/commit/a479cb033c0048594bcd2c0b99363838682698d3)), closes [#11](https://github.com/beyerleinf/rki-covid-dashboard/issues/11)
+* Implement districts page ([970a994](https://github.com/beyerleinf/rki-covid-dashboard/commit/970a9940043ed3c53695fee2e0f08dfdf7054779)), closes [#10](https://github.com/beyerleinf/rki-covid-dashboard/issues/10)
+* Implement save of last selected state ([55ffa74](https://github.com/beyerleinf/rki-covid-dashboard/commit/55ffa7457929093e2de1d4630e48d362f4d74b40))
+* Implement saving of selected district ([5fe4af8](https://github.com/beyerleinf/rki-covid-dashboard/commit/5fe4af85cc86b6a06a051fbf419d493cca2f9cd2))
+
 ### [2.2.1](https://github.com/beyerleinf/rki-covid-dashboard/compare/v2.2.0...v2.2.1) (2021-04-01)
 
 
