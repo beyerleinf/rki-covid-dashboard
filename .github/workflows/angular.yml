@@ -31,8 +31,6 @@ jobs:
         with:
           args: npm test
       - name: Lint
-        uses: ianwalter/puppeteer@3.0.0
-        with:
-          args: npm run lint
+        run: npm run lint
       - name: Build
         run: npm run build:prod
