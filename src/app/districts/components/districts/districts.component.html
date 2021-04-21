@@ -27,5 +27,9 @@
         ></rkicovid-dashboard-item>
       </div>
     </div>
+
+    <div *ngIf="!loading && currentMeta" class="dashboard-row">
+      <rkicovid-footer [meta]="currentMeta"></rkicovid-footer>
+    </div>
   </ng-container>
 </div>
