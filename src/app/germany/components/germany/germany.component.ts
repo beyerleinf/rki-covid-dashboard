@@ -26,6 +26,12 @@ export class GermanyComponent implements OnInit {
     { title: 'common.casesPer100k', valueKey: 'casesPer100k' },
   ];
 
+  lockdowns = [
+    { start: new Date(2020, 2, 15), end: new Date(2020, 5, 15), name: 'common.firstLockdown' },
+    { start: new Date(2021, 2, 7), end: new Date(2021, 2, 24), name: 'common.lockdownRelaxations' },
+    { start: new Date(2020, 11, 16), end: new Date(2021, 5, 30), name: 'common.secondLockdown' },
+  ];
+
   chartOptions: EChartsOption = {
     backgroundColor: 'transparent',
     textStyle: {
@@ -46,35 +52,8 @@ export class GermanyComponent implements OnInit {
         type: 'line',
         encode: { x: 'timestamp', y: 'cases' },
         markArea: {
-          data: [
-            [
-              {
-                name: this.translate.instant('common.firstLockdown'),
-                xAxis: new Date(2020, 2, 15).getTime(),
-                itemStyle: { opacity: 0.25 },
-              },
-              { xAxis: new Date(2020, 5, 15).getTime() },
-              /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-            ] as any,
-            [
-              {
-                name: this.translate.instant('common.lockdownRelaxations'),
-                xAxis: new Date(2021, 2, 7).getTime(),
-                itemStyle: { opacity: 0.5 },
-              },
-              { xAxis: new Date(2021, 2, 24).getTime() },
-              /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-            ] as any,
-            [
-              {
-                name: this.translate.instant('common.secondLockdown'),
-                xAxis: new Date(2020, 11, 16).getTime(),
-                itemStyle: { opacity: 0.25 },
-              },
-              { xAxis: new Date(2021, 3, 19).getTime() },
-              /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-            ] as any,
-          ],
+          /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+          data: this.getLockdowns() as any,
         },
         smooth: true,
       },
@@ -175,35 +154,8 @@ export class GermanyComponent implements OnInit {
             ...(this.chartOptions.series as any)[0],
             name: this.translate.instant('common.cases'),
             markArea: {
-              data: [
-                [
-                  {
-                    name: this.translate.instant('common.firstLockdown'),
-                    xAxis: new Date(2020, 2, 15).getTime(),
-                    itemStyle: { opacity: 0.25 },
-                  },
-                  { xAxis: new Date(2020, 5, 15).getTime() },
-                  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-                ] as any,
-                [
-                  {
-                    name: this.translate.instant('common.lockdownRelaxations'),
-                    xAxis: new Date(2021, 2, 7).getTime(),
-                    itemStyle: { opacity: 0.5 },
-                  },
-                  { xAxis: new Date(2021, 2, 24).getTime() },
-                  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-                ] as any,
-                [
-                  {
-                    name: this.translate.instant('common.secondLockdown'),
-                    xAxis: new Date(2020, 11, 16).getTime(),
-                    itemStyle: { opacity: 0.25 },
-                  },
-                  { xAxis: new Date(2021, 3, 19).getTime() },
-                  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-                ] as any,
-              ],
+              /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+              data: this.getLockdowns() as any,
             },
           },
           { ...(this.chartOptions.series as any)[1], name: this.translate.instant('common.casesMean') },
@@ -290,5 +242,19 @@ export class GermanyComponent implements OnInit {
 
       return acc;
     }, {});
+  }
+
+  private getLockdowns() {
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+    const result: any[] = [];
+
+    for (const lockdown of this.lockdowns) {
+      result.push([
+        { name: this.translate.instant(lockdown.name), xAxis: lockdown.start.getTime(), itemStyle: { opacity: 0.25 } },
+        { xAxis: lockdown.end.getTime() },
+      ]);
+    }
+
+    return result;
   }
 }
