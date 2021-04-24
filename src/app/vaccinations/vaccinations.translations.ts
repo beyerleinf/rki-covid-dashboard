@@ -11,7 +11,7 @@ export const vaccinationsTranslations: TranslationDefinition = {
       manufacturers: {
         biontech: 'BioNTech',
         moderna: 'Moderna',
-        astraZeneca: 'AstraZeneca',
+        astraZeneca: 'Vaxzevria',
       },
     },
   },
@@ -25,7 +25,7 @@ export const vaccinationsTranslations: TranslationDefinition = {
       manufacturers: {
         biontech: 'BioNTech',
         moderna: 'Moderna',
-        astraZeneca: 'AstraZeneca',
+        astraZeneca: 'Vaxzevria',
       },
     },
   },

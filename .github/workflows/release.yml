@@ -24,7 +24,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Install
-        run: npm install
+        run: npm ci
       - name: Build
         run: npm run build:prod
       - name: Deploy
@@ -34,39 +34,39 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/rki-covid-dashboard/
-      # - name: Package Release
-      #   run: ./pack.sh
-      # - name: Get the version
-      #   id: get_version
-      #   run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-      # - name: Create Release
-      #   id: create_release
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     tag_name: ${{ github.ref }}
-      #     release_name: Release ${{ github.ref }}
-      #     body: Version ${{ steps.get_version.outputs.VERSION }}
-      #     draft: false
-      #     prerelease: false
-      # - name: Upload Release Asset .tar.gz
-      #   id: upload_tar_asset
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
-      #     asset_path: ./dist/release.tar.gz
-      #     asset_name: ${{ format('bcc-calculator-{0}.tar.gz', steps.get_version.outputs.VERSION) }}
-      #     asset_content_type: application/gzip
-      # - name: Upload Release Asset .zip
-      #   id: upload_zip_asset
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
-      #     asset_path: ./dist/release.zip
-      #     asset_name: ${{ format('bcc-calculator-{0}.zip', steps.get_version.outputs.VERSION) }}
-      #     asset_content_type: application/zip
+      - name: Package Release
+        run: ./pack.sh
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: Version ${{ steps.get_version.outputs.VERSION }}
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset .tar.gz
+        id: upload_tar_asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist/release.tar.gz
+          asset_name: ${{ format('rki-covid-dashboard-{0}.tar.gz', steps.get_version.outputs.VERSION) }}
+          asset_content_type: application/gzip
+      - name: Upload Release Asset .zip
+        id: upload_zip_asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist/release.zip
+          asset_name: ${{ format('rki-covid-dashboard-{0}.zip', steps.get_version.outputs.VERSION) }}
+          asset_content_type: application/zip
