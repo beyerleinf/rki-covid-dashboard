@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/beyerleinf/rki-covid-dashboard/compare/v2.3.1...v2.4.0) (2021-04-26)
+
+
+### Features
+
+* Update lockdown dates ([7d5ddb7](https://github.com/beyerleinf/rki-covid-dashboard/commit/7d5ddb7427154c1d880da27b7b3c1f831c4487e3))
+
 ### [2.3.1](https://github.com/beyerleinf/rki-covid-dashboard/compare/v2.3.0...v2.3.1) (2021-04-22)
 
 
