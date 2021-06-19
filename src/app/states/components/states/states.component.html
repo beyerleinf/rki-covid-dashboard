@@ -1,6 +1,6 @@
 <div class="dashboard">
   <div class="dashboard-row">
-    <div class="dashboard-item">
+    <div class="dashboard-item item-33">
       <mat-card>
         <mat-form-field>
           <mat-label> State </mat-label>
@@ -14,7 +14,7 @@
 
   <ng-container *ngIf="selectedState">
     <div class="dashboard-row">
-      <div *ngFor="let item of dashboardItems" class="dashboard-item">
+      <div *ngFor="let item of dashboardItems" class="dashboard-item item-33">
         <rkicovid-dashboard-item
           [cardTitle]="item.title"
           [value]="$any(currentState)[item.valueKey]"

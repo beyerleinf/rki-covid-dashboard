@@ -1,6 +1,6 @@
 <div class="dashboard">
   <div class="dashboard-row">
-    <div *ngFor="let item of dashboardItems" class="dashboard-item">
+    <div *ngFor="let item of dashboardItems" class="dashboard-item item-33">
       <rkicovid-dashboard-item
         [cardTitle]="item.title"
         [value]="$any(germany)[item.valueKey]"
@@ -11,7 +11,7 @@
   </div>
 
   <div class="dashboard-row">
-    <div class="dashboard-item">
+    <div class="dashboard-item item-33">
       <mat-card>
         <ng-container *ngIf="!loading; else loadingSpinner">
           <rkicovid-line-chart [chartOptions]="chartOptions"></rkicovid-line-chart>

@@ -1,6 +1,6 @@
 <div class="dashboard" *ngIf="agsMap.length > 0">
   <div class="dashboard-row">
-    <div class="dashboard-item">
+    <div class="dashboard-item item-33">
       <mat-card>
         <mat-form-field class="district-search">
           <mat-label>{{ 'districts.searchDistrict' | translate }}</mat-label>
@@ -18,7 +18,7 @@
 
   <ng-container *ngIf="isValidAgs()">
     <div class="dashboard-row">
-      <div *ngFor="let item of dashboardItems" class="dashboard-item">
+      <div *ngFor="let item of dashboardItems" class="dashboard-item item-33">
         <rkicovid-dashboard-item
           [cardTitle]="item.title"
           [value]="$any(districtData)[item.valueKey]"

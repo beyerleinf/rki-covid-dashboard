@@ -6,8 +6,6 @@ export { RkiVaccinationHistory } from './rki-vaccination-history';
 export { RkiVaccinationHistoryItem } from './rki-vaccination-history-item';
 export { RkiVaccinationHistoryItemRaw } from './rki-vaccination-history-item-raw';
 export { RkiVaccinationHistoryRaw } from './rki-vaccination-history-raw';
-export { RkiVaccinationIndication } from './rki-vaccination-indication';
-export { RkiVaccinationIndicationData } from './rki-vaccination-indication-data';
 export { RkiVaccinationInfo } from './rki-vaccination-info';
 export { RkiVaccinationManufacturers } from './rki-vaccination-manufacturers';
 export { RkiVaccinations } from './rki-vaccinations';

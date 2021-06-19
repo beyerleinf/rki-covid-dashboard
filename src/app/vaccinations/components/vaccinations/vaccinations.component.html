@@ -12,7 +12,7 @@
   <h2 translate="vaccinations.firstVaccination"></h2>
 
   <div class="dashboard-row">
-    <div *ngFor="let item of dashboardItems" class="dashboard-item">
+    <div *ngFor="let item of dashboardItems" class="dashboard-item item-50">
       <rkicovid-dashboard-item
         [cardTitle]="item.title"
         [value]="$any(vaccinations.data)[item.valueKey]"
@@ -25,7 +25,7 @@
   </div>
 
   <div class="dashboard-row">
-    <div *ngFor="let item of vaccinationItems" class="dashboard-item">
+    <div *ngFor="let item of vaccinationItems" class="dashboard-item item-25">
       <rkicovid-dashboard-item
         [cardTitle]="item.title"
         [value]="$any(vaccinations.data.vaccination)[item.valueKey]"
@@ -37,7 +37,7 @@
   <h2 translate="vaccinations.secondVaccination"></h2>
 
   <div class="dashboard-row">
-    <div *ngFor="let item of dashboardItems" class="dashboard-item">
+    <div *ngFor="let item of dashboardItems" class="dashboard-item item-50">
       <rkicovid-dashboard-item
         [cardTitle]="item.title"
         [value]="$any(vaccinations.data.secondVaccination)[item.valueKey]"
@@ -50,7 +50,7 @@
   </div>
 
   <div class="dashboard-row">
-    <div *ngFor="let item of vaccinationItems" class="dashboard-item">
+    <div *ngFor="let item of vaccinationItems" class="dashboard-item item-25">
       <rkicovid-dashboard-item
         [cardTitle]="item.title"
         [value]="$any(vaccinations.data.secondVaccination.vaccination)[item.valueKey]"

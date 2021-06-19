@@ -24,6 +24,7 @@ export class VaccinationsComponent implements OnInit {
     { title: 'vaccinations.manufacturers.biontech', valueKey: 'biontech' },
     { title: 'vaccinations.manufacturers.moderna', valueKey: 'moderna' },
     { title: 'vaccinations.manufacturers.astraZeneca', valueKey: 'astraZeneca' },
+    { title: 'vaccinations.manufacturers.janssen', valueKey: 'janssen' },
   ];
 
   chartOptions: EChartsOption = {
@@ -98,18 +99,6 @@ export class VaccinationsComponent implements OnInit {
     const stateInitial: RkiStateVaccinationData = {
       administeredVaccinations: 0,
       delta: 0,
-      indication: {
-        age: 0,
-        job: 0,
-        medical: 0,
-        nursingHome: 0,
-        secondVaccination: {
-          age: 0,
-          job: 0,
-          medical: 0,
-          nursingHome: 0,
-        },
-      },
       name: '',
       quote: 0,
       vaccinated: 0,
@@ -120,12 +109,14 @@ export class VaccinationsComponent implements OnInit {
         vaccination: {
           biontech: 0,
           moderna: 0,
+          astraZeneca: 0,
         },
       },
       vaccination: {
         astraZeneca: 0,
         biontech: 0,
         moderna: 0,
+        janssen: 0,
       },
     };
 
@@ -133,18 +124,6 @@ export class VaccinationsComponent implements OnInit {
       data: {
         administeredVaccinations: 0,
         delta: 0,
-        indication: {
-          age: 0,
-          job: 0,
-          medical: 0,
-          nursingHome: 0,
-          secondVaccination: {
-            age: 0,
-            job: 0,
-            medical: 0,
-            nursingHome: 0,
-          },
-        },
         quote: 0,
         secondVaccination: {
           delta: 0,
@@ -153,6 +132,7 @@ export class VaccinationsComponent implements OnInit {
           vaccination: {
             biontech: 0,
             moderna: 0,
+            astraZeneca: 0,
           },
         },
         states: {
@@ -179,6 +159,7 @@ export class VaccinationsComponent implements OnInit {
           astraZeneca: 0,
           biontech: 0,
           moderna: 0,
+          janssen: 0,
         },
       },
       meta: {
