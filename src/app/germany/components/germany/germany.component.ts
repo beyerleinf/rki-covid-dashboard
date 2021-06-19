@@ -27,9 +27,10 @@ export class GermanyComponent implements OnInit {
   ];
 
   lockdowns = [
-    { start: new Date(2020, 2, 15), end: new Date(2020, 5, 15), name: 'common.firstLockdown' },
-    { start: new Date(2021, 2, 7), end: new Date(2021, 2, 24), name: 'common.lockdownRelaxations' },
-    { start: new Date(2020, 11, 16), end: new Date(2021, 5, 30), name: 'common.secondLockdown' },
+    { start: new Date(2020, 2, 23), end: new Date(2020, 5, 15), name: 'common.firstLockdown', color: '#c2185b' },
+    { start: new Date(2020, 10, 2), end: new Date(2020, 11, 14), name: 'common.partialLockdown', color: '#18c27e' },
+    { start: new Date(2020, 11, 14), end: new Date(2021, 4, 10), name: 'common.hardLockdown', color: '#c2185b' },
+    { start: new Date(2021, 2, 7), end: new Date(2021, 2, 24), name: 'common.lockdownRelaxations', color: '#c218b1' },
   ];
 
   chartOptions: EChartsOption = {
@@ -250,7 +251,11 @@ export class GermanyComponent implements OnInit {
 
     for (const lockdown of this.lockdowns) {
       result.push([
-        { name: this.translate.instant(lockdown.name), xAxis: lockdown.start.getTime(), itemStyle: { opacity: 0.25 } },
+        {
+          name: this.translate.instant(lockdown.name),
+          xAxis: lockdown.start.getTime(),
+          itemStyle: { opacity: 0.125, color: lockdown.color },
+        },
         { xAxis: lockdown.end.getTime() },
       ]);
     }
