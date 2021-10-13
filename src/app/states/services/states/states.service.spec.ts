@@ -13,10 +13,13 @@ describe('StatesService', () => {
       imports: [HttpClientTestingModule],
       providers: [{ provide: RKI_API_URL, useValue: baseUrl }],
     });
+
     service = TestBed.inject(StatesService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  describe('general', () => {
+    it('should be created', () => {
+      expect(service).toBeTruthy();
+    });
   });
 });
