@@ -129,6 +129,14 @@ export class GermanyComponent implements OnInit {
       r: {
         date: new Date(0),
         value: 0,
+        rValue4Days: {
+          date: new Date(0),
+          value: 0,
+        },
+        rValue7Days: {
+          date: new Date(0),
+          value: 0,
+        },
       },
       delta: {
         cases: 0,
