@@ -13,15 +13,15 @@ describe('DistrictsComponent', () => {
       imports: [HttpClientTestingModule],
       providers: [{ provide: RKI_API_URL, useValue: 'api' }],
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(DistrictsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('general', () => {
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
   });
 });

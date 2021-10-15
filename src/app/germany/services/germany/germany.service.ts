@@ -27,8 +27,16 @@ export class GermanyService {
         ...response,
         meta: parseMeta(response.meta),
         r: {
-          ...response.r,
+          value: response.r.value,
           date: new Date(response.r.date),
+          rValue4Days: {
+            value: response.r.rValue4Days.value,
+            date: new Date(response.r.rValue4Days.date),
+          },
+          rValue7Days: {
+            value: response.r.rValue7Days.value,
+            date: new Date(response.r.rValue7Days.date),
+          },
         },
       }))
     );
