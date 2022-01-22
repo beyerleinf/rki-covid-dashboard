@@ -59,7 +59,6 @@ export class DistrictsComponent implements OnInit {
       startWith(''),
       map(option => (option ? this.filterDistricts(option) : this.agsMap.slice())),
       tap(() => {
-        console.log('valid ags', !!this.agsMap.find(e => e.ags === this.agsInput.value));
         if (this.agsMap.find(e => e.ags === this.agsInput.value)) {
           this.loading = true;
 
@@ -79,11 +78,11 @@ export class DistrictsComponent implements OnInit {
   ngOnInit(): void {
     this.districtsService.getAgsMap().subscribe(response => {
       this.agsMap = response;
-    });
 
-    if (localStorage.getItem(LAST_DISTRICT_LOCAL_STORAGE)) {
-      this.agsInput.setValue(localStorage.getItem(LAST_DISTRICT_LOCAL_STORAGE) as any);
-    }
+      if (localStorage.getItem(LAST_DISTRICT_LOCAL_STORAGE)) {
+        this.agsInput.setValue(localStorage.getItem(LAST_DISTRICT_LOCAL_STORAGE) as any);
+      }
+    });
   }
 
   isValidAgs() {

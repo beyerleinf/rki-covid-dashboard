@@ -16,15 +16,35 @@ export class VaccinationsComponent implements OnInit {
   currentLang = '';
 
   dashboardItems = [
-    { title: 'vaccinations.vaccinated', valueKey: 'vaccinated', difference: 'delta' },
-    { title: 'vaccinations.quote', valueKey: 'quote', format: '1.1-1', unit: '%' },
+    { title: 'vaccinations.vaccinated', valueKey: 'vaccinated', difference: 'delta', boosterVaccination: true },
+    { title: 'vaccinations.quote', valueKey: 'quote', format: '1.1-1', unit: '%', boosterVaccination: false },
   ];
 
   vaccinationItems = [
-    { title: 'vaccinations.manufacturers.biontech', valueKey: 'biontech' },
-    { title: 'vaccinations.manufacturers.moderna', valueKey: 'moderna' },
-    { title: 'vaccinations.manufacturers.astraZeneca', valueKey: 'astraZeneca' },
-    { title: 'vaccinations.manufacturers.janssen', valueKey: 'janssen' },
+    {
+      title: 'vaccinations.manufacturers.biontech',
+      valueKey: 'biontech',
+      secondVaccination: true,
+      boosterVaccination: true,
+    },
+    {
+      title: 'vaccinations.manufacturers.moderna',
+      valueKey: 'moderna',
+      secondVaccination: true,
+      boosterVaccination: true,
+    },
+    {
+      title: 'vaccinations.manufacturers.astraZeneca',
+      valueKey: 'astraZeneca',
+      secondVaccination: true,
+      boosterVaccination: false,
+    },
+    {
+      title: 'vaccinations.manufacturers.janssen',
+      valueKey: 'janssen',
+      secondVaccination: false,
+      boosterVaccination: true,
+    },
   ];
 
   chartOptions: EChartsOption = {
@@ -42,7 +62,7 @@ export class VaccinationsComponent implements OnInit {
     tooltip: {
       trigger: 'axis',
     },
-    color: ['#c2185b', '#18c27e'],
+    color: ['#c2185b', '#18c27e', '#c218b1'],
     series: [
       {
         name: this.translate.instant('vaccinations.firstVaccination'),
@@ -54,6 +74,12 @@ export class VaccinationsComponent implements OnInit {
         name: this.translate.instant('vaccinations.secondVaccination'),
         type: 'line',
         encode: { x: 'timestmp', y: 'secondVaccination' },
+        smooth: true,
+      },
+      {
+        name: this.translate.instant('vaccinations.boosterVaccination'),
+        type: 'line',
+        encode: { x: 'timestmp', y: 'boosterVaccination' },
         smooth: true,
       },
     ],
@@ -112,6 +138,15 @@ export class VaccinationsComponent implements OnInit {
           astraZeneca: 0,
         },
       },
+      boosterVaccination: {
+        delta: 0,
+        vaccinated: 0,
+        vaccination: {
+          biontech: 0,
+          moderna: 0,
+          janssen: 0,
+        },
+      },
       vaccination: {
         astraZeneca: 0,
         biontech: 0,
@@ -133,6 +168,15 @@ export class VaccinationsComponent implements OnInit {
             biontech: 0,
             moderna: 0,
             astraZeneca: 0,
+          },
+        },
+        boosterVaccination: {
+          delta: 0,
+          vaccinated: 0,
+          vaccination: {
+            biontech: 0,
+            moderna: 0,
+            janssen: 0,
           },
         },
         states: {
@@ -183,6 +227,10 @@ export class VaccinationsComponent implements OnInit {
             ...(this.chartOptions.series as any)[1],
             name: this.translate.instant('vaccinations.secondVaccination'),
           },
+          {
+            ...(this.chartOptions.series as any)[2],
+            name: this.translate.instant('vaccinations.boosterVaccination'),
+          },
         ],
       };
     });
@@ -204,6 +252,7 @@ export class VaccinationsComponent implements OnInit {
         vaccinationHistoryItem.date,
         vaccinationHistoryItem.firstVaccination,
         vaccinationHistoryItem.secondVaccination,
+        vaccinationHistoryItem.boosterVaccination,
       ]);
     }
 
@@ -212,7 +261,7 @@ export class VaccinationsComponent implements OnInit {
       dataset: [
         {
           source,
-          dimensions: ['timestamp', 'firstVaccination', 'secondVaccination'],
+          dimensions: ['timestamp', 'firstVaccination', 'secondVaccination', 'boosterVaccination'],
         },
       ],
     };

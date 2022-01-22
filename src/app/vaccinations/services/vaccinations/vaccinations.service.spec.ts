@@ -54,6 +54,15 @@ describe('VaccinationsService', () => {
             moderna: 106,
           },
         },
+        boosterVaccination: {
+          delta: 102,
+          vaccinated: 103,
+          vaccination: {
+            biontech: 105,
+            moderna: 106,
+            janssen: 107,
+          },
+        },
         vaccinated: 107,
         vaccination: {
           astraZeneca: 108,
@@ -113,6 +122,15 @@ describe('VaccinationsService', () => {
                 astraZeneca: 104,
                 biontech: 105,
                 moderna: 106,
+              },
+            },
+            boosterVaccination: {
+              delta: 102,
+              vaccinated: 103,
+              vaccination: {
+                biontech: 105,
+                moderna: 106,
+                janssen: 107,
               },
             },
             vaccinated: 107,
@@ -205,9 +223,21 @@ describe('VaccinationsService', () => {
         expect(res).toEqual({
           data: {
             history: [
-              { date: new Date(0), firstVaccination: 1, secondVaccination: 2, vaccinated: 3 },
-              { date: new Date(1), firstVaccination: 10, secondVaccination: 20, vaccinated: 30 },
-              { date: new Date(2), firstVaccination: 100, secondVaccination: 200, vaccinated: 300 },
+              { date: new Date(0), firstVaccination: 1, secondVaccination: 2, vaccinated: 3, boosterVaccination: 4 },
+              {
+                date: new Date(1),
+                firstVaccination: 10,
+                secondVaccination: 20,
+                vaccinated: 30,
+                boosterVaccination: 40,
+              },
+              {
+                date: new Date(2),
+                firstVaccination: 100,
+                secondVaccination: 200,
+                vaccinated: 300,
+                boosterVaccination: 400,
+              },
             ],
           },
           meta: {
