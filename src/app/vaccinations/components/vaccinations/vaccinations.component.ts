@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { EChartsOption } from 'echarts';
 import { forkJoin } from 'rxjs';
-import { RkiStateVaccinationData, RkiVaccinationHistory, RkiVaccinations } from 'src/app/shared/models';
+import { RkiStateVaccinationData, RkiVaccinationHistory, RkiVaccinations } from '../../models';
 import { VaccinationsService } from '../../services';
 
 @Component({

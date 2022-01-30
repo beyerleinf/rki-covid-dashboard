@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { RKI_API_URL } from 'src/app/rki-api-url.token';
-import { RkiDistrictsRaw } from 'src/app/shared/models';
+import { RkiDistrictsRaw } from '../../models';
 import { DistrictsService } from './districts.service';
 
 describe('DistrictsService', () => {

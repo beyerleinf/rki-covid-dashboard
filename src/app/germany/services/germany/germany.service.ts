@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { RKI_API_URL } from 'src/app/rki-api-url.token';
-import { parseMeta } from 'src/app/shared/helpers';
+import { parseMeta } from 'src/app/core/helpers';
 import {
   RkiGermany,
   RkiGermanyCaseHistory,
@@ -13,7 +13,7 @@ import {
   RkiGermanyRaw,
   RkiGermanyRecoveredHistory,
   RkiGermanyRecoveredHistoryRaw,
-} from 'src/app/shared/models';
+} from '../../models';
 
 @Injectable({
   providedIn: 'root',

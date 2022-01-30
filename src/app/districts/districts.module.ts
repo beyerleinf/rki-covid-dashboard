@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { TranslateModule } from '@ngx-translate/core';
-import { SharedMaterialModule } from '../shared-material.module';
-import { SharedComponentsModule } from '../shared/shared-components.module';
+import { DashboardItemModule, FooterModule } from '../core/modules';
 import { DistrictsComponent } from './components';
 import { DistrictsRoutingModule } from './districts-routing.module';
 
@@ -11,11 +13,14 @@ import { DistrictsRoutingModule } from './districts-routing.module';
   declarations: [DistrictsComponent],
   imports: [
     CommonModule,
+    DashboardItemModule,
     DistrictsRoutingModule,
-    SharedMaterialModule,
-    SharedComponentsModule,
-    TranslateModule.forChild(),
+    FooterModule,
+    MatAutocompleteModule,
+    MatCardModule,
+    MatFormFieldModule,
     ReactiveFormsModule,
+    TranslateModule.forChild(),
   ],
 })
 export class DistrictsModule {}

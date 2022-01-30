@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { RKI_API_URL } from 'src/app/rki-api-url.token';
-import { RkiStateCaseHistoryRaw, RkiStateRaw, RkiStates, RkiStatesData } from 'src/app/shared/models';
+import { RkiStateCaseHistoryRaw, RkiStateRaw, RkiStatesData } from '../../models';
 import { StatesService } from './states.service';
 
 describe('StatesService', () => {

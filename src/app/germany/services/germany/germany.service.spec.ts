@@ -7,7 +7,7 @@ import {
   RkiGermanyDeathHistoryRaw,
   RkiGermanyRaw,
   RkiGermanyRecoveredHistoryRaw,
-} from 'src/app/shared/models';
+} from '../../models';
 import { GermanyService } from './germany.service';
 
 describe('GermanyService', () => {

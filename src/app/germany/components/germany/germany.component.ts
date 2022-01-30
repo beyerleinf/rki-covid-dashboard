@@ -3,7 +3,8 @@ import { TranslateService } from '@ngx-translate/core';
 import * as dayjs from 'dayjs';
 import { EChartsOption } from 'echarts';
 import { forkJoin } from 'rxjs';
-import { RkiCaseHistoryItem, RkiGermany, RkiGermanyCaseHistory, RkiGermanyDeathHistory } from '../../../shared/models';
+import { RkiCaseHistoryItem } from 'src/app/core/models';
+import { RkiGermany, RkiGermanyCaseHistory, RkiGermanyDeathHistory } from '../../models';
 import { GermanyService } from '../../services';
 
 @Component({

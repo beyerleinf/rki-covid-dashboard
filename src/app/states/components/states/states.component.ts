@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { RkiMeta, RkiStateData, State } from 'src/app/shared/models';
+import { RkiMeta } from 'src/app/core/models';
+import { RkiStateData, State } from '../../models';
 import { StatesService } from '../../services';
 
 const LAST_STATE_LOCAL_STORAGE = 'rki-covid.beyerleinf:lastState';
@@ -16,7 +17,7 @@ export class StatesComponent implements OnInit {
   states = [
     { name: 'Baden-Württemberg', value: 'BW' },
     { name: 'Bayern', value: 'BY' },
-    { name: 'Brandeburg', value: 'BB' },
+    { name: 'Brandenburg', value: 'BB' },
     { name: 'Berlin', value: 'BE' },
     { name: 'Bremen', value: 'HB' },
     { name: 'Hamburg', value: 'HH' },

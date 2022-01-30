@@ -7,7 +7,7 @@ import {
   RkiVaccinationHistoryRaw,
   RkiVaccinationsRaw,
   RkiVaccinationStates,
-} from 'src/app/shared/models';
+} from '../../models';
 import { VaccinationsService } from './vaccinations.service';
 
 describe('VaccinationsService', () => {

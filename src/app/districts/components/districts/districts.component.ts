@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { forkJoin, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, startWith, tap } from 'rxjs/operators';
-import { RkiDistrictData, RkiMeta } from 'src/app/shared/models';
+import { RkiMeta } from 'src/app/core/models';
+import { RkiDistrictData } from '../../models';
 import { DistrictsService } from '../../services';
 
 const LAST_DISTRICT_LOCAL_STORAGE = 'rki-covid.beyerleinf:lastDistrict';

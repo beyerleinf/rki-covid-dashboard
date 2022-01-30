@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
+import { DashboardItemModule, FooterModule } from '../core/modules';
 import { EchartsModule } from '../echarts/echarts.module';
-import { SharedMaterialModule } from '../shared-material.module';
-import { SharedComponentsModule } from '../shared/shared-components.module';
 import { GermanyComponent } from './components';
 import { GermanyRoutingModule } from './germany-routing.module';
 
@@ -11,10 +12,12 @@ import { GermanyRoutingModule } from './germany-routing.module';
   declarations: [GermanyComponent],
   imports: [
     CommonModule,
-    GermanyRoutingModule,
+    DashboardItemModule,
     EchartsModule,
-    SharedComponentsModule,
-    SharedMaterialModule,
+    FooterModule,
+    GermanyRoutingModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
     TranslateModule.forChild(),
   ],
 })
