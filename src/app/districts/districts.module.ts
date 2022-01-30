@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { TranslateModule } from '@ngx-translate/core';
 import { DashboardItemModule, FooterModule } from '../core/modules';
 import { DistrictsComponent } from './components';
@@ -20,6 +21,7 @@ import { DistrictsRoutingModule } from './districts-routing.module';
     MatCardModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatInputModule,
     TranslateModule.forChild(),
   ],
 })

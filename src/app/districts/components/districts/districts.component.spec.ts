@@ -7,7 +7,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { DashboardItemModule, FooterModule } from 'src/app/core/modules';
 import { RKI_API_URL } from 'src/app/rki-api-url.token';
+import { DistrictsRoutingModule } from '../../districts-routing.module';
 import { DistrictsComponent } from './districts.component';
 
 describe('DistrictsComponent', () => {
@@ -20,12 +22,15 @@ describe('DistrictsComponent', () => {
       imports: [
         HttpClientTestingModule,
         TranslateModule.forRoot({ loader: { provide: TranslateLoader, useClass: TranslateFakeLoader } }),
-        MatAutocompleteModule,
-        MatFormFieldModule,
-        MatCardModule,
-        MatInputModule,
         NoopAnimationsModule,
+        DashboardItemModule,
+        DistrictsRoutingModule,
+        FooterModule,
+        MatAutocompleteModule,
+        MatCardModule,
+        MatFormFieldModule,
         ReactiveFormsModule,
+        MatInputModule,
       ],
       providers: [{ provide: RKI_API_URL, useValue: 'api' }],
     }).compileComponents();

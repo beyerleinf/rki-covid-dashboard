@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { SharedMaterialModule } from 'src/app/shared-material.module';
 import { LanguageSwitcherComponent } from './language-switcher.component';
 
 describe('LanguageSwitcherComponent', () => {
@@ -14,9 +16,11 @@ describe('LanguageSwitcherComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [LanguageSwitcherComponent],
       imports: [
-        SharedMaterialModule,
         TranslateModule.forRoot({ loader: { provide: TranslateLoader, useClass: TranslateFakeLoader } }),
         NoopAnimationsModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatTooltipModule,
       ],
     }).compileComponents();
 

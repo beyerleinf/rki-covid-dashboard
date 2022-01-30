@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import localeDe from '@angular/common/locales/de';
 import localeEn from '@angular/common/locales/en';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -38,6 +39,7 @@ Library.add(districtsTranslations);
     HttpClientModule,
     LanguageSwitcherModule,
     LayoutModule,
+    MatButtonModule,
     MatIconModule,
     MatListModule,
     MatSidenavModule,
