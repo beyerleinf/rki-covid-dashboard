@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { DashboardItemModule, FooterModule } from '../core/modules';
+import { DashboardItemModule } from '../core/modules/dashboard-item/dashboard-item.module';
+import { FooterModule } from '../core/modules/footer/footer.module';
 import { StatesComponent } from './components';
 import { StatesRoutingModule } from './states-routing.module';
 

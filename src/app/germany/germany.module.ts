@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
-import { DashboardItemModule, EchartsModule, FooterModule } from '../core/modules';
+import { DashboardItemModule } from '../core/modules/dashboard-item/dashboard-item.module';
+import { EchartsModule } from '../core/modules/echarts/echarts.module';
+import { FooterModule } from '../core/modules/footer/footer.module';
 import { GermanyComponent } from './components';
 import { GermanyRoutingModule } from './germany-routing.module';
 

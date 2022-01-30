@@ -8,7 +8,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { LanguageSwitcherModule } from '../../modules';
+import { LanguageSwitcherModule } from '../../modules/language-switcher/language-switcher.module';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {

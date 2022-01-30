@@ -6,7 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TranslateModule } from '@ngx-translate/core';
-import { DashboardItemModule, FooterModule } from '../core/modules';
+import { DashboardItemModule } from '../core/modules/dashboard-item/dashboard-item.module';
+import { FooterModule } from '../core/modules/footer/footer.module';
 import { DistrictsComponent } from './components';
 import { DistrictsRoutingModule } from './districts-routing.module';
 

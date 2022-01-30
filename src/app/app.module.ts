@@ -17,7 +17,7 @@ import { Library, TranslateObjectLoader } from 'translate-object-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './core/components';
 import { coreTranslations } from './core/core.translations';
-import { LanguageSwitcherModule } from './core/modules';
+import { LanguageSwitcherModule } from './core/modules/language-switcher/language-switcher.module';
 import { districtsTranslations } from './districts/districts.translations';
 import { RKI_API_URL } from './rki-api-url.token';
 import { vaccinationsTranslations } from './vaccinations/vaccinations.translations';

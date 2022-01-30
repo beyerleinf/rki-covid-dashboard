@@ -6,7 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { DashboardItemModule, FooterModule } from 'src/app/core/modules';
+import { DashboardItemModule } from 'src/app/core/modules/dashboard-item/dashboard-item.module';
+import { FooterModule } from 'src/app/core/modules/footer/footer.module';
 import { RKI_API_URL } from 'src/app/rki-api-url.token';
 import { StatesComponent } from './states.component';
 

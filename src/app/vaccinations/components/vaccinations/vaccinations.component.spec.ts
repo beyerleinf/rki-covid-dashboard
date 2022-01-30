@@ -3,7 +3,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { DashboardItemModule, EchartsModule, FooterModule } from 'src/app/core/modules';
+import { DashboardItemModule } from 'src/app/core/modules/dashboard-item/dashboard-item.module';
+import { EchartsModule } from 'src/app/core/modules/echarts/echarts.module';
+import { FooterModule } from 'src/app/core/modules/footer/footer.module';
 import { RKI_API_URL } from 'src/app/rki-api-url.token';
 import { VaccinationsComponent } from './vaccinations.component';
 
