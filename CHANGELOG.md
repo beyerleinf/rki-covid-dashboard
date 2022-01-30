@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/beyerleinf/rki-covid-dashboard/compare/v2.4.0...v2.5.0) (2022-01-30)
+
+
+### Features
+
+* Add Jenssen vaccine ([ec9c73b](https://github.com/beyerleinf/rki-covid-dashboard/commit/ec9c73bf7f33d66825975b4ec125699e193dd169))
+* Update vaccination page ([f29d808](https://github.com/beyerleinf/rki-covid-dashboard/commit/f29d808ea920154bca7c4fcd5b269ff672227f3a))
+* **vaccinations:** Add booster quote ([af76b48](https://github.com/beyerleinf/rki-covid-dashboard/commit/af76b488e9fa442a1d3238b4857e57366adc5092))
+
+
+### Bug Fixes
+
+* Fix lockdown dates and colors ([ea004e7](https://github.com/beyerleinf/rki-covid-dashboard/commit/ea004e7109f87db5d018215e15a456f902f2b8d2))
+
 ## [2.4.0](https://github.com/beyerleinf/rki-covid-dashboard/compare/v2.3.1...v2.4.0) (2021-04-26)
 
 
