@@ -57,6 +57,7 @@ describe('VaccinationsService', () => {
         boosterVaccination: {
           delta: 102,
           vaccinated: 103,
+          quote: 0.5,
           vaccination: {
             biontech: 105,
             moderna: 106,
@@ -127,6 +128,7 @@ describe('VaccinationsService', () => {
             boosterVaccination: {
               delta: 102,
               vaccinated: 103,
+              quote: 50,
               vaccination: {
                 biontech: 105,
                 moderna: 106,
@@ -183,9 +185,27 @@ describe('VaccinationsService', () => {
     const response: RkiVaccinationHistoryRaw = {
       data: {
         history: [
-          { date: new Date(0).toISOString(), firstVaccination: 1, secondVaccination: 2, vaccinated: 3 },
-          { date: new Date(1).toISOString(), firstVaccination: 10, secondVaccination: 20, vaccinated: 30 },
-          { date: new Date(2).toISOString(), firstVaccination: 100, secondVaccination: 200, vaccinated: 300 },
+          {
+            date: new Date(0).toISOString(),
+            firstVaccination: 1,
+            secondVaccination: 2,
+            vaccinated: 3,
+            boosterVaccination: 4,
+          },
+          {
+            date: new Date(1).toISOString(),
+            firstVaccination: 10,
+            secondVaccination: 20,
+            vaccinated: 30,
+            boosterVaccination: 40,
+          },
+          {
+            date: new Date(2).toISOString(),
+            firstVaccination: 100,
+            secondVaccination: 200,
+            vaccinated: 300,
+            boosterVaccination: 400,
+          },
         ],
       },
       meta: {

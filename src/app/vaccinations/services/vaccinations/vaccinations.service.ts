@@ -27,6 +27,10 @@ export class VaccinationsService {
             ...response.data.secondVaccination,
             quote: response.data.secondVaccination.quote * 100,
           },
+          boosterVaccination: {
+            ...response.data.boosterVaccination,
+            quote: response.data.boosterVaccination.quote * 100,
+          },
         },
         meta: parseMeta(response.meta),
       }))

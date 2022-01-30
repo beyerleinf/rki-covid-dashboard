@@ -17,7 +17,7 @@ export class VaccinationsComponent implements OnInit {
 
   dashboardItems = [
     { title: 'vaccinations.vaccinated', valueKey: 'vaccinated', difference: 'delta', boosterVaccination: true },
-    { title: 'vaccinations.quote', valueKey: 'quote', format: '1.1-1', unit: '%', boosterVaccination: false },
+    { title: 'vaccinations.quote', valueKey: 'quote', format: '1.1-1', unit: '%', boosterVaccination: true },
   ];
 
   vaccinationItems = [
@@ -67,19 +67,19 @@ export class VaccinationsComponent implements OnInit {
       {
         name: this.translate.instant('vaccinations.firstVaccination'),
         type: 'line',
-        encode: { x: 'timestmp', y: 'firstVaccination' },
+        encode: { x: 'timestamp', y: 'firstVaccination' },
         smooth: true,
       },
       {
         name: this.translate.instant('vaccinations.secondVaccination'),
         type: 'line',
-        encode: { x: 'timestmp', y: 'secondVaccination' },
+        encode: { x: 'timestamp', y: 'secondVaccination' },
         smooth: true,
       },
       {
         name: this.translate.instant('vaccinations.boosterVaccination'),
         type: 'line',
-        encode: { x: 'timestmp', y: 'boosterVaccination' },
+        encode: { x: 'timestamp', y: 'boosterVaccination' },
         smooth: true,
       },
     ],
@@ -141,6 +141,7 @@ export class VaccinationsComponent implements OnInit {
       boosterVaccination: {
         delta: 0,
         vaccinated: 0,
+        quote: 0,
         vaccination: {
           biontech: 0,
           moderna: 0,
@@ -173,6 +174,7 @@ export class VaccinationsComponent implements OnInit {
         boosterVaccination: {
           delta: 0,
           vaccinated: 0,
+          quote: 0,
           vaccination: {
             biontech: 0,
             moderna: 0,

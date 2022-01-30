@@ -4,5 +4,5 @@ import { RkiVaccinationManufacturers } from './rki-vaccination-manufacturers';
 export interface RkiVaccinationDataBase extends RkiVaccinationInfo<RkiVaccinationManufacturers> {
   administeredVaccinations: number;
   secondVaccination: RkiVaccinationInfo<Omit<RkiVaccinationManufacturers, 'janssen'>>;
-  boosterVaccination: Omit<RkiVaccinationInfo<Omit<RkiVaccinationManufacturers, 'astraZeneca'>>, 'quote'>;
+  boosterVaccination: RkiVaccinationInfo<Omit<RkiVaccinationManufacturers, 'astraZeneca'>>;
 }
