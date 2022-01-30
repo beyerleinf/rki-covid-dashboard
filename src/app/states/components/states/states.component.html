@@ -1,31 +1,27 @@
-<div class="dashboard">
-  <div class="dashboard-row">
-    <div class="dashboard-item item-33">
-      <mat-card>
-        <mat-form-field>
-          <mat-label> State </mat-label>
-          <mat-select (valueChange)="onChangeState($event)" [(ngModel)]="selectedState">
-            <mat-option *ngFor="let state of states" [value]="state.value">{{ state.name }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </mat-card>
-    </div>
+<div class="dashboard-container">
+  <div class="dashboard-grid">
+    <mat-card>
+      <mat-form-field>
+        <mat-label> State </mat-label>
+        <mat-select (valueChange)="onChangeState($event)" [(ngModel)]="selectedState">
+          <mat-option *ngFor="let state of states" [value]="state.value">{{ state.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card>
   </div>
 
-  <ng-container *ngIf="selectedState">
-    <div class="dashboard-row">
-      <div *ngFor="let item of dashboardItems" class="dashboard-item item-33">
-        <rkicovid-dashboard-item
-          [cardTitle]="item.title"
-          [value]="$any(currentState)[item.valueKey]"
-          [difference]="$any(currentState.delta)[item.valueKey]"
-          [isLoading]="loading"
-        ></rkicovid-dashboard-item>
-      </div>
-    </div>
+  <div *ngIf="selectedState" class="dashboard-grid">
+    <ng-container *ngFor="let item of dashboardItems" class="dashboard-item item-33">
+      <rkicovid-dashboard-item
+        [cardTitle]="item.title"
+        [value]="$any(currentState)[item.valueKey]"
+        [difference]="$any(currentState.delta)[item.valueKey]"
+        [isLoading]="loading"
+      ></rkicovid-dashboard-item>
+    </ng-container>
+  </div>
 
-    <div *ngIf="!loading && currentMeta" class="dashboard-row">
-      <rkicovid-footer [meta]="currentMeta"></rkicovid-footer>
-    </div>
-  </ng-container>
+  <div *ngIf="selectedState" class="dashboard-grid">
+    <rkicovid-footer *ngIf="!loading && currentMeta" [meta]="currentMeta"></rkicovid-footer>
+  </div>
 </div>

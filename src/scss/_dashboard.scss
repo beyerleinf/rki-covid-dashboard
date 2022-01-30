@@ -33,3 +33,16 @@
     }
   }
 }
+
+.dashboard-container {
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: 16px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+  grid-template-rows: 1fr;
+  gap: 16px;
+}

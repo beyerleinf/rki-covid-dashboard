@@ -1,5 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { RKI_API_URL } from 'src/app/rki-api-url.token';
 import { DistrictsComponent } from './districts.component';
 
@@ -10,7 +12,11 @@ describe('DistrictsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DistrictsComponent],
-      imports: [HttpClientTestingModule],
+      imports: [
+        HttpClientTestingModule,
+        TranslateModule.forRoot({ loader: { provide: TranslateLoader, useClass: TranslateFakeLoader } }),
+        MatAutocompleteModule,
+      ],
       providers: [{ provide: RKI_API_URL, useValue: 'api' }],
     }).compileComponents();
 

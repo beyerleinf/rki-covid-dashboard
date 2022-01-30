@@ -3,4 +3,5 @@ export interface RkiVaccinationHistoryItem {
   vaccinated: number;
   firstVaccination: number;
   secondVaccination: number;
+  boosterVaccination: number;
 }
