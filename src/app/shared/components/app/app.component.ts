@@ -17,7 +17,7 @@ export class AppComponent {
   ];
 
   constructor(translate: TranslateService, private breakpoints: BreakpointObserver) {
-    translate.use(translate.getBrowserLang());
+    translate.use(translate.getBrowserLang() || 'en');
 
     this.breakpoints.observe([Breakpoints.Tablet, Breakpoints.Handset]).subscribe(({ matches }) => {
       this.onMobile = matches;

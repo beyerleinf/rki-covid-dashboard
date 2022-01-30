@@ -1,6 +1,11 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { RKI_API_URL } from 'src/app/rki-api-url.token';
 import { DistrictsComponent } from './districts.component';
@@ -16,6 +21,11 @@ describe('DistrictsComponent', () => {
         HttpClientTestingModule,
         TranslateModule.forRoot({ loader: { provide: TranslateLoader, useClass: TranslateFakeLoader } }),
         MatAutocompleteModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatInputModule,
+        NoopAnimationsModule,
+        ReactiveFormsModule,
       ],
       providers: [{ provide: RKI_API_URL, useValue: 'api' }],
     }).compileComponents();
