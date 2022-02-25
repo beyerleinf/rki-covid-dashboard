@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/beyerleinf/rki-covid-dashboard/compare/v2.5.0...v2.6.0) (2022-02-25)
+
+
+### Features
+
+* Update AGS list ([74b78a4](https://github.com/beyerleinf/rki-covid-dashboard/commit/74b78a4ffc6372f2ff30f024338e5a2055401cd7))
+
 ## [2.5.0](https://github.com/beyerleinf/rki-covid-dashboard/compare/v2.4.0...v2.5.0) (2022-01-30)
 
 
