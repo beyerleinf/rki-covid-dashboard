@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { EChartsOption } from 'echarts';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Subject, takeUntil } from 'rxjs';
 import { RkiStateVaccinationData, RkiVaccinationHistory, RkiVaccinations } from '../../models';
 import { VaccinationsService } from '../../services';
 
@@ -10,7 +10,7 @@ import { VaccinationsService } from '../../services';
   templateUrl: './vaccinations.component.html',
   styleUrls: ['./vaccinations.component.scss'],
 })
-export class VaccinationsComponent implements OnInit {
+export class VaccinationsComponent implements OnInit, OnDestroy {
   vaccinations: RkiVaccinations;
   loading = false;
   currentLang = '';
@@ -121,6 +121,8 @@ export class VaccinationsComponent implements OnInit {
     ],
   };
 
+  private _destroying$ = new Subject<void>();
+
   constructor(private vaccinationsService: VaccinationsService, private translate: TranslateService) {
     const stateInitial: RkiStateVaccinationData = {
       administeredVaccinations: 0,
@@ -219,7 +221,7 @@ export class VaccinationsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.translate.onLangChange.subscribe(() => {
+    this.translate.onLangChange.pipe(takeUntil(this._destroying$)).subscribe(() => {
       this.currentLang = this.translate.currentLang;
       this.chartOptions = {
         ...this.chartOptions,
@@ -244,6 +246,11 @@ export class VaccinationsComponent implements OnInit {
       this.buildHistoryChart(response[1]);
       this.loading = false;
     });
+  }
+
+  ngOnDestroy(): void {
+    this._destroying$.next();
+    this._destroying$.complete();
   }
 
   private buildHistoryChart(vaccinationHistory: RkiVaccinationHistory) {

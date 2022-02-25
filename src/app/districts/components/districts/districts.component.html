@@ -29,39 +29,3 @@
     <rkicovid-footer *ngIf="!loading && currentMeta" [meta]="currentMeta"></rkicovid-footer>
   </div>
 </div>
-
-<!-- <div class="dashboard" *ngIf="agsMap.length > 0">
-  <div class="dashboard-row">
-    <div class="dashboard-item item-33">
-      <mat-card>
-        <mat-form-field class="district-search">
-          <mat-label>{{ 'districts.searchDistrict' | translate }}</mat-label>
-          <input matInput type="text" [formControl]="agsInput" [matAutocomplete]="auto" />
-        </mat-form-field>
-
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-          <mat-option *ngFor="let option of filteredAgsMap | async" [value]="option.ags">
-            {{ option.county }}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-card>
-    </div>
-  </div>
-
-  <ng-container *ngIf="isValidAgs()">
-    <div class="dashboard-row">
-      <div *ngFor="let item of dashboardItems" class="dashboard-item item-33">
-        <rkicovid-dashboard-item
-          [cardTitle]="item.title"
-          [value]="$any(districtData)[item.valueKey]"
-          [difference]="$any(districtData.delta)[item.valueKey]"
-          [isLoading]="loading"
-        ></rkicovid-dashboard-item>
-      </div>
-    </div>
-
-    <div *ngIf="!loading && currentMeta" class="dashboard-row">
-      <rkicovid-footer [meta]="currentMeta"></rkicovid-footer>
-    </div>
-  </ng-container>
-</div> -->

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import * as dayjs from 'dayjs';
 import { EChartsOption } from 'echarts';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Subject, takeUntil } from 'rxjs';
 import { RkiCaseHistoryItem } from 'src/app/core/models';
 import { RkiGermany, RkiGermanyCaseHistory, RkiGermanyDeathHistory } from '../../models';
 import { GermanyService } from '../../services';
@@ -12,7 +12,7 @@ import { GermanyService } from '../../services';
   templateUrl: './germany.component.html',
   styleUrls: ['./germany.component.scss'],
 })
-export class GermanyComponent implements OnInit {
+export class GermanyComponent implements OnInit, OnDestroy {
   germany: RkiGermany;
   loading = false;
 
@@ -118,6 +118,8 @@ export class GermanyComponent implements OnInit {
     ],
   };
 
+  private _destroying$ = new Subject<void>();
+
   constructor(private translate: TranslateService, private germanyService: GermanyService) {
     this.currentLang = this.translate.currentLang;
     this.germany = {
@@ -155,7 +157,7 @@ export class GermanyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.translate.onLangChange.subscribe(() => {
+    this.translate.onLangChange.pipe(takeUntil(this._destroying$)).subscribe(() => {
       this.currentLang = this.translate.currentLang;
       this.chartOptions = {
         ...this.chartOptions,
@@ -184,6 +186,11 @@ export class GermanyComponent implements OnInit {
       this.buildHistoryChart(response[1], response[2], this.generateCaseHistoryMean(response[1]));
       this.loading = false;
     });
+  }
+
+  ngOnDestroy(): void {
+    this._destroying$.next();
+    this._destroying$.complete();
   }
 
   private buildHistoryChart(

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Subject, takeUntil } from 'rxjs';
 import { RkiMeta } from 'src/app/core/models';
 import { RkiStateData, State } from '../../models';
 import { StatesService } from '../../services';
@@ -11,7 +12,7 @@ const LAST_STATE_LOCAL_STORAGE = 'rki-covid.beyerleinf:lastState';
   templateUrl: './states.component.html',
   styleUrls: ['./states.component.scss'],
 })
-export class StatesComponent implements OnInit {
+export class StatesComponent implements OnInit, OnDestroy {
   loading = false;
   currentLang = '';
   states = [
@@ -45,6 +46,8 @@ export class StatesComponent implements OnInit {
     { title: 'common.casesPer100k', valueKey: 'casesPer100k' },
   ];
 
+  private _destroying$ = new Subject<void>();
+
   constructor(private statesService: StatesService, private translate: TranslateService) {
     this.currentState = {
       abbreviation: 'BB',
@@ -74,13 +77,18 @@ export class StatesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.translate.onLangChange.subscribe(() => {
+    this.translate.onLangChange.pipe(takeUntil(this._destroying$)).subscribe(() => {
       this.currentLang = this.translate.currentLang;
     });
 
     if (localStorage.getItem(LAST_STATE_LOCAL_STORAGE)) {
       this.onChangeState(localStorage.getItem(LAST_STATE_LOCAL_STORAGE) as any);
     }
+  }
+
+  ngOnDestroy(): void {
+    this._destroying$.next();
+    this._destroying$.complete();
   }
 
   onChangeState(event: State) {

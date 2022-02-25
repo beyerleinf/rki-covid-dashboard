@@ -21,6 +21,7 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+         "no-underscore-dangle": "off",
         "@angular-eslint/component-selector": [
           "error",
           {

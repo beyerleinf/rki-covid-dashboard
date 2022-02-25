@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, startWith, tap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, startWith, takeUntil, tap } from 'rxjs/operators';
 import { RkiMeta } from 'src/app/core/models';
 import { RkiDistrictData } from '../../models';
 import { DistrictsService } from '../../services';
@@ -13,7 +13,7 @@ const LAST_DISTRICT_LOCAL_STORAGE = 'rki-covid.beyerleinf:lastDistrict';
   templateUrl: './districts.component.html',
   styleUrls: ['./districts.component.scss'],
 })
-export class DistrictsComponent implements OnInit {
+export class DistrictsComponent implements OnInit, OnDestroy {
   loading = false;
 
   agsInput = new FormControl();
@@ -32,6 +32,8 @@ export class DistrictsComponent implements OnInit {
   ];
 
   displayFn = this.display.bind(this);
+
+  private _destroying$ = new Subject<void>();
 
   constructor(private districtsService: DistrictsService) {
     this.districtData = {
@@ -57,6 +59,7 @@ export class DistrictsComponent implements OnInit {
     };
 
     this.filteredAgsMap = this.agsInput.valueChanges.pipe(
+      takeUntil(this._destroying$),
       startWith(''),
       map(option => (option ? this.filterDistricts(option) : this.agsMap.slice())),
       tap(() => {
@@ -84,6 +87,11 @@ export class DistrictsComponent implements OnInit {
         this.agsInput.setValue(localStorage.getItem(LAST_DISTRICT_LOCAL_STORAGE) as any);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this._destroying$.next();
+    this._destroying$.complete();
   }
 
   isValidAgs() {
