@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, Observable } from 'rxjs';
+import { parseMeta, parseRValue } from 'src/app/core/helpers';
 import { RKI_API_URL } from 'src/app/rki-api-url.token';
-import { parseMeta } from 'src/app/core/helpers';
 import {
   RkiGermany,
   RkiGermanyCaseHistory,
@@ -18,7 +17,7 @@ import {
 @Injectable({
   providedIn: 'root',
 })
-export class GermanyService {
+export class GermanyEndpointService {
   constructor(private http: HttpClient, @Inject(RKI_API_URL) private apiUrl: string) {}
 
   get(): Observable<RkiGermany> {
@@ -29,14 +28,8 @@ export class GermanyService {
         r: {
           value: response.r.value,
           date: new Date(response.r.date),
-          rValue4Days: {
-            value: response.r.rValue4Days.value,
-            date: new Date(response.r.rValue4Days.date),
-          },
-          rValue7Days: {
-            value: response.r.rValue7Days.value,
-            date: new Date(response.r.rValue7Days.date),
-          },
+          rValue4Days: parseRValue(response.r.rValue4Days),
+          rValue7Days: parseRValue(response.r.rValue7Days),
         },
       }))
     );

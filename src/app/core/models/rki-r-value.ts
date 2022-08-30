@@ -3,7 +3,7 @@ export interface RkiRValue extends RkiRValueBase {
   rValue7Days: RkiRValueBase;
 }
 
-interface RkiRValueBase {
+export interface RkiRValueBase {
   value: number;
   date: Date;
 }
