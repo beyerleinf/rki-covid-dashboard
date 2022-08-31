@@ -5,6 +5,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
 import { DashboardItemModule } from '../core/modules/dashboard-item/dashboard-item.module';
 import { FooterModule } from '../core/modules/footer/footer.module';
@@ -21,8 +22,9 @@ import { DistrictsRoutingModule } from './districts-routing.module';
     MatAutocompleteModule,
     MatCardModule,
     MatFormFieldModule,
-    ReactiveFormsModule,
     MatInputModule,
+    MatProgressSpinnerModule,
+    ReactiveFormsModule,
     TranslateModule.forChild(),
   ],
 })

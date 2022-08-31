@@ -3,29 +3,36 @@
     <mat-card>
       <mat-form-field class="district-search">
         <mat-label>{{ 'districts.searchDistrict' | translate }}</mat-label>
-        <input matInput type="text" [formControl]="agsInput" [matAutocomplete]="auto" />
+        <input matInput type="text" [formControl]="districtsService.searchControl" [matAutocomplete]="auto" />
       </mat-form-field>
 
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let option of filteredAgsMap | async" [value]="option.ags">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="districtsService.displayDistrictFn">
+        <mat-option *ngFor="let option of districtsService.filteredDistricts$ | async" [value]="option.ags">
           {{ option.county }}
         </mat-option>
       </mat-autocomplete>
     </mat-card>
   </div>
 
-  <div *ngIf="isValidAgs()" class="dashboard-grid">
-    <ng-container *ngFor="let item of dashboardItems">
-      <rkicovid-dashboard-item
-        [cardTitle]="item.title"
-        [value]="$any(districtData)[item.valueKey]"
-        [difference]="$any(districtData.delta)[item.valueKey]"
-        [isLoading]="loading"
-      ></rkicovid-dashboard-item>
-    </ng-container>
-  </div>
+  <ng-container *ngIf="(districtsService.loading$ | async) === false; else loading">
+    <ng-container *ngIf="districtsService.currentDistrict$ | async as currentDistrict">
+      <div class="dashboard-grid">
+        <ng-container *ngFor="let item of dashboardItems">
+          <rkicovid-dashboard-item
+            [cardTitle]="item.title"
+            [value]="$any(currentDistrict)[item.valueKey]"
+            [difference]="$any(currentDistrict.delta)[item.valueKey]"
+          ></rkicovid-dashboard-item>
+        </ng-container>
+      </div>
 
-  <div *ngIf="isValidAgs()" class="dashboard-grid">
-    <rkicovid-footer *ngIf="!loading && currentMeta" [meta]="currentMeta"></rkicovid-footer>
-  </div>
+      <div class="dashboard-grid">
+        <rkicovid-footer [meta]="currentDistrict.meta"></rkicovid-footer>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #loading>
+    <mat-spinner [diameter]="64"></mat-spinner>
+  </ng-template>
 </div>

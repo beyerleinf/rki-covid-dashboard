@@ -9,7 +9,7 @@ import { RkiDistricts, RkiDistrictsRaw } from '../../models';
 @Injectable({
   providedIn: 'root',
 })
-export class DistrictsService {
+export class DistrictsEndpointService {
   constructor(private http: HttpClient, @Inject(RKI_API_URL) private apiUrl: string) {}
 
   getAgsMap() {
