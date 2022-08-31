@@ -1,2 +1,2 @@
-export { GermanyEndpointService } from './germany-endpoint/germany-endpoint.service';
-export { GermanyService } from './germany.service';
+export * from './germany-endpoint/germany-endpoint.service';
+export * from './germany.service';

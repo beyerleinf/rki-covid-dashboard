@@ -3,10 +3,10 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from '@angular/core/testing';
 import { RKI_API_URL } from 'src/app/rki-api-url.token';
 import { RkiStateCaseHistoryRaw, RkiStateRaw, RkiStatesData } from '../../models';
-import { StatesService } from './states.service';
+import { StatesEndpointService } from './states-endpoint.service';
 
-describe('StatesService', () => {
-  let service: StatesService;
+describe('StatesEndpointService', () => {
+  let service: StatesEndpointService;
 
   let http: HttpTestingController;
 
@@ -18,7 +18,7 @@ describe('StatesService', () => {
       providers: [{ provide: RKI_API_URL, useValue: baseUrl }],
     });
 
-    service = TestBed.inject(StatesService);
+    service = TestBed.inject(StatesEndpointService);
     http = TestBed.inject(HttpTestingController);
   });
 

@@ -1,1 +1,2 @@
-export { StatesService } from './states/states.service';
+export * from './states-endpoint/states-endpoint.service';
+export * from './states.service';
