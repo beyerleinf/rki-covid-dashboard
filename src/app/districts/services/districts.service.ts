@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, UntypedFormControl } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject, map, startWith, tap } from 'rxjs';
 import { RkiMeta } from 'src/app/core/models';
@@ -19,7 +19,7 @@ interface AgsMapItem {
 @UntilDestroy()
 @Injectable()
 export class DistrictsService {
-  searchControl = new FormControl();
+  searchControl = new FormControl<string>('');
 
   filteredDistricts$ = this.searchControl.valueChanges.pipe(
     untilDestroyed(this),
@@ -58,7 +58,11 @@ export class DistrictsService {
     return this.loadingSubject.asObservable();
   }
 
-  private getDistrict(ags: string) {
+  private getDistrict(ags: string | null) {
+    if (!ags) {
+      return;
+    }
+
     this.loadingSubject.next(true);
 
     this.endpointService.get(ags).subscribe(({ data, meta }) => {
