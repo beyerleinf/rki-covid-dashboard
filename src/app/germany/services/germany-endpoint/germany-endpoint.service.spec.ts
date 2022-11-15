@@ -8,10 +8,11 @@ import {
   RkiGermanyRaw,
   RkiGermanyRecoveredHistoryRaw,
 } from '../../models';
-import { GermanyService } from './germany.service';
 
-describe('GermanyService', () => {
-  let service: GermanyService;
+import { GermanyEndpointService } from './germany-endpoint.service';
+
+describe('GermanyEndpointService', () => {
+  let service: GermanyEndpointService;
 
   let http: HttpTestingController;
 
@@ -20,10 +21,11 @@ describe('GermanyService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [{ provide: RKI_API_URL, useValue: baseUrl }],
+      providers: [GermanyEndpointService, { provide: RKI_API_URL, useValue: baseUrl }],
     });
 
-    service = TestBed.inject(GermanyService);
+    service = TestBed.inject(GermanyEndpointService);
+
     http = TestBed.inject(HttpTestingController);
   });
 

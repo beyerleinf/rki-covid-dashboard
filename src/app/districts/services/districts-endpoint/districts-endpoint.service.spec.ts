@@ -3,10 +3,10 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from '@angular/core/testing';
 import { RKI_API_URL } from 'src/app/rki-api-url.token';
 import { RkiDistrictsRaw } from '../../models';
-import { DistrictsService } from './districts.service';
+import { DistrictsEndpointService } from './districts-endpoint.service';
 
-describe('DistrictsService', () => {
-  let service: DistrictsService;
+describe('DistrictsEndpointService', () => {
+  let service: DistrictsEndpointService;
 
   let http: HttpTestingController;
 
@@ -18,7 +18,7 @@ describe('DistrictsService', () => {
       providers: [{ provide: RKI_API_URL, useValue: baseUrl }],
     });
 
-    service = TestBed.inject(DistrictsService);
+    service = TestBed.inject(DistrictsEndpointService);
     http = TestBed.inject(HttpTestingController);
   });
 

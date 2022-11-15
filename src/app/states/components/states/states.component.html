@@ -3,25 +3,31 @@
     <mat-card>
       <mat-form-field>
         <mat-label> State </mat-label>
-        <mat-select (valueChange)="onChangeState($event)" [(ngModel)]="selectedState">
+        <mat-select (valueChange)="statesService.selectState($event)" [ngModel]="statesService.selectedState$ | async">
           <mat-option *ngFor="let state of states" [value]="state.value">{{ state.name }}</mat-option>
         </mat-select>
       </mat-form-field>
     </mat-card>
   </div>
 
-  <div *ngIf="selectedState" class="dashboard-grid">
-    <ng-container *ngFor="let item of dashboardItems" class="dashboard-item item-33">
-      <rkicovid-dashboard-item
-        [cardTitle]="item.title"
-        [value]="$any(currentState)[item.valueKey]"
-        [difference]="$any(currentState.delta)[item.valueKey]"
-        [isLoading]="loading"
-      ></rkicovid-dashboard-item>
+  <ng-container *ngIf="(statesService.loading$ | async) === false; else loading">
+    <ng-container *ngIf="statesService.currentState$ | async as currentState">
+      <div class="dashboard-grid">
+        <ng-container *ngFor="let item of dashboardItems" class="dashboard-item item-33">
+          <rkicovid-dashboard-item
+            [cardTitle]="item.title"
+            [value]="$any(currentState)[item.valueKey]"
+            [difference]="$any(currentState.delta)[item.valueKey]"
+          ></rkicovid-dashboard-item>
+        </ng-container>
+      </div>
+      <div class="dashboard-grid">
+        <rkicovid-footer [meta]="currentState.meta"></rkicovid-footer>
+      </div>
     </ng-container>
-  </div>
+  </ng-container>
 
-  <div *ngIf="selectedState" class="dashboard-grid">
-    <rkicovid-footer *ngIf="!loading && currentMeta" [meta]="currentMeta"></rkicovid-footer>
-  </div>
+  <ng-template #loading>
+    <mat-spinner [diameter]="64"></mat-spinner>
+  </ng-template>
 </div>

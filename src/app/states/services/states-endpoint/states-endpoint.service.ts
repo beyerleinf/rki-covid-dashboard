@@ -10,7 +10,7 @@ import { RkiStateCaseHistoryRaw, RkiStateRaw, RkiStatesData } from '../../models
 @Injectable({
   providedIn: 'root',
 })
-export class StatesService {
+export class StatesEndpointService {
   constructor(private http: HttpClient, @Inject(RKI_API_URL) private apiUrl: string) {}
 
   get<T extends keyof RkiStatesData>(state: T) {

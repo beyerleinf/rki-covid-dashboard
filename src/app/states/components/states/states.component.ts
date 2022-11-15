@@ -1,20 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { Subject, takeUntil } from 'rxjs';
-import { RkiMeta } from 'src/app/core/models';
-import { RkiStateData, State } from '../../models';
+import { Component } from '@angular/core';
 import { StatesService } from '../../services';
 
-const LAST_STATE_LOCAL_STORAGE = 'rki-covid.beyerleinf:lastState';
-
 @Component({
-  selector: 'rkicovid-states',
   templateUrl: './states.component.html',
   styleUrls: ['./states.component.scss'],
+  providers: [StatesService],
 })
-export class StatesComponent implements OnInit, OnDestroy {
-  loading = false;
-  currentLang = '';
+export class StatesComponent {
   states = [
     { name: 'Baden-Württemberg', value: 'BW' },
     { name: 'Bayern', value: 'BY' },
@@ -33,9 +25,6 @@ export class StatesComponent implements OnInit, OnDestroy {
     { name: 'Schleswig-Holstein', value: 'SH' },
     { name: 'Thüringen', value: 'TH' },
   ];
-  currentState: RkiStateData;
-  currentMeta: RkiMeta;
-  selectedState = '';
 
   dashboardItems = [
     { title: 'common.cases', valueKey: 'cases' },
@@ -46,61 +35,5 @@ export class StatesComponent implements OnInit, OnDestroy {
     { title: 'common.casesPer100k', valueKey: 'casesPer100k' },
   ];
 
-  private _destroying$ = new Subject<void>();
-
-  constructor(private statesService: StatesService, private translate: TranslateService) {
-    this.currentState = {
-      abbreviation: 'BB',
-      cases: 0,
-      casesPer100k: 0,
-      casesPerWeek: 0,
-      deaths: 0,
-      deathsPerWeek: 0,
-      delta: {
-        cases: 0,
-        deaths: 0,
-        recovered: 0,
-      },
-      id: 0,
-      name: '',
-      population: 0,
-      recovered: 0,
-      weekIncidence: 0,
-    };
-    this.currentMeta = {
-      contact: '',
-      info: '',
-      lastCheckedForUpdate: new Date(0),
-      lastUpdate: new Date(0),
-      source: '',
-    };
-  }
-
-  ngOnInit(): void {
-    this.translate.onLangChange.pipe(takeUntil(this._destroying$)).subscribe(() => {
-      this.currentLang = this.translate.currentLang;
-    });
-
-    if (localStorage.getItem(LAST_STATE_LOCAL_STORAGE)) {
-      this.onChangeState(localStorage.getItem(LAST_STATE_LOCAL_STORAGE) as any);
-    }
-  }
-
-  ngOnDestroy(): void {
-    this._destroying$.next();
-    this._destroying$.complete();
-  }
-
-  onChangeState(event: State) {
-    this.selectedState = event;
-    localStorage.setItem(LAST_STATE_LOCAL_STORAGE, event);
-
-    this.loading = true;
-    this.statesService.get(event).subscribe(state => {
-      this.currentState = state.data[event];
-      this.currentMeta = state.meta;
-
-      this.loading = false;
-    });
-  }
+  constructor(public statesService: StatesService) {}
 }
